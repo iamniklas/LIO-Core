@@ -1,4 +1,4 @@
-package interpolation
+package com.github.iamniklas.interpolation
 
 object Interpolation {
     private const val c1 = 1.70158f

@@ -1,6 +1,6 @@
-package interpolation
+package com.github.iamniklas.interpolation
 
-enum class InterpolationType {
+public enum class InterpolationType {
     Linear,
     EaseInSine, EaseOutSine, EaseInOutSine,
     EaseInQuad, EaseOutQuad, EaseInOutQuad,
