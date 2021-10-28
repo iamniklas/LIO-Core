@@ -1,7 +1,7 @@
 apply plugin: 'java'
 apply plugin: 'maven'
 
-group = 'com.github.jitpack'
+group = 'com.github.iamniklas'
 
 sourceCompatibility = 1.8 // java 8
 targetCompatibility = 1.8
@@ -11,7 +11,7 @@ repositories {
 }
 
 dependencies {
-  implementation 'com.google.guava:guava:29.0-jre'
+  implementation 'com.google.guava:guava:31.0.1-jre'
 }
 
 task sourcesJar(type: Jar, dependsOn: classes) {
