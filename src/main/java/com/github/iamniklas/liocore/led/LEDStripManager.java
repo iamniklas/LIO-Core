@@ -10,7 +10,7 @@ public abstract class LEDStripManager implements ProcedureCalls {
     public static final int LED_COUNT = 300;
     public LEDStrip ledStrip = new LEDStrip(LED_COUNT);
     //TODO protected LEDStatus ledStatus = new LEDStatus();
-    private ProcContainer procContainer = new ProcContainer(this);
+    public ProcContainer procContainer;
     private int frameTime = 16;
 
     private LEDRenderer renderer;
