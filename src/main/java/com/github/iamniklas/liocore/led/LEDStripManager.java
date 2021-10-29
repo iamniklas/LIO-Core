@@ -42,6 +42,9 @@ public class LEDStripManager implements ProcedureCalls {
     public void setPixel(int _index, Color _color) {
         ledStrip.setPixel(_index, _color);
     }
+    public void setPixel(int _index, int _r, int _g, int _b) {
+        ledStrip.setPixel(_index, new Color(_r, _g, _b));
+    }
 
     public void setArea(int _start, int _end, Color _color) {
         for (int i = _start; i < _end; i++) {
