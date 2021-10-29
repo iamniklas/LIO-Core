@@ -1,10 +1,10 @@
 package com.github.iamniklas.liocore.procedures;
 
 import com.github.iamniklas.liocore.led.LEDDataBundle;
+import com.github.iamniklas.liocore.led.LEDStripManager;
 
 public abstract class Procedure {
-    //TODO
-    //LEDStripManager strip;
+    LEDStripManager strip;
     protected LEDDataBundle dataBundle;
     protected ProcedureCalls procCalls;
     protected int step = 0;
