@@ -14,5 +14,5 @@ public abstract class LEDRenderer {
         colorData[_index] = _colorData;
     }
 
-    abstract void render();
+    public abstract void render();
 }
