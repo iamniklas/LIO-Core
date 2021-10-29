@@ -4,7 +4,7 @@ import java.awt.*;
 
 public abstract class LEDRenderer {
 
-    private final Color[] colorData;
+    protected final Color[] colorData;
 
     public LEDRenderer(int _stripSize) {
         colorData = new Color[_stripSize];
