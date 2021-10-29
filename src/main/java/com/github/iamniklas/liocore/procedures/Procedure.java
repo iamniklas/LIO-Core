@@ -6,7 +6,7 @@ import com.github.iamniklas.liocore.led.LEDStripManager;
 public abstract class Procedure {
     protected LEDStripManager strip;
     protected LEDDataBundle dataBundle;
-    protected ProcedureCalls procCalls;
+    public ProcedureCalls procCalls;
     protected int step = 0;
     protected int steps = 0;
     protected int modulo = 1;
