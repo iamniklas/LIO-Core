@@ -1,10 +1,8 @@
-# gradle-simple
+# LIO-Core
 
-[![](https://jitpack.io/v/jitpack/gradle-simple.svg?label=Release)](https://jitpack.io/#jitpack/gradle-simple)
+[![](https://jitpack.io/v/iamniklas/LIO-Core.svg)](https://jitpack.io/#iamniklas/LIO-Core)
 
-Example Gradle project producing a single jar. Uses the `maven` plugin to publish the jar to the local repository.
-
-[https://jitpack.io/#jitpack/gradle-simple](https://jitpack.io/#jitpack/gradle-simple)
+[https://jitpack.io/#jitpack/gradle-simple](https://jitpack.io/#iamniklas/LIO-Core)
 
 To install the library add: 
  
@@ -14,7 +12,7 @@ To install the library add:
         maven { url "https://jitpack.io" }
    }
    dependencies {
-         implementation 'com.github.jitpack:gradle-simple:1.1'
+         implementation 'com.github.iamniklas:LIO-Core:[VERSION]'
    }
    ```  
 
