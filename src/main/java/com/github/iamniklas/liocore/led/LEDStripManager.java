@@ -15,9 +15,11 @@ public class LEDStripManager implements ProcedureCalls {
     private int frameTime = 16;
 
     private LEDRenderer renderer;
+    private boolean clearOnExit;
 
-    public LEDStripManager() {
-
+    public LEDStripManager(LEDRenderer _renderer, boolean _clearOnExit) {
+        renderer = _renderer;
+        clearOnExit = _clearOnExit;
     }
 
     public void update() {
