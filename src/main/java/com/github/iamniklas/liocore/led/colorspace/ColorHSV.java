@@ -2,6 +2,9 @@ package com.github.iamniklas.liocore.led.colorspace;
 
 import com.github.iamniklas.liocore.led.typeinterfaces.IConvertibleColor;
 import com.github.iamniklas.liocore.led.typeinterfaces.IHSVTypesModifier;
+import org.checkerframework.checker.units.qual.C;
+
+import java.awt.*;
 
 public class ColorHSV implements IHSVTypesModifier<ColorHSV>, IConvertibleColor {
     //TODO Default colors (black, red, green, blue, ...)
@@ -44,6 +47,11 @@ public class ColorHSV implements IHSVTypesModifier<ColorHSV>, IConvertibleColor 
     public ColorRGBA toRGBA() { return toRGB().toRGBA(); }
     @Override
     public ColorHSV toHSV() { return this; }
+    @Override
+    public Color toSystemColor() {
+        ColorRGB rgb = toRGB();
+        return new Color(rgb.r, rgb.g, rgb.b);
+    }
 
     @Override
     public String toString() {

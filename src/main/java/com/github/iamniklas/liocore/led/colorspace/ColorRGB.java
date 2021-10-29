@@ -96,6 +96,10 @@ public class ColorRGB implements IRGBTypesModifier<ColorRGB>, IConvertibleColor 
         //TODO
         return new ColorHSV(0, 0, 0);
     }
+    @Override
+    public Color toSystemColor() {
+        return new Color(r, g, b);
+    }
 
     @Override
     public String toString() {

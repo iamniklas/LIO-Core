@@ -65,6 +65,12 @@ public class ColorRGBA implements IRGBTypesModifier<ColorRGBA>, IConvertibleColo
     }
 
     @Override
+    public Color toSystemColor() {
+        ColorRGB rgb = toRGB();
+        return new Color(rgb.r, rgb.g, rgb.b);
+    }
+
+    @Override
     public String toString() {
         return "ColorRGBA{" + "r=" + r + ", g=" + g + ", b=" + b + ", a=" + a + '}';
     }
