@@ -1,4 +1,4 @@
-package com.github.iamniklas.interpolation
+package com.github.iamniklas.liocore.interpolation
 
 object Interpolation {
     private const val c1 = 1.70158f

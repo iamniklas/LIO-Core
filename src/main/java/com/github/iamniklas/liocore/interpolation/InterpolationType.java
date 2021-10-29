@@ -1,6 +1,6 @@
-package com.github.iamniklas.interpolation
+package com.github.iamniklas.liocore.interpolation;
 
-public enum class InterpolationType {
+public enum InterpolationType {
     Linear,
     EaseInSine, EaseOutSine, EaseInOutSine,
     EaseInQuad, EaseOutQuad, EaseInOutQuad,
