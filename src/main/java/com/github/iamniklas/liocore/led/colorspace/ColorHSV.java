@@ -9,9 +9,9 @@ import java.awt.*;
 public class ColorHSV implements IHSVTypesModifier<ColorHSV>, IConvertibleColor {
     //TODO Default colors (black, red, green, blue, ...)
 
-    int h;
-    float s;
-    float v;
+    public int h;
+    public float s;
+    public float v;
 
     public ColorHSV(int _h, float _s, float _v) {
         h = _h;

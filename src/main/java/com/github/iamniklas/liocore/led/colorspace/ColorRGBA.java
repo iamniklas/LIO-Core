@@ -56,6 +56,13 @@ public class ColorRGBA implements IRGBTypesModifier<ColorRGBA>, IConvertibleColo
                 (255-a) * ColorRGB.black.b + (a/255) * b
         );
     }
+    public ColorRGB toRGB(ColorRGB _back) {
+        return new ColorRGB(
+                (255-a) * _back.r + (a/255) * r,
+                (255-a) * _back.g + (a/255) * g,
+                (255-a) * _back.b + (a/255) * b
+        );
+    }
     @Override
     public ColorRGBA toRGBA() { return this; }
     @Override

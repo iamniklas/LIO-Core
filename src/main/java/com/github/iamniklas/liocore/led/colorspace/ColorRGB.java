@@ -21,9 +21,9 @@ public class ColorRGB implements IRGBTypesModifier<ColorRGB>, IConvertibleColor 
         return new ColorRGB(_systemColor.getRed(), _systemColor.getGreen(), _systemColor.getBlue());
     }
 
-    int r = 255;
-    int g = 255;
-    int b = 255;
+    public int r = 255;
+    public int g = 255;
+    public int b = 255;
 
     public ColorRGB(int _r, int _g, int _b) {
         r = _r;
