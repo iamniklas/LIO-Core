@@ -5,13 +5,13 @@ import com.github.iamniklas.liocore.led.LEDDataBundle;
 public abstract class Procedure {
     //TODO
     //LEDStripManager strip;
-    LEDDataBundle dataBundle;
-    ProcedureCalls procCalls;
-    int step = 0;
-    int steps = 0;
-    int modulo = 1;
-    boolean moduloInvert = false;
-    boolean isSubProcedure = false;
+    protected LEDDataBundle dataBundle;
+    protected ProcedureCalls procCalls;
+    protected int step = 0;
+    protected int steps = 0;
+    protected int modulo = 1;
+    protected boolean moduloInvert = false;
+    protected boolean isSubProcedure = false;
 
     public Procedure(LEDDataBundle _bundle) {
         dataBundle = _bundle;
