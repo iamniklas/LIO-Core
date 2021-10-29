@@ -28,6 +28,6 @@ public class LEDDataBundle {
     public Boolean indeterminate;
     public Integer puModulo;
     public Boolean puModuloInvert;
-    public ILedStripManager ledStrip;
+    public LEDStripManager ledStrip;
     public ProcedureCalls procedureCalls;
 }

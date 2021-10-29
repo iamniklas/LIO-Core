@@ -2,7 +2,7 @@ package com.github.iamniklas.liocore.procedures;
 
 import com.github.iamniklas.liocore.led.LEDDataBundle;
 
-public abstract class Procedure {
+public abstract class Procedure implements ProcedureCalls {
     //TODO
     //LEDStripManager strip;
     protected LEDDataBundle dataBundle;
