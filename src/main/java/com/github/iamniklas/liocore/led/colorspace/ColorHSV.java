@@ -26,7 +26,7 @@ public class ColorHSV implements IHSVTypesModifier<ColorHSV>, IConvertibleColor 
             return new ColorRGB(v255, v255, v255);
         }
 
-        int hueInterval = (int)Math.floor((h / 60.0));
+        int hueInterval = (int)Math.floor(h / 60.0);
         float f = h / 60.0f - hueInterval;
         int p = (int)(v * (1 - s) * 255.0f);
         int q = (int)(v * (1 - s * f) * 255.0f);
@@ -35,7 +35,7 @@ public class ColorHSV implements IHSVTypesModifier<ColorHSV>, IConvertibleColor 
         switch (hueInterval) {
             case 0:
             case 6: return new ColorRGB(v255, t, p);
-            case 1: return new ColorRGB(q, v255, t);
+            case 1: return new ColorRGB(q, v255, p);
             case 2: return new ColorRGB(p, v255, t);
             case 3: return new ColorRGB(p, q, v255);
             case 4: return new ColorRGB(t, p, v255);
