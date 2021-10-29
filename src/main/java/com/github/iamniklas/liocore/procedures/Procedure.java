@@ -16,7 +16,7 @@ public abstract class Procedure {
     public Procedure(LEDDataBundle _bundle) {
         dataBundle = _bundle;
 
-        //TODO Init. Strip
+        strip = _bundle.ledStrip;
         procCalls = _bundle.procedureCalls;
         if(_bundle.puModulo != null) {
             modulo = _bundle.puModulo;
