@@ -2,6 +2,7 @@ package com.github.iamniklas.liocore.procedures;
 
 import com.github.iamniklas.liocore.led.LEDDataBundle;
 import com.github.iamniklas.liocore.led.LEDStripManager;
+import com.github.iamniklas.liocore.led.colorspace.ColorRGB;
 
 public abstract class Procedure {
     protected LEDStripManager strip;
@@ -35,11 +36,11 @@ public abstract class Procedure {
         for (int i = 0; i < 300; i++) {
             if (moduloInvert) {
                 if (i % modulo != 0) {
-                    //mStrip!!.setPixel(i, com.github.iamniklas.liocorekotlin.led.ColorRGB.black.toSystemColor())
+                    strip.setPixel(i, ColorRGB.black.toSystemColor());
                 }
             } else {
                 if (i % modulo == 0) {
-                    //mStrip!!.setPixel(i, com.github.iamniklas.liocorekotlin.led.ColorRGB.black.toSystemColor())
+                    strip.setPixel(i, ColorRGB.black.toSystemColor());
                 }
             }
         }
@@ -49,17 +50,15 @@ public abstract class Procedure {
     }
 
     protected void finishProcedure(boolean _clearStrip) {
-        //TODO Impl. Strip Interface
-        //mStrip!!.mProcContainer.removeCurrentProcedure()
+        strip.procContainer.removeCurrentProcedure();
         if (_clearStrip) {
-            //mStrip!!.setAllPixels(com.github.iamniklas.liocorekotlin.led.ColorRGB.black.toSystemColor())
+            strip.setAllPixels(ColorRGB.black.toSystemColor());
         }
         procCalls.onProcedureFinish();
     }
 
     protected void finishProcedure() {
-        //TODO Impl. Strip Interface
-        //mStrip!!.mProcContainer.removeCurrentProcedure()
+        strip.procContainer.removeCurrentProcedure();
         procCalls.onProcedureFinish();
     }
 }
