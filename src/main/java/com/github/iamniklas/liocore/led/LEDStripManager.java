@@ -29,6 +29,7 @@ public class LEDStripManager implements ProcedureCalls {
         for (int i = 0; i < LED_COUNT; i++) {
             renderer.setColorData(i, ledStrip.getColorByPixel(i));
         }
+        renderer.render();
 
         try {
             Thread.sleep(frametime);
