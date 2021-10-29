@@ -10,24 +10,24 @@ public class LEDDataBundle {
     public ColorRGB colorSecondary;
     public ColorRGB colorTertiary;
     public String data;
-    public float value1;
-    public float value2;
-    public float value3;
-    public int modulo;
+    public Float value1;
+    public Float value2;
+    public Float value3;
+    public Integer modulo;
     public InterpolationType interpolation;
     public Direction direction;
-    public int bpm;
-    public float repetitions;
-    public float speed;
-    public int duration;
-    public boolean pulsating;
+    public Integer bpm;
+    public Float repetitions;
+    public Float speed;
+    public Integer duration;
+    public Boolean pulsating;
     public String path;
 
     //subBundle
-    public boolean isSubProcedure;
-    public boolean indeterminate;
-    public int puModulo;
-    public boolean puModuloInvert;
+    public Boolean isSubProcedure;
+    public Boolean indeterminate;
+    public Integer puModulo;
+    public Boolean puModuloInvert;
     public ILedStripManager ledStrip;
     public ProcedureCalls procedureCalls;
 }
