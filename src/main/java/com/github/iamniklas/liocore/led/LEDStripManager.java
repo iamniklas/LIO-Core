@@ -12,7 +12,7 @@ public class LEDStripManager implements ProcedureCalls {
     public LEDStrip ledStrip = new LEDStrip(LED_COUNT);
     //TODO protected LEDStatus ledStatus = new LEDStatus();
     public ProcContainer procContainer;
-    private int frameTime = 16;
+    public int frametime = 16;
 
     private LEDRenderer renderer;
     private boolean clearOnExit;
@@ -31,7 +31,7 @@ public class LEDStripManager implements ProcedureCalls {
         }
 
         try {
-            Thread.sleep(frameTime);
+            Thread.sleep(frametime);
         }
         catch (InterruptedException ie) {
 
