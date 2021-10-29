@@ -16,4 +16,5 @@ public class LEDStrip {
     public Color getColorByPixel(int _index) {
         return strip.get(_index);
     }
+    public void setPixel(int _index, Color _color) { strip.set(_index, _color); }
 }
