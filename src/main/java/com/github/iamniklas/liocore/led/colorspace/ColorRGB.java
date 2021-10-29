@@ -73,10 +73,8 @@ public class ColorRGB implements IRGBTypesModifier<ColorRGB>, IConvertibleColor 
         }
     }
 
-    int cutHigh(int _value, int _cutter) {
-        return Math.min(_value, _cutter);
-    }
-    int cutLow(int _value, int _cutter) {
+    private int cutHigh(int _value, int _cutter) { return Math.min(_value, _cutter); }
+    private int cutLow(int _value, int _cutter) {
         return Math.max(_value, _cutter);
     }
 
