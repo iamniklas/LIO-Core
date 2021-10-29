@@ -2,7 +2,6 @@ package com.github.iamniklas.liocorekotlin.led
 
 import com.github.iamniklas.liocorekotlin.led.json.LEDStatus
 import com.github.iamniklas.liocorekotlin.network.LEDChangeModel
-import com.github.iamniklas.liocore.procedures.*
 import java.awt.Color
 import javax.swing.JLabel
 

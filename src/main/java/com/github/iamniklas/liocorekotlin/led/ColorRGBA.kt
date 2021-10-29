@@ -7,9 +7,9 @@ class ColorRGBA(_r: Int, _g: Int, _b: Int, _a: Int) {
     var a = 255
     fun toRGB(): com.github.iamniklas.liocorekotlin.led.ColorRGB {
         return com.github.iamniklas.liocorekotlin.led.ColorRGB(
-            (255 - a) * com.github.iamniklas.liocorekotlin.led.ColorRGB.Companion.black.r + a * r,
-            (255 - a) * com.github.iamniklas.liocorekotlin.led.ColorRGB.Companion.black.g + a * g,
-            (255 - a) * com.github.iamniklas.liocorekotlin.led.ColorRGB.Companion.black.b + a * b
+            (255 - a) * com.github.iamniklas.liocorekotlin.led.ColorRGB.Companion.black.r + a / 255 * r,
+            (255 - a) * com.github.iamniklas.liocorekotlin.led.ColorRGB.Companion.black.g + a / 255 * g,
+            (255 - a) * com.github.iamniklas.liocorekotlin.led.ColorRGB.Companion.black.b + a / 255 * b
         )
     }
 
