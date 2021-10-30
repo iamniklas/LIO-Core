@@ -4,7 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e78498bb-5fd8-4fc1-8653-b011d9d466e4" name="Changes" comment="" />
+    <list default="true" id="e78498bb-5fd8-4fc1-8653-b011d9d466e4" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/led/json/LEDJsonProcedure.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/led/json/LEDStateArray.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/led/json/LEDStatus.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/led/json/MetaInfo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/led/json/interpreter/FileVersions.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/led/json/interpreter/LEDInterpreter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/led/json/interpreter/NotAvailableException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/led/json/interpreter/strategies/IInterpreterStrategy.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/led/json/interpreter/strategies/LatestInterpreterStrategy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -31,9 +43,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Kotlin Class" />
+        <option value="Enum" />
         <option value="Interface" />
         <option value="Class" />
-        <option value="Enum" />
       </list>
     </option>
   </component>
