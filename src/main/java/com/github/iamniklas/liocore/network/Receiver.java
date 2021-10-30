@@ -22,7 +22,7 @@ public class Receiver extends Thread {
         while (!socket.isClosed()) {
             try {
                 String buffer = "";
-                int incomingSize = 0;
+                int incomingSize = dataInputStream.readByte();
                 String request = dataInputStream.readUTF();
                 callback.onReceiveMessage(request);
             } catch (IOException ignored) {

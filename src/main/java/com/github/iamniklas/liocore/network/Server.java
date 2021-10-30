@@ -27,7 +27,7 @@ public class Server extends Thread {
         catch (IOException ioe) {
             ioe.printStackTrace();
         }
-        
+
         while (true) {
             try {
                 clients.add(new ClientService(this, serverSocket.accept()));
