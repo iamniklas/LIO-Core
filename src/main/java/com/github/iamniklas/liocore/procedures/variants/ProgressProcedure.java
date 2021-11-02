@@ -35,7 +35,7 @@ public class ProgressProcedure extends Procedure {
 
     @Override
     public void start() {
-        super.start();
+        //super.start();
         strip.setAllPixels(ColorRGB.black.toSystemColor());
     }
 
