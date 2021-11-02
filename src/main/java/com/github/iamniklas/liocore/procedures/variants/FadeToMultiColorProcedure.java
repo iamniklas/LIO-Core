@@ -31,6 +31,7 @@ public class FadeToMultiColorProcedure extends Procedure {
 
     @Override
     public void start() {
+        super.start();
         for (int i = 0; i < baseColor.length; i++) {
             baseColor[i] = ColorRGB.fromSystemColor(strip.ledStrip.getColorByPixel(i));
         }

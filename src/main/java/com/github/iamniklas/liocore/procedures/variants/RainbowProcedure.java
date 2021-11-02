@@ -32,10 +32,40 @@ public class RainbowProcedure extends Procedure {
     }
 
     @Override
-    public void start() { }
+    public void start() {
+        super.start();
+    }
 
     @Override
     public void update() {
+        switch (direction) {
+            case Center:
+                int i = 0;
+                while (i < hueArrayCounter.length) {
+                    hueArrayCounter[i] = hueArrayCounter[i] < 0 ? 360.0f : hueArrayCounter[i] - speed;
+                    i++;
+                }
+                break;
+            case CenterInvert:
+                int j = 0;
+                while (j < hueArrayCounter.length) {
+                    hueArrayCounter[j] = hueArrayCounter[j] > 360 ? 0.0f : hueArrayCounter[j] + speed;
+                    j++;
+                }
+                break;
 
+            case Left: hueCounter = hueCounter > 360 ? 0.0f : hueCounter + speed; break;
+            case Right: hueCounter = hueCounter < 0 ? 360.0f : hueCounter - speed; break;
+        }
+
+        for (int i = 0; i < LEDStripManager.LED_COUNT; i++) {
+            if(direction == Direction.Center || direction == Direction.CenterInvert) {
+                colorHSV.h = (int) (((i * (repetitions * (360.0f / LEDStripManager.LED_COUNT))) + hueArrayCounter[i]) % 360);
+                strip.setPixel(i, colorHSV.toRGB().toSystemColor());
+                continue;
+            }
+            colorHSV.h = (int) (((i * (repetitions * (360.0f / LEDStripManager.LED_COUNT))) + hueCounter) % 360);
+            strip.setPixel(i, colorHSV.toRGB().toSystemColor());
+        }
     }
 }

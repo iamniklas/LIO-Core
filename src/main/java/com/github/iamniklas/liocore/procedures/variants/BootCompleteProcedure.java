@@ -20,6 +20,7 @@ public class BootCompleteProcedure extends Procedure {
 
     @Override
     public void start() {
+        super.start();
         strip.setAllPixels(ColorRGB.black.toSystemColor());
     }
 

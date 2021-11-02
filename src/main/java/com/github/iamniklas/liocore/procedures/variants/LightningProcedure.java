@@ -21,7 +21,9 @@ public class LightningProcedure extends Procedure {
     }
 
     @Override
-    public void start() { }
+    public void start() {
+        super.start();
+    }
 
     @Override
     public void update() {

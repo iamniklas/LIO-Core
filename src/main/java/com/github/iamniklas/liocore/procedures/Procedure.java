@@ -27,7 +27,7 @@ public abstract class Procedure {
         }
     }
 
-    public abstract void start();
+    public void start() { procCalls.onProcedureStart(this); }
     public abstract void update();
 
     public void postUpdate() {

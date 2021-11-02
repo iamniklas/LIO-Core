@@ -20,7 +20,7 @@ public class ColorInstantSetProcedure extends Procedure {
 
     @Override
     public void start() {
-
+        super.start();
     }
 
     @Override
