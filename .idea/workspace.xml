@@ -5,26 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e78498bb-5fd8-4fc1-8653-b011d9d466e4" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/procedures/ProcedureFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/procedures/models/IndeterminateState.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/procedures/variants/BlinkProcedure.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/procedures/variants/BootCompleteProcedure.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/procedures/variants/ColorInstantSetProcedure.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/procedures/variants/FadeInFadeOutProcedure.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/procedures/variants/FadeToMultiColorProcedure.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/procedures/variants/FadeToUniformColorProcedure.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/procedures/variants/FillStripInterpolatedProcedure.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/procedures/variants/FillStripProcedure.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/procedures/variants/GlitterProcedure.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/procedures/variants/JavascriptProcedure.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/procedures/variants/JsonProcedure.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/procedures/variants/LightningProcedure.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/procedures/variants/NoLongerReadyProcedure.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/procedures/variants/ProgressProcedure.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/procedures/variants/RainbowMonoProcedure.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/procedures/variants/RainbowProcedure.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/procedures/ProcedureType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/procedures/ProcedureType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/interpolation/Interpolation.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/interpolation/InterpolationType.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/led/LEDDataBundle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/led/LEDDataBundle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/procedures/variants/FillStripInterpolatedProcedure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/procedures/variants/FillStripInterpolatedProcedure.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,7 +63,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/led/json/interpreter/strategies" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Interpolation" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />

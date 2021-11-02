@@ -1,6 +1,6 @@
 package com.github.iamniklas.liocore.led;
 
-import com.github.iamniklas.liocore.interpolation.InterpolationType;
+import com.github.iamniklas.interpolation.InterpolationType;
 import com.github.iamniklas.liocore.led.colorspace.ColorRGB;
 import com.github.iamniklas.liocore.procedures.ProcedureCalls;
 import com.github.iamniklas.liocore.procedures.models.Direction;

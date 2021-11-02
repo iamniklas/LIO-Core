@@ -1,7 +1,6 @@
 package com.github.iamniklas.liocore.procedures.variants;
 
-import com.github.iamniklas.liocore.interpolation.Interpolation;
-import com.github.iamniklas.liocore.interpolation.InterpolationType;
+import com.github.iamniklas.interpolation.*;
 import com.github.iamniklas.liocore.led.LEDDataBundle;
 import com.github.iamniklas.liocore.led.LEDStripManager;
 import com.github.iamniklas.liocore.procedures.Procedure;
