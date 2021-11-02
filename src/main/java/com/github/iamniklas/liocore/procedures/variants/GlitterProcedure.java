@@ -31,7 +31,6 @@ public class GlitterProcedure extends Procedure {
 
     @Override
     public void start() {
-        super.start();
         Random r = new Random();
         for (int i = 0; i < LEDStripManager.LED_COUNT; i++) {
             ledX.set(i, (float) (r.nextFloat() * (Math.PI * 2 - 0.0f) + 0.0f));

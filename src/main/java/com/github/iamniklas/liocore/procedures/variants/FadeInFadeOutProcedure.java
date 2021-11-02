@@ -19,6 +19,8 @@ public class FadeInFadeOutProcedure extends Procedure {
         colorPartModifier[0] = targetColor.getRed() / 255.0f;
         colorPartModifier[1] = targetColor.getGreen() / 255.0f;
         colorPartModifier[2] = targetColor.getBlue() / 255.0f;
+
+        steps = 180;
     }
 
     @Override
