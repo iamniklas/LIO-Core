@@ -7,6 +7,11 @@ import com.github.iamniklas.liocore.procedures.Procedure;
 
 import java.awt.*;
 
+/**
+ *
+ * @deprecated This procedure will be removed in a future core update and will be replaced with the existing FillStripProcedure
+ */
+@Deprecated
 public class FillStripInterpolatedProcedure extends Procedure {
 
     private LEDDataBundle bundle;
