@@ -5,13 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e78498bb-5fd8-4fc1-8653-b011d9d466e4" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/interpolation/Interpolation.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/interpolation/InterpolationType.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/led/LEDDataBundle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/led/LEDDataBundle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/procedures/variants/FillStripInterpolatedProcedure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/procedures/variants/FillStripInterpolatedProcedure.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/procedures/variants/RainbowMonoProcedure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/procedures/variants/RainbowMonoProcedure.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/procedures/variants/RainbowProcedure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/procedures/variants/RainbowProcedure.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
