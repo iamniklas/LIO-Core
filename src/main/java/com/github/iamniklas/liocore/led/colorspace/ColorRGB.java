@@ -17,8 +17,8 @@ public class ColorRGB implements IRGBTypesModifier<ColorRGB>, IConvertibleColor 
     public static final ColorRGB magenta =   new ColorRGB(255,   0,  255);
     public static final ColorRGB turquoise = new ColorRGB(0,     255,255);
 
-    public static ColorRGB fromSystemColor(Color _systemColor) {
-        return new ColorRGB(_systemColor.getRed(), _systemColor.getGreen(), _systemColor.getBlue());
+    public static ColorRGB fromSystemColor(LIOColor _systemColor) {
+        return new ColorRGB(_systemColor.r, _systemColor.g, _systemColor.b);
     }
 
     public int r = 255;

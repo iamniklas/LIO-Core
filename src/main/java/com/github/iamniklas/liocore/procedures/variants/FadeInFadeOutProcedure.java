@@ -1,6 +1,7 @@
 package com.github.iamniklas.liocore.procedures.variants;
 
 import com.github.iamniklas.liocore.led.LEDDataBundle;
+import com.github.iamniklas.liocore.led.colorspace.LIOColor;
 import com.github.iamniklas.liocore.procedures.Procedure;
 
 import java.awt.*;
@@ -15,10 +16,10 @@ public class FadeInFadeOutProcedure extends Procedure {
         super(_bundle);
         bundle = _bundle;
 
-        Color targetColor = _bundle.colorPrimary.toSystemColor();
-        colorPartModifier[0] = targetColor.getRed() / 255.0f;
-        colorPartModifier[1] = targetColor.getGreen() / 255.0f;
-        colorPartModifier[2] = targetColor.getBlue() / 255.0f;
+        LIOColor targetColor = _bundle.colorPrimary.toSystemColor();
+        colorPartModifier[0] = targetColor.r / 255.0f;
+        colorPartModifier[1] = targetColor.g / 255.0f;
+        colorPartModifier[2] = targetColor.b / 255.0f;
 
         steps = 180;
     }
@@ -33,17 +34,17 @@ public class FadeInFadeOutProcedure extends Procedure {
         double d = Math.abs(Math.sin(Math.toRadians(step)));
 
         strip.setAllPixels(
-            new Color(
-                Math.round(colorPartModifier[0] * d * 255.0f),
-                Math.round(colorPartModifier[0] * d * 255.0f),
-                Math.round((colorPartModifier[0] * d * 255.0f))
+            new LIOColor(
+                    (int)Math.round(colorPartModifier[0] * d * 255.0f),
+                    (int)Math.round(colorPartModifier[0] * d * 255.0f),
+                    (int)Math.round((colorPartModifier[0] * d * 255.0f))
             )
         );
 
         step += 5;
 
         if(step >= steps) {
-            strip.setAllPixels(Color.black);
+            strip.setAllPixels(new LIOColor(0, 0, 0));
             finishProcedure();
         }
     }

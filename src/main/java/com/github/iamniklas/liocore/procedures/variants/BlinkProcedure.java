@@ -2,6 +2,7 @@ package com.github.iamniklas.liocore.procedures.variants;
 
 import com.github.iamniklas.liocore.led.LEDDataBundle;
 import com.github.iamniklas.liocore.led.colorspace.ColorRGB;
+import com.github.iamniklas.liocore.led.colorspace.LIOColor;
 import com.github.iamniklas.liocore.procedures.Procedure;
 
 import java.awt.*;
@@ -10,7 +11,7 @@ public class BlinkProcedure extends Procedure {
 
     private LEDDataBundle bundle;
 
-    private Color blinkColor;
+    private LIOColor blinkColor;
     private int frames = 10;
     private int modulo = 2;
 

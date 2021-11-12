@@ -1,5 +1,6 @@
 package com.github.iamniklas.liocore.led;
 
+import com.github.iamniklas.liocore.led.colorspace.LIOColor;
 import com.github.iamniklas.liocore.procedures.LEDStrip;
 import com.github.iamniklas.liocore.procedures.ProcContainer;
 import com.github.iamniklas.liocore.procedures.Procedure;
@@ -39,20 +40,20 @@ public class LEDStripManager implements ProcedureCalls {
         }
     }
 
-    public void setPixel(int _index, Color _color) {
+    public void setPixel(int _index, LIOColor _color) {
         ledStrip.setPixel(_index, _color);
     }
     public void setPixel(int _index, int _r, int _g, int _b) {
-        ledStrip.setPixel(_index, new Color(_r, _g, _b));
+        ledStrip.setPixel(_index, new LIOColor(_r, _g, _b));
     }
 
-    public void setArea(int _start, int _end, Color _color) {
+    public void setArea(int _start, int _end, LIOColor _color) {
         for (int i = _start; i < _end; i++) {
             ledStrip.setPixel(i, _color);
         }
     }
 
-    public void setAllPixels(Color _color) {
+    public void setAllPixels(LIOColor _color) {
         for (int i = 0; i < LED_COUNT; i++) {
             ledStrip.setPixel(i, _color);
         }

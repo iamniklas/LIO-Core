@@ -3,6 +3,7 @@ package com.github.iamniklas.liocore.procedures.variants;
 import com.github.iamniklas.interpolation.*;
 import com.github.iamniklas.liocore.led.LEDDataBundle;
 import com.github.iamniklas.liocore.led.LEDStripManager;
+import com.github.iamniklas.liocore.led.colorspace.LIOColor;
 import com.github.iamniklas.liocore.procedures.Procedure;
 
 import java.awt.*;
@@ -18,7 +19,7 @@ public class FillStripInterpolatedProcedure extends Procedure {
 
     private int litLeds = 0;
     private float pPercentage = 0.0f;
-    private Color fillColor = Color.black;
+    private LIOColor fillColor = new LIOColor(0, 0, 0);
     private InterpolationType interpolationType = InterpolationType.EaseInExpo;
 
     public FillStripInterpolatedProcedure(LEDDataBundle _bundle) {
@@ -40,7 +41,7 @@ public class FillStripInterpolatedProcedure extends Procedure {
         step++;
         litLeds = (int) Math.min(300, Interpolation.getInterpolationValue(pPercentage, interpolationType) * 300.0f);
 
-        strip.setAllPixels(Color.black);
+        strip.setAllPixels(new LIOColor(0, 0, 0));
         strip.setArea(0, litLeds, fillColor);
         if(step > LEDStripManager.LED_COUNT) {
             finishProcedure();

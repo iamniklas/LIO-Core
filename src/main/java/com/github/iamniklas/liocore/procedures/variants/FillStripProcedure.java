@@ -2,6 +2,7 @@ package com.github.iamniklas.liocore.procedures.variants;
 
 import com.github.iamniklas.liocore.led.LEDDataBundle;
 import com.github.iamniklas.liocore.led.LEDStripManager;
+import com.github.iamniklas.liocore.led.colorspace.LIOColor;
 import com.github.iamniklas.liocore.procedures.Procedure;
 import com.github.iamniklas.liocore.procedures.models.Direction;
 
@@ -11,7 +12,7 @@ public class FillStripProcedure extends Procedure {
 
     private LEDDataBundle bundle;
 
-    private Color fillColor = Color.black;
+    private LIOColor fillColor = new LIOColor(0, 0, 0);
     private int speed = 1;
     private Direction direction = Direction.Left;
 

@@ -1,6 +1,7 @@
 package com.github.iamniklas.liocore.procedures.variants;
 
 import com.github.iamniklas.liocore.led.LEDDataBundle;
+import com.github.iamniklas.liocore.led.colorspace.ColorRGB;
 import com.github.iamniklas.liocore.procedures.Procedure;
 
 import java.awt.*;
@@ -27,16 +28,16 @@ public class NoLongerReadyProcedure extends Procedure {
     public void update() {
         if(step % 5 == 0) {
             if(redLightActive) {
-                strip.setAllPixels(Color.black);
+                strip.setAllPixels(ColorRGB.black.toSystemColor());
             }
             else {
-                strip.setAllPixels(Color.red);
+                strip.setAllPixels(ColorRGB.red.toSystemColor());
             }
             redLightActive = !redLightActive;
         }
         step++;
         if(step > steps) {
-            strip.setAllPixels(Color.black);
+            strip.setAllPixels(ColorRGB.black.toSystemColor());
             finishProcedure();
         }
     }

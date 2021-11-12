@@ -15,7 +15,7 @@ public class ColorRGBA implements IRGBTypesModifier<ColorRGBA>, IConvertibleColo
     public static final ColorRGBA magenta =   new ColorRGBA(255,   0,  255, 255);
     public static final ColorRGBA turquoise = new ColorRGBA(0,     255,255, 255);
 
-    public static ColorRGBA fromSystemColor(Color _systemColor) {
+    public static ColorRGBA fromSystemColor(LIOColor _systemColor) {
         return ColorRGB.fromSystemColor(_systemColor).toRGBA();
     }
 
