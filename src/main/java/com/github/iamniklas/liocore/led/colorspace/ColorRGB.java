@@ -95,8 +95,8 @@ public class ColorRGB implements IRGBTypesModifier<ColorRGB>, IConvertibleColor 
         return new ColorHSV(0, 0, 0);
     }
     @Override
-    public Color toSystemColor() {
-        return new Color(r, g, b);
+    public LIOColor toSystemColor() {
+        return new LIOColor(r, g, b);
     }
 
     @Override

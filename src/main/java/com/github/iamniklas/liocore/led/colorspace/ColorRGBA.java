@@ -78,9 +78,9 @@ public class ColorRGBA implements IRGBTypesModifier<ColorRGBA>, IConvertibleColo
     }
 
     @Override
-    public Color toSystemColor() {
+    public LIOColor toSystemColor() {
         ColorRGB rgb = toRGB();
-        return new Color(rgb.r, rgb.g, rgb.b);
+        return new LIOColor(rgb.r, rgb.g, rgb.b);
     }
 
     @Override
