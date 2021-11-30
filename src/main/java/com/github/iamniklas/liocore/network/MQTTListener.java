@@ -32,7 +32,7 @@ public class MQTTListener {
         }
     }
 
-    void connect() throws MqttException {
+    public void connect() throws MqttException {
         mqttClient = new MqttClient("tcp://000raspberry.ddns.net:1883", clientID);
 
         MqttConnectOptions options = new MqttConnectOptions();
