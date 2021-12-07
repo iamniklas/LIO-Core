@@ -15,7 +15,17 @@ public class Main {
             }
 
             @Override
+            public void onLEDUpdateModelReceiveAll(LEDUpdateModel _updateModel) {
+                
+            }
+
+            @Override
             public void onLEDValueUpdateModelReceive(LEDValueUpdateModel _valueUpdateModel) {
+
+            }
+
+            @Override
+            public void onLEDValueUpdateModelReceiveAll(LEDValueUpdateModel _valueUpdateModel) {
 
             }
         }).connect();
