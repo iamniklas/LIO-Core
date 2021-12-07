@@ -11,23 +11,25 @@ public class Main {
         new MQTTListener(new IMqttCallback() {
             @Override
             public void onLEDUpdateModelReceive(LEDUpdateModel _updateModel) {
-
+                System.out.println("onLEDUpdateModelReceive");
             }
 
             @Override
             public void onLEDUpdateModelReceiveAll(LEDUpdateModel _updateModel) {
-                
+                System.out.println("onLEDUpdateModelReceiveAll");
             }
 
             @Override
             public void onLEDValueUpdateModelReceive(LEDValueUpdateModel _valueUpdateModel) {
-
+                System.out.println("onLEDValueUpdateModelReceive");
             }
 
             @Override
             public void onLEDValueUpdateModelReceiveAll(LEDValueUpdateModel _valueUpdateModel) {
-
+                System.out.println("onLEDValueUpdateModelReceiveAll");
             }
         }).connect();
+
+        System.out.println("Ready");
     }
 }
