@@ -52,7 +52,7 @@ public class MQTTListener {
         mqttClient.subscribe(Topics.UPDATE+deviceIdentifier, (topic, message) ->
                 callback.onLEDUpdateModelReceive(new Gson().fromJson(message.toString(), LEDUpdateModel.class)));
         mqttClient.subscribe(Topics.UPDATE_ALL, (topic, message) ->
-                callback.onLEDUpdateModelReceive(new Gson().fromJson(message.toString(), LEDUpdateModel.class)));
+                callback.onLEDUpdateModelReceiveAll(new Gson().fromJson(message.toString(), LEDUpdateModel.class)));
 
         mqttClient.subscribe(Topics.VARIABLE_UPDATE+deviceIdentifier, (topic, message) ->
                 callback.onLEDValueUpdateModelReceive(new Gson().fromJson(message.toString(), LEDValueUpdateModel.class)));
