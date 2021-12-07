@@ -4,6 +4,7 @@ import com.github.iamniklas.liocore.network.mqtt.IMqttCallback;
 import com.github.iamniklas.liocore.network.LEDUpdateModel;
 import com.github.iamniklas.liocore.network.LEDValueUpdateModel;
 import com.github.iamniklas.liocore.network.mqtt.MQTTListener;
+import com.google.gson.Gson;
 import org.eclipse.paho.client.mqttv3.MqttException;
 
 public class Main {
@@ -16,7 +17,7 @@ public class Main {
 
             @Override
             public void onLEDUpdateModelReceiveAll(LEDUpdateModel _updateModel) {
-                System.out.println("onLEDUpdateModelReceiveAll");
+                System.out.println(new Gson().toJson(_updateModel));
             }
 
             @Override

@@ -8,7 +8,7 @@ import org.eclipse.paho.client.mqttv3.MqttMessage;
 
 import java.util.concurrent.Callable;
 
-public class LEDUpdateCalls implements Callable<Void> {
+public class LEDUpdateProcedureCall implements Callable<Void> {
 
     IMqttClient client;
     LEDUpdateModel updateModel;
@@ -16,14 +16,14 @@ public class LEDUpdateCalls implements Callable<Void> {
     private final String TOPIC;
     private boolean sendToAll = false;
 
-    public LEDUpdateCalls(IMqttClient _client, String _deviceId, LEDUpdateModel _updateModel, boolean _sendToAll) {
+    public LEDUpdateProcedureCall(IMqttClient _client, String _deviceId, LEDUpdateModel _updateModel, boolean _sendToAll) {
         client = _client;
         updateModel = _updateModel;
         sendToAll = _sendToAll;
         TOPIC = Topics.UPDATE + _deviceId;
     }
 
-    public LEDUpdateCalls(IMqttClient _client, String _deviceId, LEDUpdateModel _updateModel) {
+    public LEDUpdateProcedureCall(IMqttClient _client, String _deviceId, LEDUpdateModel _updateModel) {
         client = _client;
         updateModel = _updateModel;
         TOPIC = Topics.UPDATE + _deviceId;
