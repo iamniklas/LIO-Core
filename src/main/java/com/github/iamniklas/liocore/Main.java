@@ -8,7 +8,7 @@ import org.eclipse.paho.client.mqttv3.MqttException;
 
 public class Main {
     public static void main(String[] args) throws MqttException {
-        new MQTTListener(new IMqttCallback() {
+        MQTTListener listener = new MQTTListener(new IMqttCallback() {
             @Override
             public void onLEDUpdateModelReceive(LEDUpdateModel _updateModel) {
                 System.out.println("onLEDUpdateModelReceive");
@@ -28,7 +28,10 @@ public class Main {
             public void onLEDValueUpdateModelReceiveAll(LEDValueUpdateModel _valueUpdateModel) {
                 System.out.println("onLEDValueUpdateModelReceiveAll");
             }
-        }).connect();
+        });
+        listener.connect();
+
+        System.out.println(listener.getDeviceIdentifier());
 
         Server s = new Server(LIONetwork.DEFAULT_PORT);
 

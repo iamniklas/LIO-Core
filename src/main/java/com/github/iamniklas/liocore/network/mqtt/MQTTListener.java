@@ -4,6 +4,7 @@ import com.github.iamniklas.liocore.network.LEDUpdateModel;
 import com.github.iamniklas.liocore.network.LEDValueUpdateModel;
 import com.google.gson.Gson;
 import org.eclipse.paho.client.mqttv3.*;
+import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
 
 import java.net.InetAddress;
 import java.net.NetworkInterface;
@@ -39,7 +40,8 @@ public class MQTTListener {
     }
 
     public void connect() throws MqttException {
-        mqttClient = new MqttClient("tcp://000raspberry.ddns.net:1883", clientID);
+        MemoryPersistence persistence = new MemoryPersistence();
+        mqttClient = new MqttClient("tcp://000raspberry.ddns.net:1883", clientID, persistence);
 
         MqttConnectOptions options = new MqttConnectOptions();
         options.setAutomaticReconnect(true);
@@ -58,5 +60,9 @@ public class MQTTListener {
                 callback.onLEDValueUpdateModelReceive(new Gson().fromJson(message.toString(), LEDValueUpdateModel.class)));
         mqttClient.subscribe(Topics.VARIABLE_UPDATE_ALL, (topic, message) ->
                 callback.onLEDValueUpdateModelReceiveAll(new Gson().fromJson(message.toString(), LEDValueUpdateModel.class)));
+    }
+
+    public String getDeviceIdentifier() {
+        return deviceIdentifier;
     }
 }
