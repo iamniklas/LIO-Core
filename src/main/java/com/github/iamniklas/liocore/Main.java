@@ -4,7 +4,7 @@ import com.github.iamniklas.liocore.network.*;
 import com.github.iamniklas.liocore.network.mqtt.IMqttCallback;
 import com.github.iamniklas.liocore.network.mqtt.MQTTListener;
 import com.google.gson.Gson;
-import org.eclipse.paho.client.mqttv3.MqttException;
+import org.eclipse.paho.client.mqttv3.*;
 
 public class Main {
     public static void main(String[] args) throws MqttException {

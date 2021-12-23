@@ -34,8 +34,14 @@ public class MQTTListener {
             macAddress = String.join("-", hexadecimal);
             hostname = InetAddress.getLocalHost().getHostName();
             deviceIdentifier = String.format("%s:%s", hostname, macAddress);
-        } catch (SocketException | UnknownHostException e) {
+        } catch (SocketException | UnknownHostException | NullPointerException e) {
+            //TODO: This is only a temporary solution, improve in an upcoming update
+            hostname="any";
+            macAddress="any";
             e.printStackTrace();
+        }
+        finally {
+            deviceIdentifier = String.format("%s:%s", hostname, macAddress);
         }
     }
 
