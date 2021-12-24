@@ -38,10 +38,23 @@ public class MQTTListener {
             //TODO: This is only a temporary solution, improve in an upcoming update
             hostname="any";
             macAddress="any";
-            e.printStackTrace();
+            System.out.println("Unable to gather network address information");
         }
         finally {
             deviceIdentifier = String.format("%s:%s", hostname, macAddress);
+            System.out.println("---------------");
+            System.out.println("---MQTT Integration---");
+            System.out.println("Hostname: " + hostname);
+            System.out.println("Mac Address: " + macAddress);
+            System.out.println("Device Identifier: " + deviceIdentifier);
+            System.out.println("If Hostname and/or Mac Address is 'any', we couldn't get the network address information for this device");
+            System.out.println("---------------");
+            System.out.println("Send procedure update to this device:   led/update/"+deviceIdentifier);
+            System.out.println("Send procedure update to all devices:   led/update/all");
+            System.out.println("Send value update to this device:       led/update/variable/"+deviceIdentifier);
+            System.out.println("Send value update to all devices:       led/update/variable/all");
+            System.out.println("---------------");
+            System.out.println("---------------");
         }
     }
 
