@@ -4,14 +4,9 @@ import com.github.iamniklas.liocore.ProgramConfiguration;
 import com.github.iamniklas.liocore.network.LEDUpdateModel;
 import com.github.iamniklas.liocore.network.LEDValueUpdateModel;
 import com.google.gson.Gson;
-import com.sun.javafx.image.impl.IntArgb;
 import org.eclipse.paho.client.mqttv3.*;
 import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
 
-import java.net.InetAddress;
-import java.net.NetworkInterface;
-import java.net.SocketException;
-import java.net.UnknownHostException;
 import java.util.UUID;
 
 public class MQTTListener {
@@ -25,7 +20,7 @@ public class MQTTListener {
 
         System.out.println("---------------");
         System.out.println("---MQTT Integration---");
-        System.out.println("Device Name: " + ProgramConfiguration.instance.mqttDeviceName);
+        System.out.println("Device Name: " + ProgramConfiguration.configuration.mqttDeviceName);
         System.out.println("---------------");
         System.out.println("Send procedure update to this device:   " + Topics.UPDATE);
         System.out.println("Send procedure update to all devices:   " + Topics.UPDATE_ALL);
@@ -37,14 +32,14 @@ public class MQTTListener {
 
     public void connect() throws MqttException {
         MemoryPersistence persistence = new MemoryPersistence();
-        mqttClient = new MqttClient(ProgramConfiguration.instance.mqttBrokerAddress, clientID, persistence);
+        mqttClient = new MqttClient(ProgramConfiguration.configuration.mqttBrokerAddress, clientID, persistence);
 
         MqttConnectOptions options = new MqttConnectOptions();
         options.setAutomaticReconnect(true);
         options.setCleanSession(true);
         options.setConnectionTimeout(10);
-        options.setUserName(ProgramConfiguration.instance.mqttUser);
-        options.setPassword(ProgramConfiguration.instance.mqttPassword.toCharArray());
+        options.setUserName(ProgramConfiguration.configuration.mqttUser);
+        options.setPassword(ProgramConfiguration.configuration.mqttPassword.toCharArray());
         mqttClient.connect(options);
 
 
@@ -63,6 +58,6 @@ public class MQTTListener {
     }
 
     public String getDeviceIdentifier() {
-        return ProgramConfiguration.instance.mqttDeviceName;
+        return ProgramConfiguration.configuration.mqttDeviceName;
     }
 }

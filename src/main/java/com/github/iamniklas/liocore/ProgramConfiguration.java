@@ -6,15 +6,21 @@ import java.io.IOException;
 import java.util.Properties;
 
 public class ProgramConfiguration {
-    public String mqttUser = "lio";
-    public String mqttPassword = "8kNhtmUG6kmUm3djdEE7MXmvAg4662";
-    public String mqttBrokerAddress = "192.168.178.50";
-    public String mqttDeviceName = "devicename";
+    public final String mqttUser;
+    public final String mqttPassword;
+    public final String mqttBrokerAddress;
+    public final String mqttDeviceName;
 
-    public static final ProgramConfiguration instance = readConfig();
+    private ProgramConfiguration(String _user, String _psw, String _brokerAddress, String _deviceName) {
+        mqttUser = _user;
+        mqttPassword = _psw;
+        mqttBrokerAddress = _brokerAddress;
+        mqttDeviceName = _deviceName;
+    }
 
-    public static ProgramConfiguration readConfig() {
-        ProgramConfiguration config = new ProgramConfiguration();
+    public static final ProgramConfiguration configuration = ProgramInfo.info.runningOnAndroid ? null : readConfigFromFile();
+
+    private static ProgramConfiguration readConfigFromFile() {
         Properties prop = new Properties();
         String fileName = "config.txt";
         try (FileInputStream fis = new FileInputStream(fileName)) {
@@ -25,11 +31,11 @@ public class ProgramConfiguration {
 
         }
 
-        config.mqttUser = (prop.getProperty("mqtt.user"));
-        config.mqttPassword = (prop.getProperty("mqtt.password"));
-        config.mqttBrokerAddress = (prop.getProperty("mqtt.brokeraddress"));
-        config.mqttDeviceName = prop.getProperty("mqtt.devicename");
-
-        return config;
+        return new ProgramConfiguration(
+                prop.getProperty("mqtt.user"),
+                prop.getProperty("mqtt.password"),
+                prop.getProperty("mqtt.brokeraddress"),
+                prop.getProperty("mqtt.devicename")
+        );
     }
 }
