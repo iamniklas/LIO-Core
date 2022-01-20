@@ -4,6 +4,7 @@ import com.github.iamniklas.liocore.ProgramConfiguration;
 import com.github.iamniklas.liocore.network.LEDUpdateModel;
 import com.github.iamniklas.liocore.network.LEDValueUpdateModel;
 import com.google.gson.Gson;
+import com.sun.javafx.image.impl.IntArgb;
 import org.eclipse.paho.client.mqttv3.*;
 import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
 
@@ -25,12 +26,11 @@ public class MQTTListener {
         System.out.println("---------------");
         System.out.println("---MQTT Integration---");
         System.out.println("Device Name: " + ProgramConfiguration.instance.mqttDeviceName);
-        System.out.println("If Hostname and/or Mac Address is 'any', we couldn't get the network address information for this device");
         System.out.println("---------------");
-        System.out.println("Send procedure update to this device:   led/update/"+ProgramConfiguration.instance.mqttDeviceName);
-        System.out.println("Send procedure update to all devices:   led/update/all");
-        System.out.println("Send value update to this device:       led/update/variable/"+ProgramConfiguration.instance.mqttDeviceName);
-        System.out.println("Send value update to all devices:       led/update/variable/all");
+        System.out.println("Send procedure update to this device:   " + Topics.UPDATE);
+        System.out.println("Send procedure update to all devices:   " + Topics.UPDATE_ALL);
+        System.out.println("Send value update to this device:       " + Topics.VARIABLE_UPDATE);
+        System.out.println("Send value update to all devices:       " + Topics.VARIABLE_UPDATE_ALL);
         System.out.println("---------------");
         System.out.println("---------------");
     }
@@ -47,13 +47,17 @@ public class MQTTListener {
         options.setPassword(ProgramConfiguration.instance.mqttPassword.toCharArray());
         mqttClient.connect(options);
 
-        mqttClient.subscribe(Topics.UPDATE+ProgramConfiguration.instance.mqttDeviceName, (topic, message) ->
+
+        mqttClient.subscribe(Topics.UPDATE, (topic, message) ->
                 callback.onLEDUpdateModelReceive(new Gson().fromJson(message.toString(), LEDUpdateModel.class)));
+
         mqttClient.subscribe(Topics.UPDATE_ALL, (topic, message) ->
                 callback.onLEDUpdateModelReceiveAll(new Gson().fromJson(message.toString(), LEDUpdateModel.class)));
 
-        mqttClient.subscribe(Topics.VARIABLE_UPDATE+ProgramConfiguration.instance.mqttDeviceName, (topic, message) ->
+
+        mqttClient.subscribe(Topics.VARIABLE_UPDATE, (topic, message) ->
                 callback.onLEDValueUpdateModelReceive(new Gson().fromJson(message.toString(), LEDValueUpdateModel.class)));
+
         mqttClient.subscribe(Topics.VARIABLE_UPDATE_ALL, (topic, message) ->
                 callback.onLEDValueUpdateModelReceiveAll(new Gson().fromJson(message.toString(), LEDValueUpdateModel.class)));
     }
