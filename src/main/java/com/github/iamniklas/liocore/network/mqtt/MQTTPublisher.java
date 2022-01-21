@@ -1,6 +1,6 @@
 package com.github.iamniklas.liocore.network.mqtt;
 
-import com.github.iamniklas.liocore.ProgramConfiguration;
+import com.github.iamniklas.liocore.config.ProgramConfiguration;
 import org.eclipse.paho.client.mqttv3.IMqttClient;
 import org.eclipse.paho.client.mqttv3.MqttClient;
 import org.eclipse.paho.client.mqttv3.MqttConnectOptions;

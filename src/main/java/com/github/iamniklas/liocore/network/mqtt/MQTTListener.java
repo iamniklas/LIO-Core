@@ -1,6 +1,6 @@
 package com.github.iamniklas.liocore.network.mqtt;
 
-import com.github.iamniklas.liocore.ProgramConfiguration;
+import com.github.iamniklas.liocore.config.ProgramConfiguration;
 import com.github.iamniklas.liocore.network.LEDUpdateModel;
 import com.github.iamniklas.liocore.network.LEDValueUpdateModel;
 import com.google.gson.Gson;

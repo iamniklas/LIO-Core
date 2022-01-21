@@ -1,4 +1,4 @@
-package com.github.iamniklas.liocore;
+package com.github.iamniklas.liocore.config;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -11,16 +11,16 @@ public class ProgramConfiguration {
     public final String mqttBrokerAddress;
     public final String mqttDeviceName;
 
-    private ProgramConfiguration(String _user, String _psw, String _brokerAddress, String _deviceName) {
+    public ProgramConfiguration(String _user, String _psw, String _brokerAddress, String _deviceName) {
         mqttUser = _user;
         mqttPassword = _psw;
         mqttBrokerAddress = _brokerAddress;
         mqttDeviceName = _deviceName;
     }
 
-    public static final ProgramConfiguration configuration = ProgramInfo.info.runningOnAndroid ? null : readConfigFromFile();
+    public static ProgramConfiguration configuration;
 
-    private static ProgramConfiguration readConfigFromFile() {
+    public static ProgramConfiguration readConfigFromFile() {
         Properties prop = new Properties();
         String fileName = "config.txt";
         try (FileInputStream fis = new FileInputStream(fileName)) {

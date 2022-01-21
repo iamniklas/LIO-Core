@@ -1,6 +1,6 @@
 package com.github.iamniklas.liocore.network.mqtt;
 
-import com.github.iamniklas.liocore.ProgramConfiguration;
+import com.github.iamniklas.liocore.config.ProgramConfiguration;
 
 public class Topics {
     public final static String UPDATE = "led/update/" + ProgramConfiguration.configuration.mqttDeviceName;
