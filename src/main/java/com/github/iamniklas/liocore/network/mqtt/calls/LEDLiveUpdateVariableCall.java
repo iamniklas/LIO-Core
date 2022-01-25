@@ -3,7 +3,6 @@ package com.github.iamniklas.liocore.network.mqtt.calls;
 import com.github.iamniklas.liocore.network.mqtt.Topics;
 import org.eclipse.paho.client.mqttv3.IMqttClient;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
-import sun.util.resources.cldr.aa.CalendarData_aa_DJ;
 
 import java.util.concurrent.Callable;
 
@@ -12,7 +11,7 @@ public class LEDLiveUpdateVariableCall implements Callable<Void> {
     private final IMqttClient client;
 
     private String TOPIC;
-    private boolean sendToAll = false;
+    private final boolean sendToAll;
 
     public LEDLiveUpdateVariableCall(IMqttClient _client, String _deviceId, boolean _sendToAll) {
         client = _client;
@@ -22,6 +21,7 @@ public class LEDLiveUpdateVariableCall implements Callable<Void> {
 
     public LEDLiveUpdateVariableCall(IMqttClient _client, String _deviceId) {
         client = _client;
+        sendToAll = false;
         TOPIC = Topics.VARIABLE_UPDATE_PUBLISH + _deviceId;
     }
 

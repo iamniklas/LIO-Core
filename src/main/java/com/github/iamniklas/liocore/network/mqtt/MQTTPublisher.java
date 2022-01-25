@@ -23,4 +23,12 @@ public class MQTTPublisher {
         options.setPassword(ProgramConfiguration.configuration.mqttPassword.toCharArray());
         client.connect(options);
     }
+
+    public void disconnect() {
+        try {
+            client.disconnect();
+        } catch (MqttException e) {
+            e.printStackTrace();
+        }
+    }
 }

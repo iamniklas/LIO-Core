@@ -10,11 +10,11 @@ import java.util.concurrent.Callable;
 
 public class LEDUpdateProcedureCall implements Callable<Void> {
 
-    IMqttClient client;
-    LEDUpdateModel updateModel;
+    private final IMqttClient client;
+    private final LEDUpdateModel updateModel;
 
     private String TOPIC;
-    private boolean sendToAll = false;
+    private final boolean sendToAll;
 
     public LEDUpdateProcedureCall(IMqttClient _client, String _deviceId, LEDUpdateModel _updateModel, boolean _sendToAll) {
         client = _client;
@@ -26,6 +26,7 @@ public class LEDUpdateProcedureCall implements Callable<Void> {
     public LEDUpdateProcedureCall(IMqttClient _client, String _deviceId, LEDUpdateModel _updateModel) {
         client = _client;
         updateModel = _updateModel;
+        sendToAll = false;
         TOPIC = Topics.UPDATE_PUBLISH + _deviceId;
     }
 

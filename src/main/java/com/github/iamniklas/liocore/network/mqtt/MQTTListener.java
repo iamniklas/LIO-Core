@@ -57,6 +57,10 @@ public class MQTTListener {
                 callback.onLEDValueUpdateModelReceiveAll(new Gson().fromJson(message.toString(), LEDValueUpdateModel.class)));
     }
 
+    public void disconnect() throws MqttException {
+        mqttClient.disconnect();
+    }
+
     public String getDeviceIdentifier() {
         return ProgramConfiguration.configuration.mqttDeviceName;
     }
