@@ -1,5 +1,6 @@
 package com.github.iamniklas.liocore;
 
+import com.github.iamniklas.liocore.config.ProgramConfiguration;
 import com.github.iamniklas.liocore.network.*;
 import com.github.iamniklas.liocore.network.mqtt.IMqttCallback;
 import com.github.iamniklas.liocore.network.mqtt.MQTTListener;
@@ -8,10 +9,12 @@ import org.eclipse.paho.client.mqttv3.*;
 
 public class Main {
     public static void main(String[] args) throws MqttException {
+        ProgramConfiguration.configuration = ProgramConfiguration.readConfigFromFile();
+
         MQTTListener listener = new MQTTListener(new IMqttCallback() {
             @Override
             public void onLEDUpdateModelReceive(LEDUpdateModel _updateModel) {
-                System.out.println("onLEDUpdateModelReceive");
+                System.out.println(new Gson().toJson(_updateModel));
             }
 
             @Override
@@ -20,29 +23,16 @@ public class Main {
             }
 
             @Override
-            public void onLEDValueUpdateModelReceive(LEDValueUpdateModel _valueUpdateModel) {
+            public void onLEDValueUpdateModelReceive(LEDUpdateModel _valueUpdateModel) {
                 System.out.println("onLEDValueUpdateModelReceive");
             }
 
             @Override
-            public void onLEDValueUpdateModelReceiveAll(LEDValueUpdateModel _valueUpdateModel) {
+            public void onLEDValueUpdateModelReceiveAll(LEDUpdateModel _valueUpdateModel) {
                 System.out.println("onLEDValueUpdateModelReceiveAll");
             }
         });
         listener.connect();
-
-        System.out.println(listener.getDeviceIdentifier());
-
-        Server s = new Server(LIONetwork.DEFAULT_PORT);
-
-        s.setListener(new NetworkCallback() {
-            @Override
-            public void onReceiveMessage(String _message) {
-                System.out.println(_message);
-            }
-        });
-
-        s.start();
 
         System.out.println("Ready");
     }

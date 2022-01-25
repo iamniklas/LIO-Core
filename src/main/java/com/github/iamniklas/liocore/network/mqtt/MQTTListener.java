@@ -2,7 +2,6 @@ package com.github.iamniklas.liocore.network.mqtt;
 
 import com.github.iamniklas.liocore.config.ProgramConfiguration;
 import com.github.iamniklas.liocore.network.LEDUpdateModel;
-import com.github.iamniklas.liocore.network.LEDValueUpdateModel;
 import com.google.gson.Gson;
 import org.eclipse.paho.client.mqttv3.*;
 import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
@@ -51,10 +50,10 @@ public class MQTTListener {
 
 
         mqttClient.subscribe(Topics.VARIABLE_UPDATE_LISTEN, (topic, message) ->
-                callback.onLEDValueUpdateModelReceive(new Gson().fromJson(message.toString(), LEDValueUpdateModel.class)));
+                callback.onLEDValueUpdateModelReceive(new Gson().fromJson(message.toString(), LEDUpdateModel.class)));
 
         mqttClient.subscribe(Topics.VARIABLE_UPDATE_ALL_LISTEN_PUBLISH, (topic, message) ->
-                callback.onLEDValueUpdateModelReceiveAll(new Gson().fromJson(message.toString(), LEDValueUpdateModel.class)));
+                callback.onLEDValueUpdateModelReceiveAll(new Gson().fromJson(message.toString(), LEDUpdateModel.class)));
     }
 
     public void disconnect() throws MqttException {
