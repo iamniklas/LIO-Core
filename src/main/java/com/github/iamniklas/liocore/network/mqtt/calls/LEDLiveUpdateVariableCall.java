@@ -9,20 +9,20 @@ import java.util.concurrent.Callable;
 
 public class LEDLiveUpdateVariableCall implements Callable<Void> {
 
-    private IMqttClient client;
+    private final IMqttClient client;
 
-    private final String TOPIC;
+    private String TOPIC;
     private boolean sendToAll = false;
 
     public LEDLiveUpdateVariableCall(IMqttClient _client, String _deviceId, boolean _sendToAll) {
         client = _client;
         sendToAll = _sendToAll;
-        TOPIC = Topics.VARIABLE_UPDATE + _deviceId;
+        TOPIC = Topics.VARIABLE_UPDATE_PUBLISH + _deviceId;
     }
 
     public LEDLiveUpdateVariableCall(IMqttClient _client, String _deviceId) {
         client = _client;
-        TOPIC = Topics.VARIABLE_UPDATE + _deviceId;
+        TOPIC = Topics.VARIABLE_UPDATE_PUBLISH + _deviceId;
     }
 
     @Override
@@ -31,15 +31,15 @@ public class LEDLiveUpdateVariableCall implements Callable<Void> {
             return null;
         }
 
+        if(sendToAll) {
+            TOPIC = Topics.VARIABLE_UPDATE_ALL_LISTEN_PUBLISH;
+        }
+
         MqttMessage msg = new MqttMessage("".getBytes());
         msg.setQos(2);
         msg.setRetained(false);
 
-        if(sendToAll) {
-            client.publish(Topics.VARIABLE_UPDATE_ALL, msg);
-        } else {
-            client.publish(TOPIC, msg);
-        }
+        client.publish(TOPIC, msg);
 
         return null;
     }

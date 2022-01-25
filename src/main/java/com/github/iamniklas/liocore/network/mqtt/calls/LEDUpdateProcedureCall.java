@@ -13,20 +13,20 @@ public class LEDUpdateProcedureCall implements Callable<Void> {
     IMqttClient client;
     LEDUpdateModel updateModel;
 
-    private final String TOPIC;
+    private String TOPIC;
     private boolean sendToAll = false;
 
     public LEDUpdateProcedureCall(IMqttClient _client, String _deviceId, LEDUpdateModel _updateModel, boolean _sendToAll) {
         client = _client;
         updateModel = _updateModel;
         sendToAll = _sendToAll;
-        TOPIC = Topics.UPDATE + _deviceId;
+        TOPIC = Topics.UPDATE_PUBLISH + _deviceId;
     }
 
     public LEDUpdateProcedureCall(IMqttClient _client, String _deviceId, LEDUpdateModel _updateModel) {
         client = _client;
         updateModel = _updateModel;
-        TOPIC = Topics.UPDATE + _deviceId;
+        TOPIC = Topics.UPDATE_PUBLISH + _deviceId;
     }
 
     @Override
@@ -35,15 +35,15 @@ public class LEDUpdateProcedureCall implements Callable<Void> {
             return null;
         }
 
+        if(sendToAll) {
+            TOPIC = Topics.UPDATE_ALL_LISTEN_PUBLISH;
+        }
+
         MqttMessage msg = new MqttMessage(new Gson().toJson(updateModel).getBytes());
         msg.setQos(2);
         msg.setRetained(false);
 
-        if(sendToAll) {
-            client.publish(Topics.UPDATE_ALL, msg);
-        } else {
-            client.publish(TOPIC, msg);
-        }
+        client.publish(TOPIC, msg);
 
         return null;
     }

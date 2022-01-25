@@ -22,10 +22,10 @@ public class MQTTListener {
         System.out.println("---MQTT Integration---");
         System.out.println("Device Name: " + ProgramConfiguration.configuration.mqttDeviceName);
         System.out.println("---------------");
-        System.out.println("Send procedure update to this device:   " + Topics.UPDATE);
-        System.out.println("Send procedure update to all devices:   " + Topics.UPDATE_ALL);
-        System.out.println("Send value update to this device:       " + Topics.VARIABLE_UPDATE);
-        System.out.println("Send value update to all devices:       " + Topics.VARIABLE_UPDATE_ALL);
+        System.out.println("Send procedure update to this device:   " + Topics.UPDATE_LISTEN);
+        System.out.println("Send procedure update to all devices:   " + Topics.UPDATE_ALL_LISTEN_PUBLISH);
+        System.out.println("Send value update to this device:       " + Topics.VARIABLE_UPDATE_LISTEN);
+        System.out.println("Send value update to all devices:       " + Topics.VARIABLE_UPDATE_ALL_LISTEN_PUBLISH);
         System.out.println("---------------");
         System.out.println("---------------");
     }
@@ -43,17 +43,17 @@ public class MQTTListener {
         mqttClient.connect(options);
 
 
-        mqttClient.subscribe(Topics.UPDATE, (topic, message) ->
+        mqttClient.subscribe(Topics.UPDATE_LISTEN, (topic, message) ->
                 callback.onLEDUpdateModelReceive(new Gson().fromJson(message.toString(), LEDUpdateModel.class)));
 
-        mqttClient.subscribe(Topics.UPDATE_ALL, (topic, message) ->
+        mqttClient.subscribe(Topics.UPDATE_ALL_LISTEN_PUBLISH, (topic, message) ->
                 callback.onLEDUpdateModelReceiveAll(new Gson().fromJson(message.toString(), LEDUpdateModel.class)));
 
 
-        mqttClient.subscribe(Topics.VARIABLE_UPDATE, (topic, message) ->
+        mqttClient.subscribe(Topics.VARIABLE_UPDATE_LISTEN, (topic, message) ->
                 callback.onLEDValueUpdateModelReceive(new Gson().fromJson(message.toString(), LEDValueUpdateModel.class)));
 
-        mqttClient.subscribe(Topics.VARIABLE_UPDATE_ALL, (topic, message) ->
+        mqttClient.subscribe(Topics.VARIABLE_UPDATE_ALL_LISTEN_PUBLISH, (topic, message) ->
                 callback.onLEDValueUpdateModelReceiveAll(new Gson().fromJson(message.toString(), LEDValueUpdateModel.class)));
     }
 
