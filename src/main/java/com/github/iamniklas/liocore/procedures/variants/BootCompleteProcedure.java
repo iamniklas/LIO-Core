@@ -6,8 +6,6 @@ import com.github.iamniklas.liocore.led.colorspace.ColorRGB;
 import com.github.iamniklas.liocore.led.colorspace.LIOColor;
 import com.github.iamniklas.liocore.procedures.Procedure;
 
-import java.awt.*;
-
 public class BootCompleteProcedure extends Procedure {
 
     private LEDDataBundle bundle;
@@ -31,7 +29,7 @@ public class BootCompleteProcedure extends Procedure {
 
         double d = Math.abs(Math.sin(Math.toRadians(step)));
         LIOColor c = new LIOColor(0, (int)(d * 255), 0);
-        for (int i = 0; i < LEDStripManager.LED_COUNT; i++) {
+        for (int i = 0; i < LEDStripManager.ledCount; i++) {
             if(i % 10 == 0) {
                 strip.setPixel(i, c);
             }

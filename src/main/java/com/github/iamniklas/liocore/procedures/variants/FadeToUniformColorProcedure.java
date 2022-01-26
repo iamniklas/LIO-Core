@@ -1,5 +1,6 @@
 package com.github.iamniklas.liocore.procedures.variants;
 
+import com.github.iamniklas.liocore.config.ProgramConfiguration;
 import com.github.iamniklas.liocore.led.LEDDataBundle;
 import com.github.iamniklas.liocore.led.colorspace.ColorRGB;
 import com.github.iamniklas.liocore.led.colorspace.ColorRGBA;
@@ -23,7 +24,7 @@ public class FadeToUniformColorProcedure extends Procedure {
         targetColor = bundle.colorPrimary;
         baseColor = bundle.colorSecondary;
         duration = _bundle.duration;
-        steps = (int) Math.ceil((duration / (strip.frametime / 1000.0f)));
+        steps = (int) Math.ceil((duration / (ProgramConfiguration.configuration.frametime / 1000.0f)));
         alphaAddValue = 1 / (float)steps;
     }
 

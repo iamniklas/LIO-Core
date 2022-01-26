@@ -5,10 +5,10 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class ConfigAndInfoTest {
+public class ConfigurationTest {
 
     @Test
-    public void testConfig() throws MqttException {
+    public void testConfig() {
         ProgramConfiguration.configuration = ProgramConfiguration.readConfigFromFile();
 
         assertEquals("lio", ProgramConfiguration.configuration.mqttUser);
@@ -23,5 +23,19 @@ public class ConfigAndInfoTest {
         assertEquals("/led/update/variable/devicename", Topics.VARIABLE_UPDATE_LISTEN);
         assertEquals("/led/update/variable", Topics.VARIABLE_UPDATE_PUBLISH);
         assertEquals("/led/update/variable/all", Topics.VARIABLE_UPDATE_ALL_LISTEN_PUBLISH);
+
+        assertEquals(15, ProgramConfiguration.configuration.mqttConnectionTimeout);
+        assertTrue(ProgramConfiguration.configuration.mqttAutomaticReconnect);
+        assertTrue(ProgramConfiguration.configuration.mqttCleanSession);
+
+        assertEquals(300, ProgramConfiguration.configuration.ledCount);
+        assertEquals(18, ProgramConfiguration.configuration.gpioPin);
+        assertEquals(800000, ProgramConfiguration.configuration.frequency);
+        assertEquals(10, ProgramConfiguration.configuration.dma);
+        assertEquals(255, ProgramConfiguration.configuration.brightness);
+        assertEquals(18, ProgramConfiguration.configuration.pwmChannel);
+        assertFalse(ProgramConfiguration.configuration.invert);
+        assertTrue(ProgramConfiguration.configuration.clearOnExit);
+        assertEquals(16, ProgramConfiguration.configuration.frametime);
     }
 }

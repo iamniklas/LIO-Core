@@ -16,9 +16,9 @@ public class MQTTPublisher {
 
     public MQTTPublisher() throws MqttException {
         MqttConnectOptions options = new MqttConnectOptions();
-        options.setAutomaticReconnect(true);
-        options.setCleanSession(true);
-        options.setConnectionTimeout(10);
+        options.setAutomaticReconnect(ProgramConfiguration.configuration.mqttAutomaticReconnect);
+        options.setCleanSession(ProgramConfiguration.configuration.mqttCleanSession);
+        options.setConnectionTimeout(ProgramConfiguration.configuration.mqttConnectionTimeout);
         options.setUserName(ProgramConfiguration.configuration.mqttUser);
         options.setPassword(ProgramConfiguration.configuration.mqttPassword.toCharArray());
         client.connect(options);

@@ -1,43 +1,37 @@
 package com.github.iamniklas.liocore.led;
 
+import com.github.iamniklas.liocore.config.ProgramConfiguration;
 import com.github.iamniklas.liocore.led.colorspace.LIOColor;
-import com.github.iamniklas.liocore.procedures.LEDStrip;
-import com.github.iamniklas.liocore.procedures.ProcContainer;
-import com.github.iamniklas.liocore.procedures.Procedure;
-import com.github.iamniklas.liocore.procedures.ProcedureCalls;
-
-import java.awt.*;
+import com.github.iamniklas.liocore.procedures.*;
 
 public class LEDStripManager implements ProcedureCalls {
-    public static final int LED_COUNT = 300;
-    public LEDStrip ledStrip = new LEDStrip(LED_COUNT);
-    //TODO protected LEDStatus ledStatus = new LEDStatus();
+    public static int ledCount;
+    public final LEDStrip ledStrip;
+
     public ProcContainer procContainer = new ProcContainer(this);
-    public int frametime = 16;
 
-    private LEDRenderer renderer;
-    private boolean clearOnExit;
+    private final LEDRenderer renderer;
 
-    public LEDStripManager(LEDRenderer _renderer, boolean _clearOnExit) {
+    public LEDStripManager(LEDRenderer _renderer, int _ledCount) {
         renderer = _renderer;
-        clearOnExit = _clearOnExit;
+        ledCount = _ledCount;
+
+        ledStrip = new LEDStrip(ledCount);
     }
 
     public void update() {
         procContainer.update();
         procContainer.postUpdate();
 
-        for (int i = 0; i < LED_COUNT; i++) {
+        for (int i = 0; i < ledCount; i++) {
             renderer.setColorData(i, ledStrip.getColorByPixel(i));
         }
         renderer.render();
 
         try {
-            Thread.sleep(frametime);
+            Thread.sleep(ProgramConfiguration.configuration.frametime);
         }
-        catch (InterruptedException ie) {
-
-        }
+        catch (InterruptedException ignored) {}
     }
 
     public void setPixel(int _index, LIOColor _color) {
@@ -54,7 +48,7 @@ public class LEDStripManager implements ProcedureCalls {
     }
 
     public void setAllPixels(LIOColor _color) {
-        for (int i = 0; i < LED_COUNT; i++) {
+        for (int i = 0; i < ledCount; i++) {
             ledStrip.setPixel(i, _color);
         }
     }

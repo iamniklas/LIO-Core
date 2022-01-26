@@ -12,7 +12,7 @@ public class RainbowProcedure extends Procedure {
 
     private ColorHSV colorHSV = new ColorHSV(0, 1.0f, 1.0f);
     private float hueCounter = 0.0f;
-    private float[] hueArrayCounter = new float[LEDStripManager.LED_COUNT];
+    private float[] hueArrayCounter = new float[LEDStripManager.ledCount];
 
     private float repetitions = 0.75f;
     private float speed = 3.0f;
@@ -58,13 +58,13 @@ public class RainbowProcedure extends Procedure {
             case Right: hueCounter = hueCounter < 0 ? 360.0f : hueCounter - speed; break;
         }
 
-        for (int i = 0; i < LEDStripManager.LED_COUNT; i++) {
+        for (int i = 0; i < LEDStripManager.ledCount; i++) {
             if(direction == Direction.Center || direction == Direction.CenterInvert) {
-                colorHSV.h = (int) (((i * (repetitions * (360.0f / LEDStripManager.LED_COUNT))) + hueArrayCounter[i]) % 360);
+                colorHSV.h = (int) (((i * (repetitions * (360.0f / LEDStripManager.ledCount))) + hueArrayCounter[i]) % 360);
                 strip.setPixel(i, colorHSV.toRGB().toSystemColor());
                 continue;
             }
-            colorHSV.h = (int) (((i * (repetitions * (360.0f / LEDStripManager.LED_COUNT))) + hueCounter) % 360);
+            colorHSV.h = (int) (((i * (repetitions * (360.0f / LEDStripManager.ledCount))) + hueCounter) % 360);
             strip.setPixel(i, colorHSV.toRGB().toSystemColor());
         }
     }

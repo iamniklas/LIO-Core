@@ -48,8 +48,8 @@ public class ProgressProcedure extends Procedure {
                 sinX = 0f;
 
             strip.setArea(
-                    (int)(LEDStripManager.LED_COUNT * start),
-                    (int)(LEDStripManager.LED_COUNT * progress),
+                    (int)(LEDStripManager.ledCount * start),
+                    (int)(LEDStripManager.ledCount * progress),
                     colorRGB.dim((float) Math.abs(Math.sin(sinX))).toSystemColor()
             );
         }
@@ -80,14 +80,14 @@ public class ProgressProcedure extends Procedure {
             }
 
             strip.setArea(
-                    Math.min(Math.max((int)(LEDStripManager.LED_COUNT * start), 0), 300),
-                    Math.min(Math.max((int)(LEDStripManager.LED_COUNT * progress), 0), 300),
+                    Math.min(Math.max((int)(LEDStripManager.ledCount * start), 0), 300),
+                    Math.min(Math.max((int)(LEDStripManager.ledCount * progress), 0), 300),
                     colorRGB.toSystemColor()
             );
         } else {
           strip.setArea(
-                  (int)(LEDStripManager.LED_COUNT * start),
-                  (int)(LEDStripManager.LED_COUNT * progress),
+                  (int)(LEDStripManager.ledCount * start),
+                  (int)(LEDStripManager.ledCount * progress),
                   colorRGB.toSystemColor()
           );
         }

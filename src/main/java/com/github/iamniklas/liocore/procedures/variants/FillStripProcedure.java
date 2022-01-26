@@ -6,8 +6,6 @@ import com.github.iamniklas.liocore.led.colorspace.LIOColor;
 import com.github.iamniklas.liocore.procedures.Procedure;
 import com.github.iamniklas.liocore.procedures.models.Direction;
 
-import java.awt.*;
-
 public class FillStripProcedure extends Procedure {
 
     private LEDDataBundle bundle;
@@ -23,7 +21,7 @@ public class FillStripProcedure extends Procedure {
         fillColor = bundle.colorPrimary.toSystemColor();
         speed = Math.round(bundle.speed);
         direction = bundle.direction;
-        steps = LEDStripManager.LED_COUNT;
+        steps = LEDStripManager.ledCount;
 
         if(direction == Direction.Center || direction == Direction.CenterInvert) {
             steps /= 2;
@@ -47,21 +45,21 @@ public class FillStripProcedure extends Procedure {
                 break;
             case Right:
                 while (i < speed) {
-                    strip.setPixel(LEDStripManager.LED_COUNT - 1 - step - i, fillColor);
+                    strip.setPixel(LEDStripManager.ledCount - 1 - step - i, fillColor);
                     i++;
                 }
                 break;
             case Center:
                 while (i < speed) {
-                    strip.setPixel(LEDStripManager.LED_COUNT / 2 - 1 + step + i, fillColor);
-                    strip.setPixel(LEDStripManager.LED_COUNT / 2 - 1 - step - i, fillColor);
+                    strip.setPixel(LEDStripManager.ledCount / 2 - 1 + step + i, fillColor);
+                    strip.setPixel(LEDStripManager.ledCount / 2 - 1 - step - i, fillColor);
                     i++;
                 }
                 break;
             case CenterInvert:
                 while (i < speed) {
                     strip.setPixel(step + i, fillColor);
-                    strip.setPixel(LEDStripManager.LED_COUNT - 1 - step - i, fillColor);
+                    strip.setPixel(LEDStripManager.ledCount - 1 - step - i, fillColor);
                     i++;
                 }
                 break;
