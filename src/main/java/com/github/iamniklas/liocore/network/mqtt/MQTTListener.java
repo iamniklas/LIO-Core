@@ -42,19 +42,18 @@ public class MQTTListener {
 
         mqttClient.connect(options);
 
-
         mqttClient.subscribe(Topics.UPDATE_LISTEN, (topic, message) ->
-                callback.onLEDUpdateModelReceive(new Gson().fromJson(message.toString(), LEDUpdateModel.class)));
+                callback.onLEDUpdateModelReceive(new Gson().fromJson(message.toString(), LEDUpdateModel.class), false));
 
         mqttClient.subscribe(Topics.UPDATE_ALL_LISTEN_PUBLISH, (topic, message) ->
-                callback.onLEDUpdateModelReceiveAll(new Gson().fromJson(message.toString(), LEDUpdateModel.class)));
+                callback.onLEDUpdateModelReceive(new Gson().fromJson(message.toString(), LEDUpdateModel.class), true));
 
 
         mqttClient.subscribe(Topics.VARIABLE_UPDATE_LISTEN, (topic, message) ->
-                callback.onLEDValueUpdateModelReceive(new Gson().fromJson(message.toString(), LEDUpdateModel.class)));
+                callback.onLEDValueUpdateModelReceive(new Gson().fromJson(message.toString(), LEDUpdateModel.class), false));
 
         mqttClient.subscribe(Topics.VARIABLE_UPDATE_ALL_LISTEN_PUBLISH, (topic, message) ->
-                callback.onLEDValueUpdateModelReceiveAll(new Gson().fromJson(message.toString(), LEDUpdateModel.class)));
+                callback.onLEDValueUpdateModelReceive(new Gson().fromJson(message.toString(), LEDUpdateModel.class), true));
     }
 
     public void disconnect() throws MqttException {

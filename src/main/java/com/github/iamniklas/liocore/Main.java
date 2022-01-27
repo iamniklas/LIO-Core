@@ -13,23 +13,13 @@ public class Main {
 
         MQTTListener listener = new MQTTListener(new IMqttCallback() {
             @Override
-            public void onLEDUpdateModelReceive(LEDUpdateModel _updateModel) {
+            public void onLEDUpdateModelReceive(LEDUpdateModel _updateModel, boolean _callForAllDevices) {
                 System.out.println(new Gson().toJson(_updateModel));
             }
 
             @Override
-            public void onLEDUpdateModelReceiveAll(LEDUpdateModel _updateModel) {
-                System.out.println(new Gson().toJson(_updateModel));
-            }
-
-            @Override
-            public void onLEDValueUpdateModelReceive(LEDUpdateModel _valueUpdateModel) {
+            public void onLEDValueUpdateModelReceive(LEDUpdateModel _valueUpdateModel, boolean _callForAllDevices) {
                 System.out.println("onLEDValueUpdateModelReceive");
-            }
-
-            @Override
-            public void onLEDValueUpdateModelReceiveAll(LEDUpdateModel _valueUpdateModel) {
-                System.out.println("onLEDValueUpdateModelReceiveAll");
             }
         });
         listener.connect();
