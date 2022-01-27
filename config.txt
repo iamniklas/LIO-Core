@@ -15,3 +15,5 @@ led.pwmChannel=18
 led.invert=false
 led.clearonexit=true
 led.frametime=16
+
+led.strip.mapmode=Cut

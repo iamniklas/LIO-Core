@@ -22,12 +22,13 @@ public class LEDStripManager implements ProcedureCalls {
     public void update() {
         procContainer.update();
         procContainer.postUpdate();
+    }
 
-        for (int i = 0; i < ledCount; i++) {
-            renderer.setColorData(i, ledStrip.getColorByPixel(i));
-        }
-        renderer.render();
+    public void render() {
+        renderer.render(ledStrip.getStripData());
+    }
 
+    public void waitFrametime() {
         try {
             Thread.sleep(ProgramConfiguration.configuration.frametime);
         }

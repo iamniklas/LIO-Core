@@ -2,21 +2,21 @@ package com.github.iamniklas.liocore.procedures;
 
 import com.github.iamniklas.liocore.led.colorspace.LIOColor;
 
-import java.awt.*;
 import java.util.ArrayList;
 
 public class LEDStrip {
-    private ArrayList<LIOColor> strip;
+    private ArrayList<LIOColor> stripData;
 
     public LEDStrip(int _ledCount) {
-        strip = new ArrayList<>();
+        stripData = new ArrayList<>();
         for (int i = 0; i < _ledCount; i++) {
-            strip.add(new LIOColor(0, 0, 0));
+            stripData.add(new LIOColor(0, 0, 0));
         }
     }
 
+    public ArrayList<LIOColor> getStripData() { return stripData; }
     public LIOColor getColorByPixel(int _index) {
-        return strip.get(_index);
+        return stripData.get(_index);
     }
-    public void setPixel(int _index, LIOColor _color) { strip.set(_index, _color); }
+    public void setPixel(int _index, LIOColor _color) { stripData.set(_index, _color); }
 }
