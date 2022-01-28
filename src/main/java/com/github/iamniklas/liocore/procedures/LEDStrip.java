@@ -5,7 +5,7 @@ import com.github.iamniklas.liocore.led.colorspace.LIOColor;
 import java.util.ArrayList;
 
 public class LEDStrip {
-    private ArrayList<LIOColor> stripData;
+    private final ArrayList<LIOColor> stripData;
 
     public LEDStrip(int _ledCount) {
         stripData = new ArrayList<>();
