@@ -33,7 +33,30 @@ public class ProgramConfiguration {
         mqttPassword = _psw;
         mqttBrokerAddress = _brokerAddress;
         mqttDeviceName = null;
-        mqttConnectionTimeout = 0;
+        mqttConnectionTimeout = 5;
+        mqttAutomaticReconnect = true;
+        mqttCleanSession = true;
+
+        ledCount = 0;
+        gpioPin = 0;
+        frequency = 0;
+        dma = 0;
+        brightness = 0;
+        pwmChannel = 0;
+        invert = false;
+        clearOnExit = false;
+        frametime = 0;
+    }
+
+    public ProgramConfiguration(String _user,
+                                String _psw,
+                                String _brokerAddress,
+                                int _connectionTimeout) {
+        mqttUser = _user;
+        mqttPassword = _psw;
+        mqttBrokerAddress = _brokerAddress;
+        mqttDeviceName = null;
+        mqttConnectionTimeout = _connectionTimeout;
         mqttAutomaticReconnect = true;
         mqttCleanSession = true;
 
