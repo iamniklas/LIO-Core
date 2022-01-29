@@ -28,7 +28,7 @@ public class MQTTPublisher {
             client = new MqttClient(ProgramConfiguration.configuration.mqttBrokerAddress, UUID.randomUUID().toString(), persistence);
             client.connect(options);
             return 0;
-        } catch (MqttException e) {
+        } catch (Exception e) {
             return 1;
         }
     }
@@ -36,8 +36,6 @@ public class MQTTPublisher {
     public void disconnect() {
         try {
             client.disconnect();
-        } catch (MqttException e) {
-            e.printStackTrace();
-        }
+        } catch (Exception ignored) { }
     }
 }
