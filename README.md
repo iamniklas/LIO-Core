@@ -22,7 +22,7 @@ The advantage is that all projects are updated at once if a change is to be impl
 - Javascript-scriptable procedure (not available yet due to testing; becoming stable with version 0.0.13)
 
 ## 2. Installation
-via Jitpack: [https://jitpack.io/#iamniklas/LIO-Core](https://jitpack.io/#iamniklas/LIO-Core)
+Via Jitpack: [https://jitpack.io/#iamniklas/LIO-Core](https://jitpack.io/#iamniklas/LIO-Core)
 
 ### a. Gradle
 
