@@ -23,12 +23,13 @@ public class MQTTPublisher {
         options.setPassword(ProgramConfiguration.configuration.mqttPassword.toCharArray());
     }
 
-    public void connect() {
+    public int connect() {
         try {
             client = new MqttClient(ProgramConfiguration.configuration.mqttBrokerAddress, UUID.randomUUID().toString(), persistence);
             client.connect(options);
+            return 0;
         } catch (MqttException e) {
-            e.printStackTrace();
+            return 1;
         }
     }
 
