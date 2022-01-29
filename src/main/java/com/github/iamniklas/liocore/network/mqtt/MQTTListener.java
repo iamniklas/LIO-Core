@@ -29,31 +29,39 @@ public class MQTTListener {
         System.out.println("---------------");
     }
 
-    public void connect() throws MqttException {
-        MemoryPersistence persistence = new MemoryPersistence();
-        mqttClient = new MqttClient(ProgramConfiguration.configuration.mqttBrokerAddress, clientID, persistence);
+    public int connect() {
+        try {
+            MemoryPersistence persistence = new MemoryPersistence();
+            mqttClient = new MqttClient(ProgramConfiguration.configuration.mqttBrokerAddress, clientID, persistence);
 
-        MqttConnectOptions options = new MqttConnectOptions();
-        options.setAutomaticReconnect(ProgramConfiguration.configuration.mqttAutomaticReconnect);
-        options.setCleanSession(ProgramConfiguration.configuration.mqttCleanSession);
-        options.setConnectionTimeout(ProgramConfiguration.configuration.mqttConnectionTimeout);
-        options.setUserName(ProgramConfiguration.configuration.mqttUser);
-        options.setPassword(ProgramConfiguration.configuration.mqttPassword.toCharArray());
+            MqttConnectOptions options = new MqttConnectOptions();
+            options.setAutomaticReconnect(ProgramConfiguration.configuration.mqttAutomaticReconnect);
+            options.setCleanSession(ProgramConfiguration.configuration.mqttCleanSession);
+            options.setConnectionTimeout(ProgramConfiguration.configuration.mqttConnectionTimeout);
+            options.setUserName(ProgramConfiguration.configuration.mqttUser);
+            options.setPassword(ProgramConfiguration.configuration.mqttPassword.toCharArray());
 
-        mqttClient.connect(options);
+            mqttClient.connect(options);
 
-        mqttClient.subscribe(Topics.UPDATE_LISTEN, (topic, message) ->
-                callback.onLEDUpdateModelReceive(new Gson().fromJson(message.toString(), LEDUpdateModel.class), false));
+            mqttClient.subscribe(Topics.UPDATE_LISTEN, (topic, message) ->
+                    callback.onLEDUpdateModelReceive(new Gson().fromJson(message.toString(), LEDUpdateModel.class), false));
 
-        mqttClient.subscribe(Topics.UPDATE_ALL_LISTEN_PUBLISH, (topic, message) ->
-                callback.onLEDUpdateModelReceive(new Gson().fromJson(message.toString(), LEDUpdateModel.class), true));
+            mqttClient.subscribe(Topics.UPDATE_ALL_LISTEN_PUBLISH, (topic, message) ->
+                    callback.onLEDUpdateModelReceive(new Gson().fromJson(message.toString(), LEDUpdateModel.class), true));
 
 
-        mqttClient.subscribe(Topics.VARIABLE_UPDATE_LISTEN, (topic, message) ->
-                callback.onLEDValueUpdateModelReceive(new Gson().fromJson(message.toString(), LEDUpdateModel.class), false));
+            mqttClient.subscribe(Topics.VARIABLE_UPDATE_LISTEN, (topic, message) ->
+                    callback.onLEDValueUpdateModelReceive(new Gson().fromJson(message.toString(), LEDUpdateModel.class), false));
 
-        mqttClient.subscribe(Topics.VARIABLE_UPDATE_ALL_LISTEN_PUBLISH, (topic, message) ->
-                callback.onLEDValueUpdateModelReceive(new Gson().fromJson(message.toString(), LEDUpdateModel.class), true));
+            mqttClient.subscribe(Topics.VARIABLE_UPDATE_ALL_LISTEN_PUBLISH, (topic, message) ->
+                    callback.onLEDValueUpdateModelReceive(new Gson().fromJson(message.toString(), LEDUpdateModel.class), true));
+
+            return 0;
+        } catch (MqttException e) {
+            e.printStackTrace();
+
+            return 1;
+        }
     }
 
     public void disconnect() throws MqttException {
