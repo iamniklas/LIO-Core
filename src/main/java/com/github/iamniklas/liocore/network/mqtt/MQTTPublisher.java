@@ -12,16 +12,24 @@ import java.util.UUID;
 public class MQTTPublisher {
 
     private final MemoryPersistence persistence = new MemoryPersistence();
-    public IMqttClient client = new MqttClient(ProgramConfiguration.configuration.mqttBrokerAddress, UUID.randomUUID().toString(), persistence);
+    public IMqttClient client;
+    MqttConnectOptions options = new MqttConnectOptions();
 
-    public MQTTPublisher() throws MqttException {
-        MqttConnectOptions options = new MqttConnectOptions();
+    public MQTTPublisher() {
         options.setAutomaticReconnect(ProgramConfiguration.configuration.mqttAutomaticReconnect);
         options.setCleanSession(ProgramConfiguration.configuration.mqttCleanSession);
         options.setConnectionTimeout(ProgramConfiguration.configuration.mqttConnectionTimeout);
         options.setUserName(ProgramConfiguration.configuration.mqttUser);
         options.setPassword(ProgramConfiguration.configuration.mqttPassword.toCharArray());
-        client.connect(options);
+    }
+
+    public void connect() {
+        try {
+            client = new MqttClient(ProgramConfiguration.configuration.mqttBrokerAddress, UUID.randomUUID().toString(), persistence);
+            client.connect(options);
+        } catch (MqttException e) {
+            e.printStackTrace();
+        }
     }
 
     public void disconnect() {
