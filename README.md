@@ -3,17 +3,23 @@
 [![](https://jitpack.io/v/iamniklas/LIO-Core.svg)](https://jitpack.io/#iamniklas/LIO-Core)
 
 Central library that makes the LIO features available to all sub-projects.
-The advantage is that all projects are updated at once if a change is implemented across the entire project.
+The advantage is that all projects are updated at once if a change is to be implemented across the entire project.
 
 ## 1. Core Features 
-(Last time updated at version 0.0.6-9.8)
+(Last time updated at version 0.0.7-1.16)
 
 - Colors (RGB, RGBA, HSV, LIO Color)
+- Default procedures/animations 
 - Rendering interface
 - JSON Communication standards
-- Default procedures/animations and javascript-scriptable procedure (experimental)
-- Server/Client communication with _custom network implementation_ and _HTTP_ via _LIO-API_
-- Server/Client communication with _MQTT/Mosquitto_ (experimental)
+- Completely configurable network and LED Manager by config file (Host, VHost, Single-LED-Test-Device) or Shared Preferences file (LIO-Connect-Android, extended functionality in app project)
+
+&nbsp;
+
+- Message Broker network communication with _MQTT/Mosquitto_ (stable; becoming completely verified with version 0.0.10)
+- Live Update Variables to change animation behaviour without reloading (not implemented yet; will be available with version 0.0.11)
+- Time-Synched-Update: Sync animations across multiple devices without the need of them communicating (not implemented yet; will be available with version 0.0.12)
+- Javascript-scriptable procedure (not available yet due to testing; becoming stable with version 0.0.13)
 
 ## 2. Installation
 via Jitpack: [https://jitpack.io/#iamniklas/LIO-Core](https://jitpack.io/#iamniklas/LIO-Core)
@@ -61,12 +67,13 @@ via Jitpack: [https://jitpack.io/#iamniklas/LIO-Core](https://jitpack.io/#iamnik
 ```
 
 ## 3. Additional dependencies
-This project uses the following gradle dependencies (Last time updated at version 0.0.6-9.8)
+This project uses the following gradle dependencies (Last time updated at version 0.0.7-1.16)
 
 | Name | Gradle Dependency | Link |
 | --- | --- | --- |
+| google/guava | ``com.google.guava:guava:31.0.1-jre`` | https://mvnrepository.com/artifact/com.google.guava
 | google/gson | ``com.google.code.gson:gson:2.8.9`` | https://mvnrepository.com/artifact/com.google.code.gson/gson
-| iamniklas/interpolation | ``com.github.iamniklas:Interpolation:1.0.0-1`` | https://github.com/iamniklas/Interpolation
+| iamniklas/interpolation | ``com.github.iamniklas:Interpolation:1.0.0-2`` | https://github.com/iamniklas/Interpolation
 | eclipsepaho/mqttv3Client | ``org.eclipse.paho:org.eclipse.paho.client.mqttv3:1.2.5`` | https://mvnrepository.com/artifact/org.eclipse.paho/org.eclipse.paho.client.mqttv3
 | junit/junit | ``junit:junit:4.13.2`` | https://github.com/junit-team/junit4
 | jupiter/junit | ``org.junit.jupiter:junit-jupiter:5.8.2`` | https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api
