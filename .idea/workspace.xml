@@ -10,8 +10,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e78498bb-5fd8-4fc1-8653-b011d9d466e4" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/test/java/UpdateModelJSONConversionTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/network/mqtt/MQTTPublisher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/network/mqtt/MQTTPublisher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/procedures/models/Direction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/procedures/models/Direction.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,7 +112,7 @@
       <recent name="com.github.iamniklas.liocore.tests" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Default">
+  <component name="RunManager" selected="Gradle.UpdateModelJSONConversionTest.testEnumConversion">
     <configuration name="Default" type="Application" factoryName="Application">
       <option name="ALTERNATIVE_JRE_PATH" value="1.8" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
@@ -204,8 +206,30 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
+    <configuration name="UpdateModelJSONConversionTest.testEnumConversion" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="--tests &quot;UpdateModelJSONConversionTest.testEnumConversion&quot;" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.UpdateModelJSONConversionTest.testEnumConversion" />
         <item itemvalue="Gradle.ConfigurationTest.testConfig" />
         <item itemvalue="Gradle.ConfigAndInfoTest.testConfig" />
         <item itemvalue="Gradle.ConfigAndInfoTest.testInfo" />
