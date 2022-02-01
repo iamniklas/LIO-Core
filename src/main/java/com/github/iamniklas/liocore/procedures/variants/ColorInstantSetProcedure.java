@@ -30,4 +30,9 @@ public class ColorInstantSetProcedure extends Procedure {
         postUpdate();
         finishProcedure();
     }
+
+    @Override
+    public void updateLEDDataBundle(LEDDataBundle bundle) {
+
+    }
 }

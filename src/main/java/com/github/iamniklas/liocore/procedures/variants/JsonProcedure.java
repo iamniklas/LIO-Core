@@ -51,4 +51,9 @@ public class JsonProcedure extends Procedure {
             return null;
         }
     }
+
+    @Override
+    public void updateLEDDataBundle(LEDDataBundle bundle) {
+
+    }
 }

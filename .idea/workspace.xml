@@ -10,7 +10,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e78498bb-5fd8-4fc1-8653-b011d9d466e4" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/config/ProgramConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/config/ProgramConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/procedures/Procedure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/procedures/Procedure.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/procedures/variants/BlinkProcedure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/procedures/variants/BlinkProcedure.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/procedures/variants/BootCompleteProcedure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/procedures/variants/BootCompleteProcedure.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/procedures/variants/ColorInstantSetProcedure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/procedures/variants/ColorInstantSetProcedure.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/procedures/variants/FadeInFadeOutProcedure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/procedures/variants/FadeInFadeOutProcedure.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/procedures/variants/FadeToMultiColorProcedure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/procedures/variants/FadeToMultiColorProcedure.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/procedures/variants/FadeToUniformColorProcedure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/procedures/variants/FadeToUniformColorProcedure.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/procedures/variants/FillStripInterpolatedProcedure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/procedures/variants/FillStripInterpolatedProcedure.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/procedures/variants/FillStripProcedure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/procedures/variants/FillStripProcedure.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/procedures/variants/GlitterProcedure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/procedures/variants/GlitterProcedure.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/procedures/variants/JavascriptProcedure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/procedures/variants/JavascriptProcedure.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/procedures/variants/JsonProcedure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/procedures/variants/JsonProcedure.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/procedures/variants/LightningProcedure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/procedures/variants/LightningProcedure.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/procedures/variants/NoLongerReadyProcedure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/procedures/variants/NoLongerReadyProcedure.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/procedures/variants/ProgressProcedure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/procedures/variants/ProgressProcedure.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/procedures/variants/RainbowMonoProcedure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/procedures/variants/RainbowMonoProcedure.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/procedures/variants/RainbowProcedure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/procedures/variants/RainbowProcedure.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -109,7 +125,7 @@
       <recent name="com.github.iamniklas.liocore.tests" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.UpdateModelJSONConversionTest.testEnumConversion">
+  <component name="RunManager" selected="Application.Default">
     <configuration name="Default" type="Application" factoryName="Application">
       <option name="ALTERNATIVE_JRE_PATH" value="1.8" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />

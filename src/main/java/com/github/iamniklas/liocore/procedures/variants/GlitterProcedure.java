@@ -48,4 +48,9 @@ public class GlitterProcedure extends Procedure {
             strip.setPixel(i, baseColor.dim((float) Math.abs(Math.sin(tcount + ledX.get(i)))).toSystemColor());
         }
     }
+
+    @Override
+    public void updateLEDDataBundle(LEDDataBundle bundle) {
+
+    }
 }

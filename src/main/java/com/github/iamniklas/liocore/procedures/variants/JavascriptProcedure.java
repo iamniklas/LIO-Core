@@ -53,6 +53,11 @@ public class JavascriptProcedure extends Procedure {
         }
     }
 
+    @Override
+    public void updateLEDDataBundle(LEDDataBundle bundle) {
+
+    }
+
     public void finish() {
         finishProcedure();
     }

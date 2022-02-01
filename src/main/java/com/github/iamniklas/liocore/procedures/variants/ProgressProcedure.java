@@ -92,4 +92,9 @@ public class ProgressProcedure extends Procedure {
           );
         }
     }
+
+    @Override
+    public void updateLEDDataBundle(LEDDataBundle bundle) {
+
+    }
 }

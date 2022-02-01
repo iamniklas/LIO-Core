@@ -45,4 +45,9 @@ public class FadeToUniformColorProcedure extends Procedure {
             finishProcedure();
         }
     }
+
+    @Override
+    public void updateLEDDataBundle(LEDDataBundle bundle) {
+
+    }
 }

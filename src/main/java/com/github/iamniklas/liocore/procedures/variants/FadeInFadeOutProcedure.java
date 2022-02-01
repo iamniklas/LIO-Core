@@ -48,4 +48,9 @@ public class FadeInFadeOutProcedure extends Procedure {
             finishProcedure();
         }
     }
+
+    @Override
+    public void updateLEDDataBundle(LEDDataBundle bundle) {
+
+    }
 }

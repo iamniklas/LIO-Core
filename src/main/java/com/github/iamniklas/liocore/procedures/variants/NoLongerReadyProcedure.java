@@ -41,4 +41,9 @@ public class NoLongerReadyProcedure extends Procedure {
             finishProcedure();
         }
     }
+
+    @Override
+    public void updateLEDDataBundle(LEDDataBundle bundle) {
+
+    }
 }

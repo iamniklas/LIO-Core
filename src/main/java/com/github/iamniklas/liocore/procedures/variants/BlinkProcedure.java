@@ -45,4 +45,9 @@ public class BlinkProcedure extends Procedure {
             finishProcedure();
         }
     }
+
+    @Override
+    public void updateLEDDataBundle(LEDDataBundle bundle) {
+
+    }
 }

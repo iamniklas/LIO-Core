@@ -36,4 +36,9 @@ public class LightningProcedure extends Procedure {
         }
         step++;
     }
+
+    @Override
+    public void updateLEDDataBundle(LEDDataBundle bundle) {
+
+    }
 }

@@ -29,6 +29,7 @@ public abstract class Procedure {
 
     public void start() { procCalls.onProcedureStart(this); }
     public abstract void update();
+    public abstract void updateLEDDataBundle(LEDDataBundle bundle);
 
     public void postUpdate() {
         if (modulo < 2) return;
