@@ -1,6 +1,8 @@
 package com.github.iamniklas.liocore.network.mqtt.calls;
 
+import com.github.iamniklas.liocore.network.LEDUpdateModel;
 import com.github.iamniklas.liocore.network.mqtt.Topics;
+import com.google.gson.Gson;
 import org.eclipse.paho.client.mqttv3.IMqttClient;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
 
@@ -12,16 +14,19 @@ public class LEDLiveUpdateVariableCall implements Callable<Void> {
 
     private String TOPIC;
     private final boolean sendToAll;
+    private final LEDUpdateModel updateModel;
 
-    public LEDLiveUpdateVariableCall(IMqttClient _client, String _deviceId, boolean _sendToAll) {
+    public LEDLiveUpdateVariableCall(IMqttClient _client, String _deviceId, LEDUpdateModel _updateModel, boolean _sendToAll) {
         client = _client;
         sendToAll = _sendToAll;
+        updateModel = _updateModel;
         TOPIC = Topics.VARIABLE_UPDATE_PUBLISH + _deviceId;
     }
 
-    public LEDLiveUpdateVariableCall(IMqttClient _client, String _deviceId) {
+    public LEDLiveUpdateVariableCall(IMqttClient _client, LEDUpdateModel _updateModel, String _deviceId) {
         client = _client;
         sendToAll = false;
+        updateModel = _updateModel;
         TOPIC = Topics.VARIABLE_UPDATE_PUBLISH + _deviceId;
     }
 
@@ -35,7 +40,7 @@ public class LEDLiveUpdateVariableCall implements Callable<Void> {
             TOPIC = Topics.VARIABLE_UPDATE_ALL_LISTEN_PUBLISH;
         }
 
-        MqttMessage msg = new MqttMessage("".getBytes());
+        MqttMessage msg = new MqttMessage(new Gson().toJson(updateModel).getBytes());
         msg.setQos(2);
         msg.setRetained(false);
 
