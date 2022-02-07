@@ -6,7 +6,7 @@ Central library that makes the LIO features available to all sub-projects.
 The advantage is that all projects are updated at once if a change is to be implemented across the entire project.
 
 ## 1. Core Features 
-(Last time updated at version 0.0.7-1.16)
+(Last time updated at version 0.0.8-1.2)
 
 - Colors (RGB, RGBA, HSV, LIO Color)
 - Default procedures/animations 
