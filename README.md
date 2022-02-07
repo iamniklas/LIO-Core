@@ -15,11 +15,13 @@ The advantage is that all projects are updated at once if a change is to be impl
 - Completely configurable network and LED Manager by config file (Host, VHost, Single-LED-Test-Device) or Shared Preferences file (LIO-Connect-Android, extended functionality in app project)
 
 &nbsp;
-
+The following features are still under development and some have not yet been worked on at all. See additional information for details.
+- ActionTags: Scan an nfc chip with your mobile device and the set animation will play on the targeting devices. (this feature is still getting tested, will be available with version 0.0.9; LIO-Connect-Android exclusive)
 - Message Broker network communication with _MQTT/Mosquitto_ (stable; becoming completely verified with version 0.0.10)
 - Live Update Variables to change animation behaviour without reloading (not implemented yet; will be available with version 0.0.11)
 - Time-Synched-Update: Sync animations across multiple devices without the need of them communicating (not implemented yet; will be available with version 0.0.12)
 - Javascript-scriptable procedure (not available yet due to testing; becoming stable with version 0.0.13)
+- Spotify Integration for mobile phones: The app detects playback changes if you are listening/controlling spotify on your mobile device. The app then fetches animation data from Firebase to sync the light to the music. (not started yet; will be available with version 0.0.14)
 
 ## 2. Installation
 Via Jitpack: [https://jitpack.io/#iamniklas/LIO-Core](https://jitpack.io/#iamniklas/LIO-Core)
