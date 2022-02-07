@@ -2,8 +2,10 @@
 
 [![](https://jitpack.io/v/iamniklas/LIO-Core.svg)](https://jitpack.io/#iamniklas/LIO-Core)
 
+
 Central library that makes the LIO features available to all sub-projects.
 The advantage is that all projects are updated at once if a change is to be implemented across the entire project.
+LIO Core is the central framework for Project LIO. It specifies all communication between the devices and also offers the core software of the LED strip devices including update, rendering, standard animations, color spaces and much more.
 
 ## 1. Core Features 
 (Last time updated at version 0.0.8-1.2)
