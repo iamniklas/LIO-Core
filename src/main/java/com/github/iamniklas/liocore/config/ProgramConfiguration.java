@@ -26,6 +26,9 @@ public class ProgramConfiguration {
     public final boolean clearOnExit;
     public final int frametime;
 
+    //Android Specific Configuraiton
+    public final boolean useSpotifyIntegration;
+
     public ProgramConfiguration(String _user,
                                 String _psw,
                                 String _brokerAddress) {
@@ -46,12 +49,15 @@ public class ProgramConfiguration {
         invert = false;
         clearOnExit = false;
         frametime = 0;
+
+        useSpotifyIntegration = false;
     }
 
     public ProgramConfiguration(String _user,
                                 String _psw,
                                 String _brokerAddress,
-                                int _connectionTimeout) {
+                                int _connectionTimeout,
+                                boolean _useSpotifyIntegration) {
         mqttUser = _user;
         mqttPassword = _psw;
         mqttBrokerAddress = _brokerAddress;
@@ -69,6 +75,8 @@ public class ProgramConfiguration {
         invert = false;
         clearOnExit = false;
         frametime = 0;
+
+        useSpotifyIntegration = _useSpotifyIntegration;
     }
 
     public ProgramConfiguration(String _user,
@@ -104,6 +112,8 @@ public class ProgramConfiguration {
         invert = _invert;
         clearOnExit = _clearOnExit;
         frametime = _frametime;
+
+        useSpotifyIntegration = false;
     }
 
     public static ProgramConfiguration configuration;
