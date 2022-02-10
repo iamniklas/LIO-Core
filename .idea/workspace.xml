@@ -10,8 +10,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e78498bb-5fd8-4fc1-8653-b011d9d466e4" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/test/java/ColorSpaceConversionTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/config/ProgramConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/config/ProgramConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/led/colorspace/ColorRGBA.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/led/colorspace/ColorRGBA.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,11 +39,11 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Kotlin Class" />
         <option value="Interface" />
         <option value="Enum" />
         <option value="Kotlin Object" />
         <option value="JUnit5 Test Class" />
+        <option value="Kotlin Class" />
         <option value="Class" />
       </list>
     </option>
@@ -110,7 +111,7 @@
       <recent name="com.github.iamniklas.liocore.tests" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Default">
+  <component name="RunManager" selected="Gradle.ColorSpaceConversionTests.testRGBAToRGBConversion">
     <configuration name="Default" type="Application" factoryName="Application">
       <option name="ALTERNATIVE_JRE_PATH" value="1.8" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
@@ -120,12 +121,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ConfigAndInfoTest.testConfig" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="ColorSpaceConversionTests.testHSVToRGBConversion" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;ConfigAndInfoTest.testConfig&quot;" />
+        <option name="scriptParameters" value="--tests &quot;ColorSpaceConversionTests.testHSVToRGBConversion&quot;" />
         <option name="taskDescriptions">
           <list />
         </option>
@@ -141,12 +142,12 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="ConfigAndInfoTest.testInfo" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="ColorSpaceConversionTests.testRGBAToRGBConversion" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;ConfigAndInfoTest.testInfo&quot;" />
+        <option name="scriptParameters" value="--tests &quot;ColorSpaceConversionTests.testRGBAToRGBConversion&quot;" />
         <option name="taskDescriptions">
           <list />
         </option>
@@ -162,12 +163,12 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="ConfigTest.testConfig" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="ColorSpaceConversionTests.testRGBToHSVConversion" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;ConfigTest.testConfig&quot;" />
+        <option name="scriptParameters" value="--tests &quot;ColorSpaceConversionTests.testRGBToHSVConversion&quot;" />
         <option name="taskDescriptions">
           <list />
         </option>
@@ -183,12 +184,12 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="ConfigurationTest.testConfig" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="ColorSpaceTests" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;ConfigurationTest.testConfig&quot;" />
+        <option name="scriptParameters" value="--tests &quot;ColorSpaceTests&quot;" />
         <option name="taskDescriptions">
           <list />
         </option>
@@ -204,12 +205,12 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="UpdateModelJSONConversionTest.testEnumConversion" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="ColorSpaceTests.testHSVToRGBConversion" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;UpdateModelJSONConversionTest.testEnumConversion&quot;" />
+        <option name="scriptParameters" value="--tests &quot;ColorSpaceTests.testHSVToRGBConversion&quot;" />
         <option name="taskDescriptions">
           <list />
         </option>
@@ -227,11 +228,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.UpdateModelJSONConversionTest.testEnumConversion" />
-        <item itemvalue="Gradle.ConfigurationTest.testConfig" />
-        <item itemvalue="Gradle.ConfigAndInfoTest.testConfig" />
-        <item itemvalue="Gradle.ConfigAndInfoTest.testInfo" />
-        <item itemvalue="Gradle.ConfigTest.testConfig" />
+        <item itemvalue="Gradle.ColorSpaceConversionTests.testRGBAToRGBConversion" />
+        <item itemvalue="Gradle.ColorSpaceConversionTests.testRGBToHSVConversion" />
+        <item itemvalue="Gradle.ColorSpaceConversionTests.testHSVToRGBConversion" />
+        <item itemvalue="Gradle.ColorSpaceTests.testHSVToRGBConversion" />
+        <item itemvalue="Gradle.ColorSpaceTests" />
       </list>
     </recent_temporary>
   </component>
@@ -257,6 +258,22 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/led/colorspace/ColorHSV.java</url>
+          <line>34</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/ColorSpaceConversionTests.java</url>
+          <line>103</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

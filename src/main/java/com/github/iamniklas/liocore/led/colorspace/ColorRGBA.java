@@ -58,9 +58,9 @@ public class ColorRGBA implements IRGBTypesModifier<ColorRGBA>, IConvertibleColo
     }
     public ColorRGB toRGB(ColorRGB _back) {
         ColorRGB result = new ColorRGB(
-                (int)((1 - a / 255.0f) * _back.r + (a/255) * r),
-                (int)((1 - a / 255.0f) * _back.g + (a/255) * g),
-                (int)((1 - a / 255.0f) * _back.b + (a/255) * b)
+                (int)((1 - a / 255.0f) * _back.r + (a/255.0f) * r),
+                (int)((1 - a / 255.0f) * _back.g + (a/255.0f) * g),
+                (int)((1 - a / 255.0f) * _back.b + (a/255.0f) * b)
         );
 
         result.r = Math.max(0, Math.min(result.r, 255));
