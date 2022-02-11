@@ -1,6 +1,6 @@
 package com.github.iamniklas.liocore.led.json;
 
-import com.github.iamniklas.liocore.led.colorspace.ColorRGB;
+import com.github.iamniklas.colorspaces.ColorRGB;
 
 public class LEDStateArray {
     public ColorRGB[] ledState;

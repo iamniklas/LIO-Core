@@ -1,8 +1,9 @@
 package com.github.iamniklas.liocore.procedures.variants;
 
+import com.github.iamniklas.colorspaces.ColorRGB;
 import com.github.iamniklas.liocore.led.LEDDataBundle;
 import com.github.iamniklas.liocore.led.LEDStripManager;
-import com.github.iamniklas.liocore.led.colorspace.ColorRGB;
+import com.github.iamniklas.liocore.led.colorspace.LIOColor;
 import com.github.iamniklas.liocore.procedures.Procedure;
 import com.github.iamniklas.liocore.procedures.models.IndeterminateState;
 
@@ -36,12 +37,12 @@ public class ProgressProcedure extends Procedure {
     @Override
     public void start() {
         //super.start();
-        strip.setAllPixels(ColorRGB.black.toSystemColor());
+        strip.setAllPixels(LIOColor.fromRGB(ColorRGB.BLACK));
     }
 
     @Override
     public void update() {
-        strip.setAllPixels(ColorRGB.black.toSystemColor());
+        strip.setAllPixels(LIOColor.fromRGB(ColorRGB.BLACK));
         if(isPulsating) {
             sinX += speed;
             if(sinX > Math.PI * 2)
@@ -50,7 +51,7 @@ public class ProgressProcedure extends Procedure {
             strip.setArea(
                     (int)(LEDStripManager.ledCount * start),
                     (int)(LEDStripManager.ledCount * progress),
-                    colorRGB.dim((float) Math.abs(Math.sin(sinX))).toSystemColor()
+                    LIOColor.fromRGB(colorRGB.dim((float) Math.abs(Math.sin(sinX))))
             );
         }
         else if(isIndeterminate) {
@@ -82,13 +83,13 @@ public class ProgressProcedure extends Procedure {
             strip.setArea(
                     Math.min(Math.max((int)(LEDStripManager.ledCount * start), 0), 300),
                     Math.min(Math.max((int)(LEDStripManager.ledCount * progress), 0), 300),
-                    colorRGB.toSystemColor()
+                    LIOColor.fromRGB(colorRGB)
             );
         } else {
           strip.setArea(
                   (int)(LEDStripManager.ledCount * start),
                   (int)(LEDStripManager.ledCount * progress),
-                  colorRGB.toSystemColor()
+                  LIOColor.fromRGB(colorRGB)
           );
         }
     }

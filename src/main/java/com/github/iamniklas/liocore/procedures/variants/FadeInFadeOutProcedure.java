@@ -1,5 +1,6 @@
 package com.github.iamniklas.liocore.procedures.variants;
 
+import com.github.iamniklas.colorspaces.ColorRGB;
 import com.github.iamniklas.liocore.led.LEDDataBundle;
 import com.github.iamniklas.liocore.led.colorspace.LIOColor;
 import com.github.iamniklas.liocore.procedures.Procedure;
@@ -16,7 +17,7 @@ public class FadeInFadeOutProcedure extends Procedure {
         super(_bundle);
         bundle = _bundle;
 
-        LIOColor targetColor = _bundle.colorPrimary.toSystemColor();
+        LIOColor targetColor = LIOColor.fromRGB(_bundle.colorPrimary);
         colorPartModifier[0] = targetColor.r / 255.0f;
         colorPartModifier[1] = targetColor.g / 255.0f;
         colorPartModifier[2] = targetColor.b / 255.0f;

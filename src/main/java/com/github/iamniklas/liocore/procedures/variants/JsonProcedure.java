@@ -1,6 +1,7 @@
 package com.github.iamniklas.liocore.procedures.variants;
 
 import com.github.iamniklas.liocore.led.LEDDataBundle;
+import com.github.iamniklas.liocore.led.colorspace.LIOColor;
 import com.github.iamniklas.liocore.led.json.LEDJsonProcedure;
 import com.github.iamniklas.liocore.led.json.interpreter.FileVersions;
 import com.github.iamniklas.liocore.led.json.interpreter.LEDInterpreter;
@@ -32,7 +33,7 @@ public class JsonProcedure extends Procedure {
     @Override
     public void update() {
         for (int i = 0; i < ledJsonProcedure.metaInfo.ledCount; i++) {
-            strip.setPixel(i, ledJsonProcedure.ledStates[step].ledState[i].toSystemColor());
+            strip.setPixel(i, LIOColor.fromRGB(ledJsonProcedure.ledStates[step].ledState[i]));
         }
         step += 5;
         if(step >= steps) {

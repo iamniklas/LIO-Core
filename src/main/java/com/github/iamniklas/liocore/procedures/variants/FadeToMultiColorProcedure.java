@@ -1,9 +1,10 @@
 package com.github.iamniklas.liocore.procedures.variants;
 
+import com.github.iamniklas.colorspaces.ColorRGB;
+import com.github.iamniklas.colorspaces.ColorRGBA;
 import com.github.iamniklas.liocore.config.ProgramConfiguration;
 import com.github.iamniklas.liocore.led.LEDDataBundle;
-import com.github.iamniklas.liocore.led.colorspace.ColorRGB;
-import com.github.iamniklas.liocore.led.colorspace.ColorRGBA;
+import com.github.iamniklas.liocore.led.colorspace.LIOColor;
 import com.github.iamniklas.liocore.procedures.Procedure;
 
 public class FadeToMultiColorProcedure extends Procedure {
@@ -33,7 +34,7 @@ public class FadeToMultiColorProcedure extends Procedure {
     @Override
     public void start() {
         for (int i = 0; i < baseColor.length; i++) {
-            baseColor[i] = ColorRGB.fromSystemColor(strip.ledStrip.getColorByPixel(i));
+            baseColor[i] = strip.ledStrip.getColorByPixel(i).toRGB();
         }
     }
 
@@ -42,7 +43,7 @@ public class FadeToMultiColorProcedure extends Procedure {
         for (int i = 0; i < alphaStep.length; i++) {
             alphaStep[i] += alphaAddValue[i];
             ColorRGBA outputColor = new ColorRGBA(baseColor[i].r, baseColor[i].g, baseColor[i].b, 255 - (int)(alphaStep[i] * 255));
-            strip.setPixel(i, outputColor.toRGB(targetColor).toSystemColor());
+            strip.setPixel(i, LIOColor.fromRGB(outputColor.toRGB(targetColor)));
         }
         step++;
         if(step > steps) {

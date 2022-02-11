@@ -1,9 +1,9 @@
-import com.github.iamniklas.liocore.led.colorspace.ColorHSV;
-import com.github.iamniklas.liocore.led.colorspace.ColorRGB;
-import com.github.iamniklas.liocore.led.colorspace.ColorRGBA;
+import com.github.iamniklas.colorspaces.ColorHSV;
+import com.github.iamniklas.colorspaces.ColorRGB;
+import com.github.iamniklas.colorspaces.ColorRGBA;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ColorSpaceConversionTests {
     @Test

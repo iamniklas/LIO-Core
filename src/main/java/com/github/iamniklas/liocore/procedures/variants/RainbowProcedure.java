@@ -1,8 +1,9 @@
 package com.github.iamniklas.liocore.procedures.variants;
 
+import com.github.iamniklas.colorspaces.ColorHSV;
 import com.github.iamniklas.liocore.led.LEDDataBundle;
 import com.github.iamniklas.liocore.led.LEDStripManager;
-import com.github.iamniklas.liocore.led.colorspace.ColorHSV;
+import com.github.iamniklas.liocore.led.colorspace.LIOColor;
 import com.github.iamniklas.liocore.procedures.Procedure;
 import com.github.iamniklas.liocore.procedures.models.Direction;
 
@@ -53,11 +54,11 @@ public class RainbowProcedure extends Procedure {
         for (int i = 0; i < LEDStripManager.ledCount; i++) {
             if(bundle.direction == Direction.Center || bundle.direction == Direction.CenterInvert) {
                 colorHSV.h = (int) (((i * (bundle.repetitions * (360.0f / LEDStripManager.ledCount))) + hueArrayCounter[i]) % 360);
-                strip.setPixel(i, colorHSV.toRGB().toSystemColor());
+                strip.setPixel(i, LIOColor.fromHSV(colorHSV));
                 continue;
             }
             colorHSV.h = (int) (((i * (bundle.repetitions * (360.0f / LEDStripManager.ledCount))) + hueCounter) % 360);
-            strip.setPixel(i, colorHSV.toRGB().toSystemColor());
+            strip.setPixel(i, LIOColor.fromHSV(colorHSV));
         }
     }
 

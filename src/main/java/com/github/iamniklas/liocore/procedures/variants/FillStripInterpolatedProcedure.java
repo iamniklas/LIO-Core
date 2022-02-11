@@ -24,7 +24,7 @@ public class FillStripInterpolatedProcedure extends Procedure {
         super(_bundle);
         bundle = _bundle;
 
-        fillColor = bundle.colorPrimary.toSystemColor();
+        fillColor = LIOColor.fromRGB(_bundle.colorPrimary);
     }
 
     @Override

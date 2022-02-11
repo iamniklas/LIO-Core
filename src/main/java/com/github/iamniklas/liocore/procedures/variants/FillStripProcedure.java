@@ -5,6 +5,7 @@ import com.github.iamniklas.liocore.led.LEDStripManager;
 import com.github.iamniklas.liocore.led.colorspace.LIOColor;
 import com.github.iamniklas.liocore.procedures.Procedure;
 import com.github.iamniklas.liocore.procedures.models.Direction;
+import org.checkerframework.checker.units.qual.C;
 
 public class FillStripProcedure extends Procedure {
 
@@ -18,7 +19,7 @@ public class FillStripProcedure extends Procedure {
         super(_bundle);
         bundle = _bundle;
 
-        fillColor = bundle.colorPrimary.toSystemColor();
+        fillColor = LIOColor.fromRGB(bundle.colorPrimary);
         speed = Math.round(bundle.speed);
         direction = bundle.direction;
         steps = LEDStripManager.ledCount;

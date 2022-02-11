@@ -1,8 +1,8 @@
 package com.github.iamniklas.liocore.procedures.variants;
 
+import com.github.iamniklas.colorspaces.ColorRGB;
 import com.github.iamniklas.liocore.led.LEDDataBundle;
 import com.github.iamniklas.liocore.led.LEDStripManager;
-import com.github.iamniklas.liocore.led.colorspace.ColorRGB;
 import com.github.iamniklas.liocore.led.colorspace.LIOColor;
 import com.github.iamniklas.liocore.procedures.Procedure;
 
@@ -19,7 +19,7 @@ public class BootCompleteProcedure extends Procedure {
 
     @Override
     public void start() {
-        strip.setAllPixels(ColorRGB.black.toSystemColor());
+        strip.setAllPixels(LIOColor.fromRGB(ColorRGB.BLACK));
     }
 
     @Override

@@ -1,11 +1,9 @@
 package com.github.iamniklas.liocore.procedures.variants;
 
+import com.github.iamniklas.colorspaces.ColorRGB;
 import com.github.iamniklas.liocore.led.LEDDataBundle;
-import com.github.iamniklas.liocore.led.colorspace.ColorRGB;
 import com.github.iamniklas.liocore.led.colorspace.LIOColor;
 import com.github.iamniklas.liocore.procedures.Procedure;
-
-import java.awt.*;
 
 public class BlinkProcedure extends Procedure {
 
@@ -19,7 +17,7 @@ public class BlinkProcedure extends Procedure {
         super(_bundle);
         bundle = _bundle;
 
-        blinkColor = _bundle.colorPrimary.toSystemColor();
+        blinkColor = LIOColor.fromRGB(_bundle.colorPrimary);
         frames = _bundle.duration;
         modulo = _bundle.modulo;
         steps = frames;
@@ -37,11 +35,11 @@ public class BlinkProcedure extends Procedure {
             strip.setAllPixels(blinkColor);
         }
         else {
-            strip.setAllPixels(ColorRGB.black.toSystemColor());
+            strip.setAllPixels(LIOColor.fromRGB(ColorRGB.BLACK));
         }
 
         if(step == steps) {
-            strip.setAllPixels(ColorRGB.black.toSystemColor());
+            strip.setAllPixels(LIOColor.fromRGB(ColorRGB.BLACK));
             finishProcedure();
         }
     }

@@ -1,7 +1,8 @@
 package com.github.iamniklas.liocore.procedures.variants;
 
+import com.github.iamniklas.colorspaces.ColorRGB;
 import com.github.iamniklas.liocore.led.LEDDataBundle;
-import com.github.iamniklas.liocore.led.colorspace.ColorRGB;
+import com.github.iamniklas.liocore.led.colorspace.LIOColor;
 import com.github.iamniklas.liocore.procedures.Procedure;
 
 public class LightningProcedure extends Procedure {
@@ -27,7 +28,7 @@ public class LightningProcedure extends Procedure {
 
     @Override
     public void update() {
-        strip.setAllPixels(ColorRGB.white50.dim((float) Math.abs(Math.sin((step / speed)))).toSystemColor());
+        strip.setAllPixels(LIOColor.fromRGB(ColorRGB.WHITE50.dim((float) Math.abs(Math.sin((step / speed))))));
 
         speed += attenuation;
 

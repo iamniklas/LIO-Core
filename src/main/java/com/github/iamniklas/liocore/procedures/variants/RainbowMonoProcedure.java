@@ -1,7 +1,8 @@
 package com.github.iamniklas.liocore.procedures.variants;
 
+import com.github.iamniklas.colorspaces.ColorHSV;
 import com.github.iamniklas.liocore.led.LEDDataBundle;
-import com.github.iamniklas.liocore.led.colorspace.ColorHSV;
+import com.github.iamniklas.liocore.led.colorspace.LIOColor;
 import com.github.iamniklas.liocore.procedures.Procedure;
 
 public class RainbowMonoProcedure extends Procedure {
@@ -26,7 +27,7 @@ public class RainbowMonoProcedure extends Procedure {
     @Override
     public void update() {
         colorHsv.h = colorHsv.h > 360.0f ? 0 : (int) (colorHsv.h + speed);
-        strip.setAllPixels(colorHsv.toRGB().toSystemColor());
+        strip.setAllPixels(LIOColor.fromHSV(colorHsv));
     }
 
     @Override

@@ -1,6 +1,6 @@
 package com.github.iamniklas.liocore.led.json.interpreter;
 
-import com.github.iamniklas.liocore.led.colorspace.ColorRGB;
+import com.github.iamniklas.colorspaces.ColorRGB;
 import com.github.iamniklas.liocore.led.json.LEDJsonProcedure;
 import com.github.iamniklas.liocore.led.json.interpreter.strategies.LatestInterpreterStrategy;
 

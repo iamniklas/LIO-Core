@@ -1,8 +1,9 @@
 package com.github.iamniklas.liocore.procedures;
 
+import com.github.iamniklas.colorspaces.ColorRGB;
 import com.github.iamniklas.liocore.led.LEDDataBundle;
 import com.github.iamniklas.liocore.led.LEDStripManager;
-import com.github.iamniklas.liocore.led.colorspace.ColorRGB;
+import com.github.iamniklas.liocore.led.colorspace.LIOColor;
 
 public abstract class Procedure {
     protected LEDStripManager strip;
@@ -37,11 +38,11 @@ public abstract class Procedure {
         for (int i = 0; i < 300; i++) {
             if (moduloInvert) {
                 if (i % modulo != 0) {
-                    strip.setPixel(i, ColorRGB.black.toSystemColor());
+                    strip.setPixel(i, LIOColor.fromRGB(ColorRGB.BLACK));
                 }
             } else {
                 if (i % modulo == 0) {
-                    strip.setPixel(i, ColorRGB.black.toSystemColor());
+                    strip.setPixel(i, LIOColor.fromRGB(ColorRGB.BLACK));
                 }
             }
         }
@@ -53,7 +54,7 @@ public abstract class Procedure {
     protected void finishProcedure(boolean _clearStrip) {
         strip.procContainer.removeCurrentProcedure();
         if (_clearStrip) {
-            strip.setAllPixels(ColorRGB.black.toSystemColor());
+            strip.setAllPixels(LIOColor.fromRGB(ColorRGB.BLACK));
         }
         procCalls.onProcedureFinish();
     }

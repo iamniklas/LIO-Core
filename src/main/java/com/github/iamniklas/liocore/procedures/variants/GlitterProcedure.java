@@ -1,8 +1,9 @@
 package com.github.iamniklas.liocore.procedures.variants;
 
+import com.github.iamniklas.colorspaces.ColorRGB;
 import com.github.iamniklas.liocore.led.LEDDataBundle;
 import com.github.iamniklas.liocore.led.LEDStripManager;
-import com.github.iamniklas.liocore.led.colorspace.ColorRGB;
+import com.github.iamniklas.liocore.led.colorspace.LIOColor;
 import com.github.iamniklas.liocore.procedures.Procedure;
 
 import java.util.ArrayList;
@@ -45,7 +46,7 @@ public class GlitterProcedure extends Procedure {
             tcount = 0.0f;
 
         for (int i = 0; i < LEDStripManager.ledCount; i++) {
-            strip.setPixel(i, baseColor.dim((float) Math.abs(Math.sin(tcount + ledX.get(i)))).toSystemColor());
+            strip.setPixel(i, LIOColor.fromRGB(baseColor.dim((float) Math.abs(Math.sin(tcount + ledX.get(i))))));
         }
     }
 

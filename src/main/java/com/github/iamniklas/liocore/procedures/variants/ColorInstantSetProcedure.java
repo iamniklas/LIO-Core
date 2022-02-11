@@ -1,5 +1,6 @@
 package com.github.iamniklas.liocore.procedures.variants;
 
+import com.github.iamniklas.colorspaces.ColorRGB;
 import com.github.iamniklas.liocore.led.LEDDataBundle;
 import com.github.iamniklas.liocore.led.colorspace.LIOColor;
 import com.github.iamniklas.liocore.procedures.Procedure;
@@ -16,7 +17,7 @@ public class ColorInstantSetProcedure extends Procedure {
         super(_bundle);
         bundle = _bundle;
 
-        targetColor = bundle.colorPrimary.toSystemColor();
+        targetColor = LIOColor.fromRGB(_bundle.colorPrimary);
     }
 
     @Override
