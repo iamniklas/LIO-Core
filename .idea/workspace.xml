@@ -10,9 +10,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e78498bb-5fd8-4fc1-8653-b011d9d466e4" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/java/ColorSpaceConversionTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/led/colorspace/ColorRGBA.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/led/colorspace/ColorRGBA.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/led/colorspace/ColorRGB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/led/colorspace/ColorRGB.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -111,7 +110,7 @@
       <recent name="com.github.iamniklas.liocore.tests" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.ColorSpaceConversionTests.testRGBAToRGBConversion">
+  <component name="RunManager" selected="Gradle.ColorSpaceConversionTests.testRGBToHSVConversion">
     <configuration name="Default" type="Application" factoryName="Application">
       <option name="ALTERNATIVE_JRE_PATH" value="1.8" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
@@ -228,8 +227,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.ColorSpaceConversionTests.testRGBAToRGBConversion" />
         <item itemvalue="Gradle.ColorSpaceConversionTests.testRGBToHSVConversion" />
+        <item itemvalue="Gradle.ColorSpaceConversionTests.testRGBAToRGBConversion" />
         <item itemvalue="Gradle.ColorSpaceConversionTests.testHSVToRGBConversion" />
         <item itemvalue="Gradle.ColorSpaceTests.testHSVToRGBConversion" />
         <item itemvalue="Gradle.ColorSpaceTests" />

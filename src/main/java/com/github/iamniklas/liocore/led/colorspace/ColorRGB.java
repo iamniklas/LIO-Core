@@ -91,8 +91,42 @@ public class ColorRGB implements IRGBTypesModifier<ColorRGB>, IConvertibleColor 
     public ColorRGBA toRGBA() { return new ColorRGBA(r, g, b, 255); }
     @Override
     public ColorHSV toHSV() {
-        //TODO
-        return new ColorHSV(0, 0, 0);
+        float relativeR = r / 255.0f;
+        float relativeG = g / 255.0f;
+        float relativeB = b / 255.0f;
+
+        float cMax = Math.max(relativeR, Math.max(relativeG, relativeB));
+        float cMin = Math.min(relativeR, Math.min(relativeG, relativeB));
+
+        float cDelta = cMax - cMin;
+
+        //HSV: H
+        float h = 0.0f;
+        if(cMax == relativeR) {
+            h = 60 * (((relativeG - relativeB) / cDelta) % 6);
+        } else if(cMax == relativeG) {
+            h = 60 * (((relativeB - relativeR) / cDelta) + 2);
+        } else if(cMax == relativeB) {
+            h = 60 * (((relativeR - relativeG) / cDelta) + 4);
+        }
+
+        if(h < 0.0f) {
+            h = 360.0f - Math.abs(h);
+        }
+
+
+        //HSV: S
+        float s = 0.0f;
+        if(cMax != 0.0f) {
+            s = cDelta / cMax;
+        }
+
+
+        //HSV: V
+        float v = cMax;
+
+
+        return new ColorHSV((int)h, s, v);
     }
     @Override
     public LIOColor toSystemColor() {
