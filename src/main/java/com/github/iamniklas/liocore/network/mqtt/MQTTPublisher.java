@@ -1,9 +1,7 @@
 package com.github.iamniklas.liocore.network.mqtt;
 
 import com.github.iamniklas.liocore.config.ProgramConfiguration;
-import org.eclipse.paho.client.mqttv3.IMqttClient;
-import org.eclipse.paho.client.mqttv3.MqttClient;
-import org.eclipse.paho.client.mqttv3.MqttConnectOptions;
+import org.eclipse.paho.client.mqttv3.*;
 import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
 
 import java.util.UUID;

@@ -53,6 +53,12 @@ public class LEDStripManager implements ProcedureCalls {
             ledStrip.setPixel(i, _color);
         }
     }
+    public void setAllPixels(int _r, int _g, int _b) {
+        LIOColor color = new LIOColor(_r, _g, _b);
+        for (int i = 0; i < ledCount; i++) {
+            ledStrip.setPixel(i, color);
+        }
+    }
 
     @Override
     public void onProcedureStart(Procedure _procedure) {

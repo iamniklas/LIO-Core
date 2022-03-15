@@ -8,7 +8,7 @@ import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
 
 import java.util.UUID;
 
-public class MQTTListener {
+public class MQTTListener implements MqttCallback {
     String clientID = UUID.randomUUID().toString();
     IMqttClient mqttClient = null;
 
@@ -33,11 +33,14 @@ public class MQTTListener {
         try {
             MemoryPersistence persistence = new MemoryPersistence();
             mqttClient = new MqttClient(ProgramConfiguration.configuration.mqttBrokerAddress, clientID, persistence);
+            mqttClient.setCallback(this);
 
             MqttConnectOptions options = new MqttConnectOptions();
-            options.setAutomaticReconnect(ProgramConfiguration.configuration.mqttAutomaticReconnect);
+
             options.setCleanSession(ProgramConfiguration.configuration.mqttCleanSession);
+            options.setAutomaticReconnect(ProgramConfiguration.configuration.mqttAutomaticReconnect);
             options.setConnectionTimeout(ProgramConfiguration.configuration.mqttConnectionTimeout);
+            options.setExecutorServiceTimeout(ProgramConfiguration.configuration.mqttConnectionTimeout);
             options.setUserName(ProgramConfiguration.configuration.mqttUser);
             options.setPassword(ProgramConfiguration.configuration.mqttPassword.toCharArray());
 
@@ -70,5 +73,23 @@ public class MQTTListener {
 
     public String getDeviceIdentifier() {
         return ProgramConfiguration.configuration.mqttDeviceName;
+    }
+
+    //Integrated Mqtt Callback Interface
+    @Override
+    public void connectionLost(Throwable cause) {
+        System.err.println("Connection Lost");
+        System.err.println(cause.getMessage());
+        System.exit(1);
+    }
+
+    @Override
+    public void messageArrived(String topic, MqttMessage message) throws Exception {
+
+    }
+
+    @Override
+    public void deliveryComplete(IMqttDeliveryToken token) {
+
     }
 }
