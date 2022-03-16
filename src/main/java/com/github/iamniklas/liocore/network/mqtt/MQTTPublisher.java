@@ -20,14 +20,9 @@ public class MQTTPublisher {
         options.setPassword(ProgramConfiguration.configuration.mqttPassword.toCharArray());
     }
 
-    public int connect() {
-        try {
-            client = new MqttClient(ProgramConfiguration.configuration.mqttBrokerAddress, UUID.randomUUID().toString(), persistence);
-            client.connect(options);
-            return 0;
-        } catch (Exception e) {
-            return 1;
-        }
+    public void connect() throws Exception {
+        client = new MqttClient(ProgramConfiguration.configuration.mqttBrokerAddress, UUID.randomUUID().toString(), persistence);
+        client.connect(options);
     }
 
     public void disconnect() {
