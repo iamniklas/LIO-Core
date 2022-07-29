@@ -7,7 +7,7 @@ import com.github.iamniklas.liocore.procedures.Procedure;
 
 import java.awt.*;
 
-public class ColorInstantSetProcedure extends Procedure {
+public class ColorInstantSetProcedure extends Procedure implements Runnable {
 
     private LEDDataBundle bundle;
 
@@ -35,5 +35,10 @@ public class ColorInstantSetProcedure extends Procedure {
     @Override
     public void updateLEDDataBundle(LEDDataBundle bundle) {
 
+    }
+
+    @Override
+    public void run() {
+        strip.setAllPixels(targetColor);
     }
 }

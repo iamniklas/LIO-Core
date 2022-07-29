@@ -2,6 +2,7 @@ package com.github.iamniklas.liocore.led;
 
 import com.github.iamniklas.colorspaces.ColorRGB;
 import com.github.iamniklas.interpolation.InterpolationType;
+import com.github.iamniklas.liocore.musicsync.AnimationData;
 import com.github.iamniklas.liocore.procedures.ProcedureCalls;
 import com.github.iamniklas.liocore.procedures.models.Direction;
 import com.google.gson.annotations.SerializedName;
@@ -29,6 +30,7 @@ public class LEDDataBundle {
     public Integer duration;
     public Boolean pulsating;
     public String path;
+    public AnimationData animationData;
 
     //subBundle
     @SerializedName("is_sub_procedure")
