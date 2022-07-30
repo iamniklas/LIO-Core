@@ -1,7 +1,6 @@
 package com.github.iamniklas.liocore.network.javalin;
 
 import com.github.iamniklas.liocore.network.javalin.models.JavalinScanResult;
-import org.junit.jupiter.api.Assertions;
 
 import java.io.EOFException;
 import java.io.IOException;
@@ -46,11 +45,11 @@ public class JavalinScan {
     private boolean deviceWithIp(String ip) {
         URL url = null;
         try {
-            url = new URL("http://" + ip + ":5700/led/echo");
+            url = new URL("http://" + ip + ":5700/device/echo");
             HttpURLConnection con = null;
             con = (HttpURLConnection) url.openConnection();
             con.setRequestMethod("GET");
-            con.setConnectTimeout(75);
+            con.setConnectTimeout(150);
             return con.getResponseCode() == 418;
         }
         catch (EOFException eof) {

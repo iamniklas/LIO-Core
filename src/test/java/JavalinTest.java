@@ -1,3 +1,4 @@
+import com.github.iamniklas.liocore.config.ProgramConfiguration;
 import com.github.iamniklas.liocore.network.javalin.JavalinHandler;
 import com.github.iamniklas.liocore.network.javalin.JavalinScan;
 import com.github.iamniklas.liocore.network.javalin.models.JavalinScanResult;
@@ -21,7 +22,8 @@ public class JavalinTest {
 
     @BeforeEach
     public void initJavalin() {
-        javalinHandler = new JavalinHandler(JavalinHandler.JAVALIN_PORT);
+        ProgramConfiguration.configuration = new ProgramConfiguration(null, null, null, "Test Device", 0, false, false, 300, 18, 80000, 1, 255, 0, false, true, 25);
+        javalinHandler = new JavalinHandler();
     }
 
     @AfterEach
@@ -30,35 +32,13 @@ public class JavalinTest {
     }
 
     @Test
-    public void testJavalinFeedback() {
-        URL url = null;
-        try {
-            url = new URL("http://localhost:5700/led/update");
-            HttpURLConnection con = null;
-            con = (HttpURLConnection) url.openConnection();
-            con.setRequestMethod("PUT");
-            con.setDoOutput(true);
-            DataOutputStream dos = new DataOutputStream(con.getOutputStream());
-            dos.writeUTF("Hey");
-            Assertions.assertEquals(200, con.getResponseCode());
-            Assertions.assertEquals("Hey", new DataInputStream((InputStream) con.getContent()).readUTF());
-
-            url = new URL("http://localhost:5700/led/update?fail=1");
-            con = (HttpURLConnection) url.openConnection();
-            con.setRequestMethod("PUT");
-            con.setDoOutput(true);
-            Assertions.assertEquals(500, con.getResponseCode());
-        }
-        catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @Test
     public void testDeviceScanner() {
+        System.out.println("Starting scan...");
         JavalinScanResult result = new JavalinScan().scanForDevices();
+        System.out.println("Completed scan");
         System.out.println("Scan Time: " + (result.scanDuration / 1000) + "s" + (result.scanDuration % 1000) + "ms");
         System.out.println("Found " + result.detectedIps.length + " device(s)");
+        System.out.println("Network Address: " + result.scanRange + "255");
         if(result.detectedIps.length > 0) {
             System.out.println("Device IPs: " + Arrays.toString(result.detectedIps));
         }
