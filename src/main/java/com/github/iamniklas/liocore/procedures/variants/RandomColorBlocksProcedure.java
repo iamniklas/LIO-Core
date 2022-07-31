@@ -54,6 +54,12 @@ public class RandomColorBlocksProcedure extends Procedure {
                     strip.setArea(LEDStripManager.ledCount - ledsPerSection, LEDStripManager.ledCount, colors[(i + offset) % 6]);
                 }
             }
+
+            for (int i = 0; i < LEDStripManager.ledCount; i++) {
+                if(i % modulo == 0) {
+                    strip.setPixel(i, LIOColor.fromRGB(ColorRGB.BLACK));
+                }
+            }
         }
 
         if(System.currentTimeMillis() - startTime > duration) {
