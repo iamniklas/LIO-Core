@@ -14,6 +14,9 @@ public class RandomColorBlocksProcedure extends Procedure {
     private int modulo;
     private LEDDataBundle bundle;
 
+    private long startTime = 0;
+    private int duration = 50;
+
     private LIOColor[] colors = new LIOColor[] {
             LIOColor.fromRGB(ColorRGB.RED),
             LIOColor.fromRGB(ColorRGB.BLUE),
@@ -29,12 +32,17 @@ public class RandomColorBlocksProcedure extends Procedure {
         //TODO New Parameter instead of Duration for Section Count
         sections = ledDataBundle.duration;
         modulo = ledDataBundle.modulo;
+        duration = ledDataBundle.bpm;
 
         bundle = ledDataBundle;
     }
 
     @Override
     public void update() {
+        if(startTime == 0) {
+            startTime = System.currentTimeMillis();
+        }
+
         int ledsPerSection = LEDStripManager.ledCount / sections;
 
         int offset = Math.abs(new Random().nextInt());
@@ -48,7 +56,9 @@ public class RandomColorBlocksProcedure extends Procedure {
             }
         }
 
-        finishProcedure();
+        if(System.currentTimeMillis() - startTime > duration) {
+            finishProcedure();
+        }
     }
 
     @Override
