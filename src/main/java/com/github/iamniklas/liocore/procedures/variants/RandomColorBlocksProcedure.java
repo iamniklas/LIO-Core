@@ -41,18 +41,18 @@ public class RandomColorBlocksProcedure extends Procedure {
     public void update() {
         if(startTime == 0) {
             startTime = System.currentTimeMillis();
-        }
 
-        int ledsPerSection = LEDStripManager.ledCount / sections;
+            int ledsPerSection = LEDStripManager.ledCount / sections;
 
-        int offset = Math.abs(new Random().nextInt());
+            int offset = Math.abs(new Random().nextInt());
 
-        for (int i = 0; i < sections; i++) {
-            strip.setArea(ledsPerSection * i, ledsPerSection * (i + 1), colors[(i + offset) % 6]);
+            for (int i = 0; i < sections; i++) {
+                strip.setArea(ledsPerSection * i, ledsPerSection * (i + 1), colors[(i + offset) % 6]);
 
-            //Last Row
-            if(i == sections - 1) {
-                strip.setArea(LEDStripManager.ledCount - ledsPerSection, LEDStripManager.ledCount, colors[(i + offset) % 6]);
+                //Last Row
+                if(i == sections - 1) {
+                    strip.setArea(LEDStripManager.ledCount - ledsPerSection, LEDStripManager.ledCount, colors[(i + offset) % 6]);
+                }
             }
         }
 
