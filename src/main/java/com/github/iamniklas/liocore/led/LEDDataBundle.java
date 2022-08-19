@@ -40,6 +40,7 @@ public class LEDDataBundle {
     public Integer puModulo;
     @SerializedName("pu_modulo_invert")
     public Boolean puModuloInvert;
-    public LEDStripManager ledStrip;
-    public ProcedureCalls procedureCalls;
+
+    public transient LEDStripManager ledStrip;
+    public transient ProcedureCalls procedureCalls;
 }

@@ -4,11 +4,14 @@ import com.github.iamniklas.liocore.network.javalin.models.JavalinScanResult;
 
 import java.io.EOFException;
 import java.io.IOException;
+import java.math.BigInteger;
 import java.net.*;
 import java.util.ArrayList;
+import java.util.Enumeration;
 
 public class JavalinScan {
     public JavalinScanResult scanForDevices() {
+        String scanNetworkName;
         String scanClientIp;
         String networkScanRange;
         int foundDevices = 0;
@@ -21,6 +24,7 @@ public class JavalinScan {
         try(final DatagramSocket socket = new DatagramSocket()){
             socket.connect(InetAddress.getByName("8.8.8.8"), 10002);
             scanClientIp = socket.getLocalAddress().getHostAddress();
+
             int lastIndexOf = scanClientIp.lastIndexOf('.');
             networkScanRange = scanClientIp.substring(0, lastIndexOf+1);
 

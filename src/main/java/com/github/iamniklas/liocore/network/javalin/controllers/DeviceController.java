@@ -5,7 +5,11 @@ import com.google.gson.Gson;
 import io.javalin.Javalin;
 
 public class DeviceController extends ControllerBase {
-    public DeviceController(Javalin _app) {
+    ProgramConfiguration programConfiguration;
+
+    public DeviceController(Javalin _app, ProgramConfiguration _programConfiguration) {
+        programConfiguration = _programConfiguration;
+
         _app.get("/device/info", ctx -> {
             ctx.result(new Gson().toJson(ProgramConfiguration.configuration));
         });
