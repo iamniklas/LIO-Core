@@ -5,6 +5,7 @@ import com.github.iamniklas.colorspaces.ColorRGBA;
 import com.github.iamniklas.liocore.config.ProgramConfiguration;
 import com.github.iamniklas.liocore.led.LEDDataBundle;
 import com.github.iamniklas.liocore.led.colorspace.LIOColor;
+import com.github.iamniklas.liocore.network.LEDUpdateModel;
 import com.github.iamniklas.liocore.procedures.Procedure;
 
 public class FadeToUniformColorProcedure extends Procedure {
@@ -18,13 +19,13 @@ public class FadeToUniformColorProcedure extends Procedure {
     private float alphaStep = 0.0f;
     private float alphaAddValue = 0.0f;
 
-    public FadeToUniformColorProcedure(LEDDataBundle _bundle) {
-        super(_bundle);
-        bundle = _bundle;
+    public FadeToUniformColorProcedure(LEDUpdateModel _ledUpdateModel) {
+        super(_ledUpdateModel);
+        bundle = _ledUpdateModel.bundle;
 
         targetColor = bundle.colorPrimary;
         baseColor = bundle.colorSecondary;
-        duration = _bundle.duration;
+        duration = bundle.duration;
         steps = (int) Math.ceil((duration / (ProgramConfiguration.configuration.frametime / 1000.0f)));
         alphaAddValue = 1 / (float)steps;
     }
@@ -48,7 +49,7 @@ public class FadeToUniformColorProcedure extends Procedure {
     }
 
     @Override
-    public void updateLEDDataBundle(LEDDataBundle bundle) {
+    public void updateLEDUpdateModel(LEDUpdateModel _ledUpdateModel) {
 
     }
 }

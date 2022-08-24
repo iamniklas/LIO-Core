@@ -3,6 +3,7 @@ package com.github.iamniklas.liocore.procedures.variants;
 import com.github.iamniklas.colorspaces.ColorHSV;
 import com.github.iamniklas.liocore.led.LEDDataBundle;
 import com.github.iamniklas.liocore.led.colorspace.LIOColor;
+import com.github.iamniklas.liocore.network.LEDUpdateModel;
 import com.github.iamniklas.liocore.procedures.Procedure;
 
 public class RainbowMonoProcedure extends Procedure {
@@ -12,9 +13,9 @@ public class RainbowMonoProcedure extends Procedure {
     private ColorHSV colorHsv = new ColorHSV(0, 1.0f, 1.0f);
     private float speed = 1.0f;
 
-    public RainbowMonoProcedure(LEDDataBundle _bundle) {
-        super(_bundle);
-        bundle = _bundle;
+    public RainbowMonoProcedure(LEDUpdateModel _ledUpdateModel) {
+        super(_ledUpdateModel);
+        bundle = _ledUpdateModel.bundle;
 
         speed = Math.max(1.0f, bundle.speed);
     }
@@ -31,7 +32,7 @@ public class RainbowMonoProcedure extends Procedure {
     }
 
     @Override
-    public void updateLEDDataBundle(LEDDataBundle bundle) {
+    public void updateLEDUpdateModel(LEDUpdateModel _ledUpdateModel) {
 
     }
 }

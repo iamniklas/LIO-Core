@@ -1,6 +1,7 @@
 package com.github.iamniklas.liocore.procedures.variants;
 
 import com.github.iamniklas.liocore.led.LEDDataBundle;
+import com.github.iamniklas.liocore.network.LEDUpdateModel;
 import com.github.iamniklas.liocore.procedures.Procedure;
 
 import javax.script.Invocable;
@@ -19,9 +20,9 @@ public class JavascriptProcedure extends Procedure {
     private Invocable invocable = null;
     private Object eval = null;
 
-    public JavascriptProcedure(LEDDataBundle _bundle) {
-        super(_bundle);
-        bundle = _bundle;
+    public JavascriptProcedure(LEDUpdateModel _ledUpdateModel) {
+        super(_ledUpdateModel);
+        bundle = _ledUpdateModel.bundle;
 
         runtime = null;
         invocable = null;
@@ -54,7 +55,7 @@ public class JavascriptProcedure extends Procedure {
     }
 
     @Override
-    public void updateLEDDataBundle(LEDDataBundle bundle) {
+    public void updateLEDUpdateModel(LEDUpdateModel _ledUpdateModel) {
 
     }
 

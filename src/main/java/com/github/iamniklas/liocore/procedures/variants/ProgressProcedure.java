@@ -4,6 +4,7 @@ import com.github.iamniklas.colorspaces.ColorRGB;
 import com.github.iamniklas.liocore.led.LEDDataBundle;
 import com.github.iamniklas.liocore.led.LEDStripManager;
 import com.github.iamniklas.liocore.led.colorspace.LIOColor;
+import com.github.iamniklas.liocore.network.LEDUpdateModel;
 import com.github.iamniklas.liocore.procedures.Procedure;
 import com.github.iamniklas.liocore.procedures.models.IndeterminateState;
 
@@ -20,9 +21,9 @@ public class ProgressProcedure extends Procedure {
     private float sinX = 0.0f;
     private float speed = 0.2f;
 
-    public ProgressProcedure(LEDDataBundle _bundle) {
-        super(_bundle);
-        bundle = _bundle;
+    public ProgressProcedure(LEDUpdateModel _ledUpdateModel) {
+        super(_ledUpdateModel);
+        bundle = _ledUpdateModel.bundle;
 
         colorRGB = bundle.colorPrimary;
         start = bundle.value1;
@@ -95,7 +96,7 @@ public class ProgressProcedure extends Procedure {
     }
 
     @Override
-    public void updateLEDDataBundle(LEDDataBundle bundle) {
+    public void updateLEDUpdateModel(LEDUpdateModel _ledUpdateModel) {
 
     }
 }

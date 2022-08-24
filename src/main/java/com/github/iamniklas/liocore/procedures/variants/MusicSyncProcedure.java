@@ -2,6 +2,7 @@ package com.github.iamniklas.liocore.procedures.variants;
 
 import com.github.iamniklas.liocore.led.LEDDataBundle;
 import com.github.iamniklas.liocore.musicsync.AnimationData;
+import com.github.iamniklas.liocore.network.LEDUpdateModel;
 import com.github.iamniklas.liocore.procedures.Procedure;
 
 import java.util.concurrent.Executors;
@@ -12,15 +13,15 @@ public class MusicSyncProcedure extends Procedure {
 
     private ScheduledExecutorService scheduler;
 
-    public MusicSyncProcedure(LEDDataBundle _bundle) {
-        super(_bundle);
+    public MusicSyncProcedure(LEDUpdateModel _ledUpdateModel) {
+        super(_ledUpdateModel);
         scheduler = Executors.newScheduledThreadPool(1);
-        for (AnimationData.Action action : _bundle.animationData.actions) {
+        for (AnimationData.Action action : _ledUpdateModel.bundle.animationData.actions) {
             if(action.recurring != null && action.recurring.recurring) {
-                scheduler.scheduleAtFixedRate(new ColorInstantSetProcedure(_bundle), action.timestamp, action.recurring.offset, TimeUnit.MILLISECONDS);
+                scheduler.scheduleAtFixedRate(new ColorInstantSetProcedure(_ledUpdateModel), action.timestamp, action.recurring.offset, TimeUnit.MILLISECONDS);
             }
             else {
-                scheduler.schedule(new ColorInstantSetProcedure(_bundle), action.timestamp, TimeUnit.MILLISECONDS);
+                scheduler.schedule(new ColorInstantSetProcedure(_ledUpdateModel), action.timestamp, TimeUnit.MILLISECONDS);
             }
         }
     }
@@ -31,7 +32,7 @@ public class MusicSyncProcedure extends Procedure {
     }
 
     @Override
-    public void updateLEDDataBundle(LEDDataBundle bundle) {
+    public void updateLEDUpdateModel(LEDUpdateModel _ledUpdateModel) {
 
     }
 

@@ -4,20 +4,21 @@ import com.github.iamniklas.colorspaces.ColorHSV;
 import com.github.iamniklas.liocore.led.LEDDataBundle;
 import com.github.iamniklas.liocore.led.LEDStripManager;
 import com.github.iamniklas.liocore.led.colorspace.LIOColor;
+import com.github.iamniklas.liocore.network.LEDUpdateModel;
 import com.github.iamniklas.liocore.procedures.Procedure;
 import com.github.iamniklas.liocore.procedures.models.Direction;
 
 public class RainbowProcedure extends Procedure {
 
-    private LEDDataBundle bundle;
+    public LEDDataBundle bundle;
 
-    private ColorHSV colorHSV = new ColorHSV(0, 1.0f, 1.0f);
-    private float hueCounter = 0.0f;
-    private float[] hueArrayCounter = new float[LEDStripManager.ledCount];
+    public ColorHSV colorHSV = new ColorHSV(0, 1.0f, 1.0f);
+    public float hueCounter = 0.0f;
+    public float[] hueArrayCounter = new float[LEDStripManager.ledCount];
 
-    public RainbowProcedure(LEDDataBundle _bundle) {
-        super(_bundle);
-        bundle = _bundle;
+    public RainbowProcedure(LEDUpdateModel _ledUpdateModel) {
+        super(_ledUpdateModel);
+        bundle = _ledUpdateModel.bundle;
 
         for (int i = 0; i < hueArrayCounter.length; i++) {
             hueArrayCounter[i] = Math.abs(i - 150);
@@ -63,7 +64,7 @@ public class RainbowProcedure extends Procedure {
     }
 
     @Override
-    public void updateLEDDataBundle(LEDDataBundle bundle) {
+    public void updateLEDUpdateModel(LEDUpdateModel _ledUpdateModel) {
         this.bundle = bundle;
     }
 }

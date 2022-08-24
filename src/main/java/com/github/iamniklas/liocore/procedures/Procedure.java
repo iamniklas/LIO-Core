@@ -4,8 +4,10 @@ import com.github.iamniklas.colorspaces.ColorRGB;
 import com.github.iamniklas.liocore.led.LEDDataBundle;
 import com.github.iamniklas.liocore.led.LEDStripManager;
 import com.github.iamniklas.liocore.led.colorspace.LIOColor;
+import com.github.iamniklas.liocore.network.LEDUpdateModel;
 
 public abstract class Procedure {
+    public LEDUpdateModel ledUpdateModel;
     protected LEDStripManager strip;
     protected LEDDataBundle dataBundle;
     public ProcedureCalls procCalls;
@@ -15,22 +17,23 @@ public abstract class Procedure {
     protected boolean moduloInvert = false;
     protected boolean isSubProcedure = false;
 
-    public Procedure(LEDDataBundle _bundle) {
-        dataBundle = _bundle;
+    public Procedure(LEDUpdateModel _updateModel) {
+        ledUpdateModel = _updateModel;
+        dataBundle = _updateModel.bundle;
 
-        strip = _bundle.ledStrip;
-        procCalls = _bundle.procedureCalls;
-        if(_bundle.puModulo != null) {
-            modulo = _bundle.puModulo;
+        strip = dataBundle.ledStrip;
+        procCalls = dataBundle.procedureCalls;
+        if(dataBundle.puModulo != null) {
+            modulo = dataBundle.puModulo;
         }
-        if(_bundle.puModuloInvert != null) {
-            moduloInvert = _bundle.puModuloInvert;
+        if(dataBundle.puModuloInvert != null) {
+            moduloInvert = dataBundle.puModuloInvert;
         }
     }
 
     public void start() { procCalls.onProcedureStart(this); }
     public abstract void update();
-    public abstract void updateLEDDataBundle(LEDDataBundle bundle);
+    public abstract void updateLEDUpdateModel(LEDUpdateModel ledUpdateModel);
 
     public void postUpdate() {
         if (modulo < 2) return;

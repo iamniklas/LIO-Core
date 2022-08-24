@@ -3,6 +3,7 @@ package com.github.iamniklas.liocore.procedures.variants;
 import com.github.iamniklas.liocore.led.LEDDataBundle;
 import com.github.iamniklas.liocore.led.LEDStripManager;
 import com.github.iamniklas.liocore.led.colorspace.LIOColor;
+import com.github.iamniklas.liocore.network.LEDUpdateModel;
 import com.github.iamniklas.liocore.procedures.Procedure;
 import com.github.iamniklas.liocore.procedures.models.Direction;
 import org.checkerframework.checker.units.qual.C;
@@ -15,9 +16,9 @@ public class FillStripProcedure extends Procedure {
     private int speed = 1;
     private Direction direction = Direction.Left;
 
-    public FillStripProcedure(LEDDataBundle _bundle) {
-        super(_bundle);
-        bundle = _bundle;
+    public FillStripProcedure(LEDUpdateModel _ledUpdateModel) {
+        super(_ledUpdateModel);
+        bundle = _ledUpdateModel.bundle;
 
         fillColor = LIOColor.fromRGB(bundle.colorPrimary);
         speed = Math.round(bundle.speed);
@@ -73,7 +74,7 @@ public class FillStripProcedure extends Procedure {
     }
 
     @Override
-    public void updateLEDDataBundle(LEDDataBundle bundle) {
+    public void updateLEDUpdateModel(LEDUpdateModel _ledUpdateModel) {
 
     }
 }

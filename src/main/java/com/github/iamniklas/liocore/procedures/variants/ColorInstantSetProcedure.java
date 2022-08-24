@@ -3,6 +3,7 @@ package com.github.iamniklas.liocore.procedures.variants;
 import com.github.iamniklas.colorspaces.ColorRGB;
 import com.github.iamniklas.liocore.led.LEDDataBundle;
 import com.github.iamniklas.liocore.led.colorspace.LIOColor;
+import com.github.iamniklas.liocore.network.LEDUpdateModel;
 import com.github.iamniklas.liocore.procedures.Procedure;
 
 import java.awt.*;
@@ -13,11 +14,11 @@ public class ColorInstantSetProcedure extends Procedure implements Runnable {
 
     private LIOColor targetColor;
 
-    public ColorInstantSetProcedure(LEDDataBundle _bundle) {
-        super(_bundle);
-        bundle = _bundle;
+    public ColorInstantSetProcedure(LEDUpdateModel _ledUpdateModel) {
+        super(_ledUpdateModel);
+        bundle = _ledUpdateModel.bundle;
 
-        targetColor = LIOColor.fromRGB(_bundle.colorPrimary);
+        targetColor = LIOColor.fromRGB(bundle.colorPrimary);
     }
 
     @Override
@@ -33,7 +34,7 @@ public class ColorInstantSetProcedure extends Procedure implements Runnable {
     }
 
     @Override
-    public void updateLEDDataBundle(LEDDataBundle bundle) {
+    public void updateLEDUpdateModel(LEDUpdateModel _ledUpdateModel) {
 
     }
 

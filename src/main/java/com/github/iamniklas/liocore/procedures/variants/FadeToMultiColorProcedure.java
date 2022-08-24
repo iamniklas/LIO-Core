@@ -5,6 +5,7 @@ import com.github.iamniklas.colorspaces.ColorRGBA;
 import com.github.iamniklas.liocore.config.ProgramConfiguration;
 import com.github.iamniklas.liocore.led.LEDDataBundle;
 import com.github.iamniklas.liocore.led.colorspace.LIOColor;
+import com.github.iamniklas.liocore.network.LEDUpdateModel;
 import com.github.iamniklas.liocore.procedures.Procedure;
 
 public class FadeToMultiColorProcedure extends Procedure {
@@ -18,9 +19,9 @@ public class FadeToMultiColorProcedure extends Procedure {
     float[] alphaStep = new float[300];
     float[] alphaAddValue = new float[300];
 
-    public FadeToMultiColorProcedure(LEDDataBundle _bundle) {
-        super(_bundle);
-        bundle = _bundle;
+    public FadeToMultiColorProcedure(LEDUpdateModel _ledUpdateModel) {
+        super(_ledUpdateModel);
+        bundle = _ledUpdateModel.bundle;
 
         targetColor = bundle.colorPrimary;
         speed = bundle.speed;
@@ -52,7 +53,7 @@ public class FadeToMultiColorProcedure extends Procedure {
     }
 
     @Override
-    public void updateLEDDataBundle(LEDDataBundle bundle) {
+    public void updateLEDUpdateModel(LEDUpdateModel _ledUpdateModel) {
 
     }
 }

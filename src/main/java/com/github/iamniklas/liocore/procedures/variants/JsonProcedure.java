@@ -5,6 +5,7 @@ import com.github.iamniklas.liocore.led.colorspace.LIOColor;
 import com.github.iamniklas.liocore.led.json.LEDJsonProcedure;
 import com.github.iamniklas.liocore.led.json.interpreter.FileVersions;
 import com.github.iamniklas.liocore.led.json.interpreter.LEDInterpreter;
+import com.github.iamniklas.liocore.network.LEDUpdateModel;
 import com.github.iamniklas.liocore.procedures.Procedure;
 
 import java.io.IOException;
@@ -18,9 +19,9 @@ public class JsonProcedure extends Procedure {
 
     private LEDJsonProcedure ledJsonProcedure;
 
-    public JsonProcedure(LEDDataBundle _bundle) {
-        super(_bundle);
-        bundle = _bundle;
+    public JsonProcedure(LEDUpdateModel _ledUpdateModel) {
+        super(_ledUpdateModel);
+        bundle = _ledUpdateModel.bundle;
 
         ledJsonProcedure = loadFromFile(bundle.path);
     }
@@ -54,7 +55,7 @@ public class JsonProcedure extends Procedure {
     }
 
     @Override
-    public void updateLEDDataBundle(LEDDataBundle bundle) {
+    public void updateLEDUpdateModel(LEDUpdateModel _ledUpdateModel) {
 
     }
 }

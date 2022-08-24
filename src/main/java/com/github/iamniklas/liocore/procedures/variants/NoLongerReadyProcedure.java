@@ -3,6 +3,7 @@ package com.github.iamniklas.liocore.procedures.variants;
 import com.github.iamniklas.colorspaces.ColorRGB;
 import com.github.iamniklas.liocore.led.LEDDataBundle;
 import com.github.iamniklas.liocore.led.colorspace.LIOColor;
+import com.github.iamniklas.liocore.network.LEDUpdateModel;
 import com.github.iamniklas.liocore.procedures.Procedure;
 
 public class NoLongerReadyProcedure extends Procedure {
@@ -11,9 +12,9 @@ public class NoLongerReadyProcedure extends Procedure {
 
     private boolean redLightActive = false;
 
-    public NoLongerReadyProcedure(LEDDataBundle _bundle) {
-        super(_bundle);
-        bundle = _bundle;
+    public NoLongerReadyProcedure(LEDUpdateModel _ledUpdateModel) {
+        super(_ledUpdateModel);
+        bundle = _ledUpdateModel.bundle;
 
         steps = 60;
     }
@@ -42,7 +43,7 @@ public class NoLongerReadyProcedure extends Procedure {
     }
 
     @Override
-    public void updateLEDDataBundle(LEDDataBundle bundle) {
+    public void updateLEDUpdateModel(LEDUpdateModel _ledUpdateModel) {
 
     }
 }

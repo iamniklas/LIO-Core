@@ -3,6 +3,7 @@ package com.github.iamniklas.liocore.procedures.variants;
 import com.github.iamniklas.colorspaces.ColorRGB;
 import com.github.iamniklas.liocore.led.LEDDataBundle;
 import com.github.iamniklas.liocore.led.colorspace.LIOColor;
+import com.github.iamniklas.liocore.network.LEDUpdateModel;
 import com.github.iamniklas.liocore.procedures.Procedure;
 
 import java.awt.*;
@@ -13,11 +14,11 @@ public class FadeInFadeOutProcedure extends Procedure {
 
     private float[] colorPartModifier = {1.0f, 1.0f, 1.0f};
 
-    public FadeInFadeOutProcedure(LEDDataBundle _bundle) {
-        super(_bundle);
-        bundle = _bundle;
+    public FadeInFadeOutProcedure(LEDUpdateModel _ledUpdateModel) {
+        super(_ledUpdateModel);
+        bundle = _ledUpdateModel.bundle;
 
-        LIOColor targetColor = LIOColor.fromRGB(_bundle.colorPrimary);
+        LIOColor targetColor = LIOColor.fromRGB(bundle.colorPrimary);
         colorPartModifier[0] = targetColor.r / 255.0f;
         colorPartModifier[1] = targetColor.g / 255.0f;
         colorPartModifier[2] = targetColor.b / 255.0f;
@@ -51,7 +52,7 @@ public class FadeInFadeOutProcedure extends Procedure {
     }
 
     @Override
-    public void updateLEDDataBundle(LEDDataBundle bundle) {
+    public void updateLEDUpdateModel(LEDUpdateModel _ledUpdateModel) {
 
     }
 }

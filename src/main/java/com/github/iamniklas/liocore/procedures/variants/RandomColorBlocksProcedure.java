@@ -4,6 +4,7 @@ import com.github.iamniklas.colorspaces.ColorRGB;
 import com.github.iamniklas.liocore.led.LEDDataBundle;
 import com.github.iamniklas.liocore.led.LEDStripManager;
 import com.github.iamniklas.liocore.led.colorspace.LIOColor;
+import com.github.iamniklas.liocore.network.LEDUpdateModel;
 import com.github.iamniklas.liocore.procedures.Procedure;
 
 import java.util.Random;
@@ -12,7 +13,7 @@ public class RandomColorBlocksProcedure extends Procedure {
 
     private int sections;
     private int modulo;
-    private LEDDataBundle bundle;
+    private LEDUpdateModel ledUpdateModel;
 
     private long startTime = 0;
     private int duration = 50;
@@ -26,15 +27,15 @@ public class RandomColorBlocksProcedure extends Procedure {
             LIOColor.fromRGB(ColorRGB.WHITE50)
     };
 
-    public RandomColorBlocksProcedure(LEDDataBundle ledDataBundle) {
-        super(ledDataBundle);
+    public RandomColorBlocksProcedure(LEDUpdateModel _ledUpdateModel) {
+        super(_ledUpdateModel);
 
         //TODO New Parameter instead of Duration for Section Count
-        sections = ledDataBundle.duration;
-        modulo = ledDataBundle.modulo;
-        duration = ledDataBundle.bpm;
+        sections = _ledUpdateModel.bundle.duration;
+        modulo = _ledUpdateModel.bundle.modulo;
+        duration = _ledUpdateModel.bundle.bpm;
 
-        bundle = ledDataBundle;
+        ledUpdateModel = _ledUpdateModel;
     }
 
     @Override
@@ -68,13 +69,13 @@ public class RandomColorBlocksProcedure extends Procedure {
     }
 
     @Override
-    public void updateLEDDataBundle(LEDDataBundle bundle) {
+    public void updateLEDUpdateModel(LEDUpdateModel _ledUpdateModel) {
 
     }
 
     @Override
     protected void finishProcedure() {
         super.finishProcedure();
-        bundle.ledStrip.procContainer.queueProcedure(new RandomColorBlocksProcedure(bundle));
+        ledUpdateModel.bundle.ledStrip.procContainer.queueProcedure(new RandomColorBlocksProcedure(ledUpdateModel));
     }
 }

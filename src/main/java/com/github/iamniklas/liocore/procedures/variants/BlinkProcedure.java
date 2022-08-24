@@ -3,6 +3,7 @@ package com.github.iamniklas.liocore.procedures.variants;
 import com.github.iamniklas.colorspaces.ColorRGB;
 import com.github.iamniklas.liocore.led.LEDDataBundle;
 import com.github.iamniklas.liocore.led.colorspace.LIOColor;
+import com.github.iamniklas.liocore.network.LEDUpdateModel;
 import com.github.iamniklas.liocore.procedures.Procedure;
 
 public class BlinkProcedure extends Procedure {
@@ -13,13 +14,13 @@ public class BlinkProcedure extends Procedure {
     private int frames = 10;
     private int modulo = 2;
 
-    public BlinkProcedure(LEDDataBundle _bundle) {
-        super(_bundle);
-        bundle = _bundle;
+    public BlinkProcedure(LEDUpdateModel _ledUpdateModel) {
+        super(_ledUpdateModel);
+        bundle = _ledUpdateModel.bundle;
 
-        blinkColor = LIOColor.fromRGB(_bundle.colorPrimary);
-        frames = _bundle.duration;
-        modulo = _bundle.modulo;
+        blinkColor = LIOColor.fromRGB(bundle.colorPrimary);
+        frames = bundle.duration;
+        modulo = bundle.modulo;
         steps = frames;
     }
 
@@ -45,7 +46,7 @@ public class BlinkProcedure extends Procedure {
     }
 
     @Override
-    public void updateLEDDataBundle(LEDDataBundle bundle) {
+    public void updateLEDUpdateModel(LEDUpdateModel _ledUpdateModel) {
 
     }
 }

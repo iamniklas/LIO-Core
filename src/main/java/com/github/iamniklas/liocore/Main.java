@@ -5,9 +5,11 @@ import com.github.iamniklas.liocore.led.LEDDataBundle;
 import com.github.iamniklas.liocore.led.LEDRenderer;
 import com.github.iamniklas.liocore.led.LEDStripManager;
 import com.github.iamniklas.liocore.led.colorspace.LIOColor;
+import com.github.iamniklas.liocore.network.LEDUpdateModel;
 import com.github.iamniklas.liocore.network.javalin.JavalinHandler;
 import com.github.iamniklas.liocore.network.mqtt.MQTTPublisher;
 import com.github.iamniklas.liocore.procedures.Procedure;
+import com.github.iamniklas.liocore.procedures.ProcedureType;
 import com.github.iamniklas.liocore.procedures.models.Direction;
 import com.github.iamniklas.liocore.procedures.variants.RainbowMonoProcedure;
 import com.github.iamniklas.liocore.procedures.variants.RainbowProcedure;
@@ -26,17 +28,18 @@ public class Main {
         }, 300);
         ProgramConfiguration.configuration = ProgramConfiguration.readConfigFromFile();
 
+        LEDUpdateModel updateModel = new LEDUpdateModel();
         LEDDataBundle ledDataBundle = new LEDDataBundle();
         ledDataBundle.ledStrip = ledStripManager;
         ledDataBundle.procedureCalls = ledStripManager;
         ledDataBundle.direction = Direction.Left;
         ledDataBundle.speed = 15f;
         ledDataBundle.repetitions = 1.6f;
-        RainbowMonoProcedure rainbowProcedure = new RainbowMonoProcedure(ledDataBundle);
 
-        ledStripManager.procContainer.queueProcedure(rainbowProcedure);
+        updateModel.procedure = ProcedureType.Rainbow;
+        updateModel.bundle = ledDataBundle;
 
-        System.out.println(new Gson().toJson(rainbowProcedure));
+        RainbowMonoProcedure rainbowProcedure = new RainbowMonoProcedure(updateModel);
 
         /*MQTTListener listener = new MQTTListener(new IMqttCallback() {
             @Override
@@ -61,5 +64,7 @@ public class Main {
         }
 
         System.out.println("Ready");
+
+        ledStripManager.procContainer.queueProcedure(rainbowProcedure);
     }
 }

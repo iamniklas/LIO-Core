@@ -4,6 +4,7 @@ import com.github.iamniklas.interpolation.*;
 import com.github.iamniklas.liocore.led.LEDDataBundle;
 import com.github.iamniklas.liocore.led.LEDStripManager;
 import com.github.iamniklas.liocore.led.colorspace.LIOColor;
+import com.github.iamniklas.liocore.network.LEDUpdateModel;
 import com.github.iamniklas.liocore.procedures.Procedure;
 
 /**
@@ -20,11 +21,11 @@ public class FillStripInterpolatedProcedure extends Procedure {
     private LIOColor fillColor = new LIOColor(0, 0, 0);
     private InterpolationType interpolationType = InterpolationType.EaseInExpo;
 
-    public FillStripInterpolatedProcedure(LEDDataBundle _bundle) {
-        super(_bundle);
-        bundle = _bundle;
+    public FillStripInterpolatedProcedure(LEDUpdateModel _ledUpdateModel) {
+        super(_ledUpdateModel);
+        bundle = _ledUpdateModel.bundle;
 
-        fillColor = LIOColor.fromRGB(_bundle.colorPrimary);
+        fillColor = LIOColor.fromRGB(bundle.colorPrimary);
     }
 
     @Override
@@ -47,7 +48,7 @@ public class FillStripInterpolatedProcedure extends Procedure {
     }
 
     @Override
-    public void updateLEDDataBundle(LEDDataBundle bundle) {
+    public void updateLEDUpdateModel(LEDUpdateModel _ledUpdateModel) {
 
     }
 }
