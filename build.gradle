@@ -23,6 +23,7 @@ dependencies {
     implementation 'org.junit.jupiter:junit-jupiter:5.8.2'
     implementation group: 'io.javalin', name: 'javalin', version: '4.4.0'
     implementation group: 'org.slf4j', name: 'slf4j-log4j12', version: '1.7.29'
+    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.12.4'
 }
 
 test {
@@ -63,22 +64,3 @@ wrapper {
     gradleVersion = "6.1.1"
     distributionType = Wrapper.DistributionType.ALL
 }
-/*
-publishing {
-    publications {
-        maven(MavenPublication) {
-            groupId = 'com.github.iamniklas'
-            artifactId = 'LIO-Core'
-            from components.java
-        }
-    }
-    repositories {
-        maven {
-            url = "http://localhost:8082/artifactory/libs-release-local"
-                username = 'admin'
-                password = 'admin_123'
-            }
-        }
-    }
-}
-*/

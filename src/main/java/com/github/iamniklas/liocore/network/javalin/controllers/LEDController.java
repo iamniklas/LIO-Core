@@ -2,9 +2,12 @@ package com.github.iamniklas.liocore.network.javalin.controllers;
 
 import com.github.iamniklas.liocore.led.LEDStripManager;
 import com.github.iamniklas.liocore.network.LEDUpdateModel;
+import com.github.iamniklas.liocore.procedures.Procedure;
+import com.github.iamniklas.liocore.procedures.ProcedureFactory;
 import com.google.gson.Gson;
 import io.javalin.Javalin;
 
+import java.io.*;
 import java.lang.reflect.Field;
 
 public class LEDController extends ControllerBase {
@@ -23,7 +26,21 @@ public class LEDController extends ControllerBase {
         });
 
         _app.post("/led/procedure", ctx -> {
-            ctx.res.setStatus(501);
+            try {
+                LEDUpdateModel updateModel = new Gson().fromJson(ctx.body(), LEDUpdateModel.class);
+                updateModel.bundle.ledStrip = ledStripManager;
+                updateModel.bundle.procedureCalls = ledStripManager;
+                Procedure p = ProcedureFactory.getProcedure(updateModel);
+                ledStripManager.procContainer.replaceActiveProcedure(p);
+            }
+            catch (Exception e) {
+                StringWriter sw = new StringWriter();
+                PrintWriter pw = new PrintWriter(sw);
+                e.printStackTrace(pw);
+                String sStackTrace = sw.toString(); // stack trace as a string
+
+                ctx.result(sStackTrace);
+            }
         });
 
         _app.put("led/variables/{variable}", ctx -> {

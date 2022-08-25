@@ -19,6 +19,12 @@ public class ProcContainer {
             return null;
     }
 
+    public void replaceActiveProcedure(Procedure _procedure) {
+        removeCurrentProcedure();
+        procedures.add(_procedure);
+        _procedure.procCalls.onProcedureQueued();
+    }
+
     public void queueProcedure(Procedure _procedure) {
         procedures.add(_procedure);
         _procedure.procCalls.onProcedureQueued();
