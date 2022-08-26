@@ -34,7 +34,7 @@ public class ColorInstantSetProcedure extends Procedure implements Runnable {
     }
 
     @Override
-    public void updateLEDUpdateModel(LEDUpdateModel _ledUpdateModel) {
+    public void updateLEDDataBundle(LEDDataBundle ledDataBundle) {
 
     }
 

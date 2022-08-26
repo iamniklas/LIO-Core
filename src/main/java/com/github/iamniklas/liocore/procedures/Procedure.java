@@ -9,7 +9,6 @@ import com.github.iamniklas.liocore.network.LEDUpdateModel;
 public abstract class Procedure {
     public LEDUpdateModel ledUpdateModel;
     protected LEDStripManager strip;
-    protected LEDDataBundle dataBundle;
     public ProcedureCalls procCalls;
     protected int step = 0;
     protected int steps = 0;
@@ -19,21 +18,29 @@ public abstract class Procedure {
 
     public Procedure(LEDUpdateModel _updateModel) {
         ledUpdateModel = _updateModel;
-        dataBundle = _updateModel.bundle;
 
-        strip = dataBundle.ledStrip;
-        procCalls = dataBundle.procedureCalls;
-        if(dataBundle.puModulo != null) {
-            modulo = dataBundle.puModulo;
+        strip = ledUpdateModel.bundle.ledStrip;
+        procCalls = ledUpdateModel.bundle.procedureCalls;
+        if(ledUpdateModel.bundle.puModulo != null) {
+            modulo = ledUpdateModel.bundle.puModulo;
         }
-        if(dataBundle.puModuloInvert != null) {
-            moduloInvert = dataBundle.puModuloInvert;
+        if(ledUpdateModel.bundle.puModuloInvert != null) {
+            moduloInvert = ledUpdateModel.bundle.puModuloInvert;
         }
     }
 
     public void start() { procCalls.onProcedureStart(this); }
     public abstract void update();
-    public abstract void updateLEDUpdateModel(LEDUpdateModel ledUpdateModel);
+    public void updateLEDDataBundle(LEDDataBundle ledDataBundle) {
+        ledUpdateModel.bundle = ledDataBundle;
+
+        if(ledUpdateModel.bundle.puModulo != null) {
+            modulo = ledUpdateModel.bundle.puModulo;
+        }
+        if(ledUpdateModel.bundle.puModuloInvert != null) {
+            moduloInvert = ledUpdateModel.bundle.puModuloInvert;
+        }
+    }
 
     public void postUpdate() {
         if (modulo < 2) return;

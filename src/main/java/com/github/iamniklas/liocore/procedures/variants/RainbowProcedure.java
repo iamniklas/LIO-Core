@@ -10,15 +10,12 @@ import com.github.iamniklas.liocore.procedures.models.Direction;
 
 public class RainbowProcedure extends Procedure {
 
-    public LEDDataBundle bundle;
-
     public ColorHSV colorHSV = new ColorHSV(0, 1.0f, 1.0f);
     public float hueCounter = 0.0f;
     public float[] hueArrayCounter = new float[LEDStripManager.ledCount];
 
     public RainbowProcedure(LEDUpdateModel _ledUpdateModel) {
         super(_ledUpdateModel);
-        bundle = _ledUpdateModel.bundle;
 
         for (int i = 0; i < hueArrayCounter.length; i++) {
             hueArrayCounter[i] = Math.abs(i - 150);
@@ -32,39 +29,39 @@ public class RainbowProcedure extends Procedure {
 
     @Override
     public void update() {
-        switch (bundle.direction) {
+        switch (ledUpdateModel.bundle.direction) {
             case Center:
                 int i = 0;
                 while (i < hueArrayCounter.length) {
-                    hueArrayCounter[i] = hueArrayCounter[i] < 0 ? 360.0f : hueArrayCounter[i] - bundle.speed;
+                    hueArrayCounter[i] = hueArrayCounter[i] < 0 ? 360.0f : hueArrayCounter[i] - ledUpdateModel.bundle.speed;
                     i++;
                 }
                 break;
             case CenterInvert:
                 int j = 0;
                 while (j < hueArrayCounter.length) {
-                    hueArrayCounter[j] = hueArrayCounter[j] > 360 ? 0.0f : hueArrayCounter[j] + bundle.speed;
+                    hueArrayCounter[j] = hueArrayCounter[j] > 360 ? 0.0f : hueArrayCounter[j] + ledUpdateModel.bundle.speed;
                     j++;
                 }
                 break;
 
-            case Left: hueCounter = hueCounter > 360 ? 0.0f : hueCounter + bundle.speed; break;
-            case Right: hueCounter = hueCounter < 0 ? 360.0f : hueCounter - bundle.speed; break;
+            case Left: hueCounter = hueCounter > 360 ? 0.0f : hueCounter + ledUpdateModel.bundle.speed; break;
+            case Right: hueCounter = hueCounter < 0 ? 360.0f : hueCounter - ledUpdateModel.bundle.speed; break;
         }
 
         for (int i = 0; i < LEDStripManager.ledCount; i++) {
-            if(bundle.direction == Direction.Center || bundle.direction == Direction.CenterInvert) {
-                colorHSV.h = (int) (((i * (bundle.repetitions * (360.0f / LEDStripManager.ledCount))) + hueArrayCounter[i]) % 360);
+            if(ledUpdateModel.bundle.direction == Direction.Center || ledUpdateModel.bundle.direction == Direction.CenterInvert) {
+                colorHSV.h = (int) (((i * (ledUpdateModel.bundle.repetitions * (360.0f / LEDStripManager.ledCount))) + hueArrayCounter[i]) % 360);
                 strip.setPixel(i, LIOColor.fromHSV(colorHSV));
                 continue;
             }
-            colorHSV.h = (int) (((i * (bundle.repetitions * (360.0f / LEDStripManager.ledCount))) + hueCounter) % 360);
+            colorHSV.h = (int) (((i * (ledUpdateModel.bundle.repetitions * (360.0f / LEDStripManager.ledCount))) + hueCounter) % 360);
             strip.setPixel(i, LIOColor.fromHSV(colorHSV));
         }
     }
 
     @Override
-    public void updateLEDUpdateModel(LEDUpdateModel _ledUpdateModel) {
-        this.bundle = bundle;
+    public void updateLEDDataBundle(LEDDataBundle ledDataBundle) {
+        super.updateLEDDataBundle(ledDataBundle);
     }
 }

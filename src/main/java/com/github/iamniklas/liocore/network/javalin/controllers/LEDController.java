@@ -1,5 +1,6 @@
 package com.github.iamniklas.liocore.network.javalin.controllers;
 
+import com.github.iamniklas.liocore.led.LEDDataBundle;
 import com.github.iamniklas.liocore.led.LEDStripManager;
 import com.github.iamniklas.liocore.network.LEDUpdateModel;
 import com.github.iamniklas.liocore.procedures.Procedure;
@@ -43,10 +44,6 @@ public class LEDController extends ControllerBase {
             }
         });
 
-        _app.put("led/variables/{variable}", ctx -> {
-            ctx.res.setStatus(501);
-        });
-
         _app.get("/led/procedure/all", ctx -> {
             if(ledStripManager.procContainer.getActiveProcedure() != null) {
                 ctx.result(new Gson().toJson(ledStripManager.procContainer.getActiveProcedure().ledUpdateModel));
@@ -78,9 +75,8 @@ public class LEDController extends ControllerBase {
         });
 
         _app.put("/led/variables/all", ctx -> {
-            LEDUpdateModel ledUpdateModel = ctx.bodyAsClass(LEDUpdateModel.class);
-            ledStripManager.procContainer.getActiveProcedure().updateLEDUpdateModel(ledUpdateModel);
-            ctx.res.setStatus(501);
+            LEDDataBundle ledDataBundle = new Gson().fromJson(ctx.body(), LEDDataBundle.class);
+            ledStripManager.procContainer.getActiveProcedure().updateLEDDataBundle(ledDataBundle);
         });
     }
 }

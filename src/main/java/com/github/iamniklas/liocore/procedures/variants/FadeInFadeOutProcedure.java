@@ -52,7 +52,7 @@ public class FadeInFadeOutProcedure extends Procedure {
     }
 
     @Override
-    public void updateLEDUpdateModel(LEDUpdateModel _ledUpdateModel) {
+    public void updateLEDDataBundle(LEDDataBundle ledDataBundle) {
 
     }
 }
