@@ -15,7 +15,7 @@ public class DeviceController extends ControllerBase {
         });
 
         _app.get("device/name", ctx -> {
-           ctx.result(ProgramConfiguration.configuration.mqttDeviceName);
+           ctx.result(ProgramConfiguration.configuration.deviceName);
         });
 
         _app.get("/device/info/{field}", ctx -> {

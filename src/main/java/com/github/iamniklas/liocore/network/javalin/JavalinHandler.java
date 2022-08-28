@@ -8,7 +8,10 @@ import io.javalin.Javalin;
 import java.util.ArrayList;
 
 public class JavalinHandler {
-    public static int JAVALIN_PORT = 5700;
+    public static final int JAVALIN_PORT = 5700;
+
+    public static final int ECHO_SUCCESS_CODE = 418;
+
     private Javalin app;
 
     private final ArrayList<ControllerBase> controllers = new ArrayList<>();

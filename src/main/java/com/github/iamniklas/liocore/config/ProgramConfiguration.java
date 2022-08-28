@@ -6,11 +6,13 @@ import java.io.IOException;
 import java.util.Properties;
 
 public class ProgramConfiguration {
+    //Device Configuration
+    public final String deviceName; //former mqttDeviceName
+
     //MQTT Configuration
     public final String mqttUser;
     public final String mqttPassword;
     public final String mqttBrokerAddress;
-    public final String mqttDeviceName;
     public final int mqttConnectionTimeout;
     public final boolean mqttAutomaticReconnect;
     public final boolean mqttCleanSession;
@@ -26,7 +28,7 @@ public class ProgramConfiguration {
     public final boolean clearOnExit;
     public final int frametime;
 
-    //Android Specific Configuraiton
+    //Android Specific Configuration
     public final boolean useSpotifyIntegration;
 
     public ProgramConfiguration(String _user,
@@ -35,7 +37,7 @@ public class ProgramConfiguration {
         mqttUser = _user;
         mqttPassword = _psw;
         mqttBrokerAddress = _brokerAddress;
-        mqttDeviceName = null;
+        deviceName = null;
         mqttConnectionTimeout = 5;
         mqttAutomaticReconnect = true;
         mqttCleanSession = true;
@@ -61,7 +63,7 @@ public class ProgramConfiguration {
         mqttUser = _user;
         mqttPassword = _psw;
         mqttBrokerAddress = _brokerAddress;
-        mqttDeviceName = null;
+        deviceName = null;
         mqttConnectionTimeout = _connectionTimeout;
         mqttAutomaticReconnect = true;
         mqttCleanSession = true;
@@ -98,7 +100,7 @@ public class ProgramConfiguration {
         mqttUser = _user;
         mqttPassword = _psw;
         mqttBrokerAddress = _brokerAddress;
-        mqttDeviceName = _deviceName;
+        deviceName = _deviceName;
         mqttConnectionTimeout = _connectionTimeout;
         mqttAutomaticReconnect = _automaticReconnect;
         mqttCleanSession = _cleanSession;
@@ -130,23 +132,37 @@ public class ProgramConfiguration {
         }
 
         return new ProgramConfiguration(
-                prop.getProperty("mqtt.user", "lio"),
-                prop.getProperty("mqtt.password", null),
-                prop.getProperty("mqtt.brokeraddress", null),
-                prop.getProperty("mqtt.devicename", null),
-                Integer.parseInt(prop.getProperty("mqtt.connectiontimeout", "10")),
-                Boolean.parseBoolean(prop.getProperty("mqtt.automaticreconnect", "true")),
-                Boolean.parseBoolean(prop.getProperty("mqtt.cleansession", "true")),
+                getConfigurationField(prop, "mqtt.user"),
+                getConfigurationField(prop, "mqtt.password"),
+                getConfigurationField(prop, "mqtt.brokeraddress"),
 
-                Integer.parseInt(prop.getProperty("led.ledcount", null)),
-                Integer.parseInt(prop.getProperty("led.gpiopin", "18")),
-                Integer.parseInt(prop.getProperty("led.frequency", "800000")),
-                Integer.parseInt(prop.getProperty("led.dma", "10")),
-                Integer.parseInt(prop.getProperty("led.brightness", "255")),
-                Integer.parseInt(prop.getProperty("led.pwmChannel", "18")),
-                Boolean.parseBoolean(prop.getProperty("led.invert", "false")),
-                Boolean.parseBoolean(prop.getProperty("led.clearonexit", "true")),
-                Integer.parseInt(prop.getProperty("led.frametime", "16"))
+                getConfigurationField(prop, "device.devicename"),
+
+                Integer.parseInt(getConfigurationField(prop, "mqtt.connectiontimeout")),
+                Boolean.parseBoolean(getConfigurationField(prop, "mqtt.automaticreconnect")),
+                Boolean.parseBoolean(getConfigurationField(prop, "mqtt.cleansession")),
+
+                Integer.parseInt(getConfigurationField(prop, "led.ledcount")),
+                Integer.parseInt(getConfigurationField(prop, "led.gpiopin")),
+                Integer.parseInt(getConfigurationField(prop, "led.frequency")),
+                Integer.parseInt(getConfigurationField(prop, "led.dma")),
+                Integer.parseInt(getConfigurationField(prop, "led.brightness")),
+                Integer.parseInt(getConfigurationField(prop, "led.pwmChannel")),
+                Boolean.parseBoolean(getConfigurationField(prop, "led.invert")),
+                Boolean.parseBoolean(getConfigurationField(prop, "led.clearonexit")),
+                Integer.parseInt(getConfigurationField(prop, "led.frametime"))
         );
+    }
+
+    private static String getConfigurationField(Properties _properties, String _propertyKey) {
+        String propertyValue = _properties.getProperty(_propertyKey, null);
+
+        if(propertyValue == null) {
+            System.err.println("WARNING: Property Field Value of " + _propertyKey + " is null and so not set in the program configuration file");
+            System.err.println("The program might not run as expected");
+            System.err.println();
+        }
+
+        return propertyValue;
     }
 }

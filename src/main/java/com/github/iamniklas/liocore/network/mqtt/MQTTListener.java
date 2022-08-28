@@ -19,7 +19,7 @@ public class MQTTListener implements MqttCallback {
 
         System.out.println("---------------");
         System.out.println("---MQTT Integration---");
-        System.out.println("Device Name: " + ProgramConfiguration.configuration.mqttDeviceName);
+        System.out.println("Device Name: " + ProgramConfiguration.configuration.deviceName);
         System.out.println("---------------");
         System.out.println("Send procedure update to this device:   " + Topics.UPDATE_LISTEN);
         System.out.println("Send procedure update to all devices:   " + Topics.UPDATE_ALL_LISTEN_PUBLISH);
@@ -72,7 +72,7 @@ public class MQTTListener implements MqttCallback {
     }
 
     public String getDeviceIdentifier() {
-        return ProgramConfiguration.configuration.mqttDeviceName;
+        return ProgramConfiguration.configuration.deviceName;
     }
 
     //Integrated Mqtt Callback Interface
