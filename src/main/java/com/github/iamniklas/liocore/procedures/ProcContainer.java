@@ -20,7 +20,7 @@ public class ProcContainer {
     }
 
     public void replaceActiveProcedure(Procedure _procedure) {
-        removeCurrentProcedure();
+        removeAllCurrentProcedures();
         procedures.add(_procedure);
         _procedure.procCalls.onProcedureQueued();
     }
@@ -37,6 +37,10 @@ public class ProcContainer {
         if(procedures.size() > 0) {
             procedures.get(0).procCalls.onProcedureStart(procedures.get(0));
         }
+    }
+
+    public void removeAllCurrentProcedures() {
+        procedures.clear();
     }
 
     public void update() {

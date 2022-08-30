@@ -35,12 +35,7 @@ public class LEDController extends ControllerBase {
                 ledStripManager.procContainer.replaceActiveProcedure(p);
             }
             catch (Exception e) {
-                StringWriter sw = new StringWriter();
-                PrintWriter pw = new PrintWriter(sw);
-                e.printStackTrace(pw);
-                String sStackTrace = sw.toString(); // stack trace as a string
-
-                ctx.result(sStackTrace);
+                e.printStackTrace();
             }
         });
 
@@ -75,8 +70,14 @@ public class LEDController extends ControllerBase {
         });
 
         _app.put("/led/variables/all", ctx -> {
-            LEDDataBundle ledDataBundle = new Gson().fromJson(ctx.body(), LEDDataBundle.class);
-            ledStripManager.procContainer.getActiveProcedure().updateLEDDataBundle(ledDataBundle);
+            try {
+                String body = ctx.body();
+                LEDDataBundle ledDataBundle = new Gson().fromJson(body, LEDDataBundle.class);
+                ledStripManager.procContainer.getActiveProcedure().updateLEDDataBundle(ledDataBundle);
+            }
+            catch(Exception e) {
+                e.printStackTrace();
+            }
         });
     }
 }

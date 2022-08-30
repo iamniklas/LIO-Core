@@ -10,6 +10,7 @@ import com.github.iamniklas.liocore.network.javalin.models.JavalinScanResult;
 import com.github.iamniklas.liocore.procedures.ProcedureFactory;
 import com.github.iamniklas.liocore.procedures.ProcedureType;
 import com.github.iamniklas.liocore.procedures.models.Direction;
+import com.google.common.xml.XmlEscapers;
 import com.google.gson.Gson;
 import org.junit.jupiter.api.AfterEach;
 import static org.junit.jupiter.api.Assertions.*;
@@ -17,11 +18,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
+import java.io.*;
+import java.net.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -74,11 +72,30 @@ public class JavalinTests {
      *****************************************TEST CASES FOR LED CONTROLLER********************************************
      ******************************************************************************************************************/
 
-    // TODO POST /led/procedure/
+    // POST /led/procedure/
     @Test
     public void testPostNewProcedure() {
         resetLEDStatus();
-        throw new NotImplementedException();
+
+        LEDUpdateModel ledUpdateModel = new LEDUpdateModel();
+
+        LEDDataBundle ledDataBundle = new LEDDataBundle();
+        ledDataBundle.speed = 3.0f;
+        ledDataBundle.puModulo = 2;
+        ledDataBundle.puModuloInvert = true;
+
+        ProcedureType procedureType = ProcedureType.RainbowMono;
+
+        ledUpdateModel.bundle = ledDataBundle;
+        ledUpdateModel.procedure = procedureType;
+
+        HttpResult request = executePostRequest("http://localhost:5700/led/procedure/", new Gson().toJson(ledUpdateModel));
+
+        assertNotNull(request);
+        assertEquals(ledUpdateModel.procedure, ledStripManager.procContainer.getActiveProcedure().ledUpdateModel.procedure);
+        assertEquals(ledUpdateModel.bundle.speed, ledStripManager.procContainer.getActiveProcedure().ledUpdateModel.bundle.speed);
+        assertEquals(ledUpdateModel.bundle.puModulo, ledStripManager.procContainer.getActiveProcedure().ledUpdateModel.bundle.puModulo);
+        assertEquals(ledUpdateModel.bundle.puModuloInvert, ledStripManager.procContainer.getActiveProcedure().ledUpdateModel.bundle.puModuloInvert);
     }
 
     // GET /led/procedure/
@@ -120,11 +137,22 @@ public class JavalinTests {
         System.out.println("Test 'Get All Variables' passed");
     }
 
-    // TODO PUT /led/variables/all/
+    // PUT /led/variables/all/
     @Test
     public void testUpdateVariablesOfActiveProcedure() {
         resetLEDStatus();
-        throw new NotImplementedException();
+        LEDDataBundle ledDataBundle = new LEDDataBundle();
+        ledDataBundle.speed = 2f;
+        ledDataBundle.puModulo = 30;
+        ledDataBundle.puModuloInvert = true;
+        ledDataBundle.direction = Direction.Left;
+        ledDataBundle.repetitions = 3.2f;
+
+        HttpResult result = executePutRequest("http://localhost:5700/led/variables/all/", new Gson().toJson(ledDataBundle));
+        assertNotNull(result);
+        assertEquals(ledDataBundle.speed, ledStripManager.procContainer.getActiveProcedure().ledUpdateModel.bundle.speed);
+        assertEquals(ledDataBundle.puModulo, ledStripManager.procContainer.getActiveProcedure().ledUpdateModel.bundle.puModulo);
+        assertEquals(ledDataBundle.repetitions, ledStripManager.procContainer.getActiveProcedure().ledUpdateModel.bundle.repetitions);
     }
 
 
@@ -201,14 +229,71 @@ public class JavalinTests {
         }
     }
 
-    private HttpResult executePostRequest() {
-        throw new NotImplementedException();
+    private HttpResult executePostRequest(String _url, String _body) {
+        URL url = null;
+        int statusCode = 0;
+        StringBuilder content = new StringBuilder();
+        try {
+            url = new URL(_url);
+            URLConnection con = url.openConnection();
+            HttpURLConnection http = (HttpURLConnection)con;
+            http.setRequestMethod("POST");
+            http.setDoOutput(true);
+            OutputStreamWriter osw = new OutputStreamWriter(http.getOutputStream(), "UTF-8");
+            osw.write(_body);
+            osw.flush();
+            osw.close();
+
+            statusCode = http.getResponseCode();
+
+            if(http.getResponseCode() == 200) {
+                BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
+                String inputLine;
+                while ((inputLine = in.readLine()) != null) {
+                    content.append(inputLine);
+                }
+                in.close();
+            }
+        } catch (IOException e) {
+            statusCode = -1;
+            e.printStackTrace();
+        }
+
+        return new HttpResult(statusCode, content.toString());
     }
 
-    private HttpResult executePutRequest() {
-        throw new NotImplementedException();
-    }
+    private HttpResult executePutRequest(String _url, String _body) {
+        URL url = null;
+        int statusCode = 0;
+        StringBuilder content = new StringBuilder();
+        try {
+            url = new URL(_url);
+            URLConnection con = url.openConnection();
+            HttpURLConnection http = (HttpURLConnection)con;
+            http.setRequestMethod("PUT");
+            http.setDoOutput(true);
+            OutputStreamWriter osw = new OutputStreamWriter(http.getOutputStream(), "UTF-8");
+            osw.write(_body);
+            osw.flush();
+            osw.close();
 
+            statusCode = http.getResponseCode();
+
+            if(http.getResponseCode() == 200) {
+                BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
+                String inputLine;
+                while ((inputLine = in.readLine()) != null) {
+                    content.append(inputLine);
+                }
+                in.close();
+            }
+        } catch (IOException e) {
+            statusCode = -1;
+            e.printStackTrace();
+        }
+
+        return new HttpResult(statusCode, content.toString());
+    }
 
     private void resetLEDStatus() {
         LEDDataBundle ledDataBundle = new LEDDataBundle();
