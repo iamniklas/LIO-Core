@@ -2,6 +2,7 @@ package com.github.iamniklas.liocore.network.mqtt;
 
 import com.github.iamniklas.liocore.config.ProgramConfiguration;
 
+@Deprecated
 public class Topics {
     public final static String UPDATE_LISTEN = "/led/update/" + ProgramConfiguration.configuration.deviceName;
     public final static String UPDATE_PUBLISH = "/led/update";

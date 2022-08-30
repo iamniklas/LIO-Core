@@ -8,6 +8,7 @@ import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
 
 import java.util.UUID;
 
+@Deprecated
 public class MQTTListener implements MqttCallback {
     String clientID = UUID.randomUUID().toString();
     IMqttClient mqttClient = null;

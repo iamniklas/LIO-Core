@@ -6,6 +6,7 @@ import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
 
 import java.util.UUID;
 
+@Deprecated
 public class MQTTPublisher {
 
     private final MemoryPersistence persistence = new MemoryPersistence();

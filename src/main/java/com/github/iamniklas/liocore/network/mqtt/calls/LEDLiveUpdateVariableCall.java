@@ -8,6 +8,7 @@ import org.eclipse.paho.client.mqttv3.MqttMessage;
 
 import java.util.concurrent.Callable;
 
+@Deprecated
 public class LEDLiveUpdateVariableCall implements Callable<Void> {
 
     private final IMqttClient client;
