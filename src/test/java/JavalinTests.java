@@ -10,8 +10,9 @@ import com.github.iamniklas.liocore.network.javalin.models.JavalinScanResult;
 import com.github.iamniklas.liocore.procedures.ProcedureFactory;
 import com.github.iamniklas.liocore.procedures.ProcedureType;
 import com.github.iamniklas.liocore.procedures.models.Direction;
+import com.google.gson.Gson;
 import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.Assertions;
+import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
@@ -24,7 +25,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class JavalinTest {
+public class JavalinTests {
 
     JavalinHandler javalinHandler;
 
@@ -60,20 +61,20 @@ public class JavalinTest {
             System.out.println("Device IPs: " + Arrays.toString(result.detectedIps));
         }
 
-        Assertions.assertNull(result.networkSSID);
+        assertNull(result.networkSSID);
         System.out.println(result.scanClientIp);
         //Scan Client Ip: 192.168.178.71
-        Assertions.assertTrue(result.detectedIps.length > 0);
-        Assertions.assertEquals(result.scanRange, "192.168.178.");
-        Assertions.assertEquals(result.scanDuration, result.scanFinish - result.scanStart);
+        assertTrue(result.detectedIps.length > 0);
+        assertEquals(result.scanRange, "192.168.178.");
+        assertEquals(result.scanDuration, result.scanFinish - result.scanStart);
     }
 
 
-    /******************************************************************************************************************/
-    /*****************************************TEST CASES FOR LED CONTROLLER********************************************/
-    /******************************************************************************************************************/
+    /******************************************************************************************************************
+     *****************************************TEST CASES FOR LED CONTROLLER********************************************
+     ******************************************************************************************************************/
 
-    // POST /led/procedure/
+    // TODO POST /led/procedure/
     @Test
     public void testPostNewProcedure() {
         resetLEDStatus();
@@ -84,40 +85,42 @@ public class JavalinTest {
     @Test
     public void testGetActiveProcedure() {
         resetLEDStatus();
-        Assertions.assertEquals(
-                "Rainbow",
-                executeGetRequest("localhost:5700/led/procedure/").message
+        HttpResult request = executeGetRequest("http://localhost:5700/led/procedure/");
+        assertNotNull(request);
+        assertEquals(
+                new Gson().toJson(ledStripManager.procContainer.getActiveProcedure().ledUpdateModel.procedure),
+                request.message
         );
+        System.out.println("Test 'Get Active Procedure' passed");
     }
 
     // GET /led/procedure/all
     @Test
     public void testGetActiveProcedureComplete() {
         resetLEDStatus();
-        Assertions.assertEquals(
-                "{\"procedure\": \"Rainbow\", \"bundle\":{\"speed\": 1, \"pu_modulo\": 5, \"pu_modulo_invert\": true, \"direction\": \"Left\", \"repetitions\": 1.6}}",
-                executeGetRequest("http://localhost:5700/led/procedure/all/").message
+        HttpResult request = executeGetRequest("http://localhost:5700/led/procedure/all/");
+        assertNotNull(request);
+        assertEquals(
+                new Gson().toJson(ledStripManager.procContainer.getActiveProcedure().ledUpdateModel),
+                request.message
         );
+        System.out.println("Test 'Get Complete Active Procedure' passed");
     }
 
     // GET /led/variables/
     @Test
     public void testGetAllVariables() {
         resetLEDStatus();
-        Assertions.assertEquals(
-                "{\"speed\": 1, \"pu_modulo\": 5, \"pu_modulo_invert\": true, \"direction\": \"Left\", \"repetitions\": 1.6}",
-                executeGetRequest("http://localhost:5700/led/variables/").message
+        HttpResult request = executeGetRequest("http://localhost:5700/led/variables/");
+        assertNotNull(request);
+        assertEquals(
+                new Gson().toJson(ledStripManager.procContainer.getActiveProcedure().ledUpdateModel.bundle),
+                request.message
         );
+        System.out.println("Test 'Get All Variables' passed");
     }
 
-    // GET /led/procedure/variables/{variable_name}/
-    @Test
-    public void testGetSingleVariable() {
-        resetLEDStatus();
-        throw new NotImplementedException();
-    }
-
-    // PUT /led/variables/all/
+    // TODO PUT /led/variables/all/
     @Test
     public void testUpdateVariablesOfActiveProcedure() {
         resetLEDStatus();
@@ -125,34 +128,34 @@ public class JavalinTest {
     }
 
 
-    /******************************************************************************************************************/
-    /****************************************TEST CASES FOR DEVICE CONTROLLER******************************************/
-    /******************************************************************************************************************/
+    /******************************************************************************************************************
+     ****************************************TEST CASES FOR DEVICE CONTROLLER******************************************
+     ******************************************************************************************************************/
 
     // GET /device/name
     @Test
     public void testGetDeviceName() {
         resetLEDStatus();
         HttpResult request = executeGetRequest("http://localhost:5700/device/name/");
-        Assertions.assertNotNull(request);
-        Assertions.assertEquals(
+        assertNotNull(request);
+        assertEquals(
                 ProgramConfiguration.configuration.deviceName,
                 request.message
         );
-    }
-
-    // GET /device/info/{field_name}/
-    @Test
-    public void testGetSingleConfigurationVariable() {
-        resetLEDStatus();
-        throw new NotImplementedException();
+        System.out.println("Test 'Get Device Name' passed");
     }
 
     // GET /device/info/
     @Test
     public void testGetCompleteDeviceConfiguration() {
         resetLEDStatus();
-        throw new NotImplementedException();
+        HttpResult request = executeGetRequest("http://localhost:5700/device/info/");
+        assertNotNull(request);
+        assertEquals(
+                new Gson().toJson(ProgramConfiguration.configuration),
+                request.message
+        );
+        System.out.println("Test 'Get Complete Device Configuration' passed");
     }
 
     // GET /device/echo/
@@ -160,17 +163,18 @@ public class JavalinTest {
     public void testGetEcho() {
         resetLEDStatus();
         HttpResult request = executeGetRequest("http://localhost:5700/device/echo/");
-        Assertions.assertNotNull(request);
-        Assertions.assertEquals(
+        assertNotNull(request);
+        assertEquals(
                 JavalinHandler.ECHO_SUCCESS_CODE,
                 request.statusCode
         );
+        System.out.println("Test 'Get Echo' passed");
     }
 
 
-    /******************************************************************************************************************/
-    /****************************************HELPER METHODS FOR HTTP REQUESTS******************************************/
-    /******************************************************************************************************************/
+    /******************************************************************************************************************
+     ****************************************HELPER METHODS FOR HTTP REQUESTS******************************************
+     ******************************************************************************************************************/
 
     private HttpResult executeGetRequest(String _url) {
         try {
@@ -180,16 +184,19 @@ public class JavalinTest {
             con.setRequestMethod("GET");
             con.setConnectTimeout(150);
 
-            BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
-            String inputLine;
-            StringBuffer content = new StringBuffer();
-            while ((inputLine = in.readLine()) != null) {
-                content.append(inputLine);
+            StringBuilder content = new StringBuilder();
+            if(con.getResponseCode() == 200) {
+                BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
+                String inputLine;
+                while ((inputLine = in.readLine()) != null) {
+                    content.append(inputLine);
+                }
+                in.close();
             }
-            in.close();
 
             return new HttpResult(con.getResponseCode(), content.toString());
         } catch (IOException eof) {
+            eof.printStackTrace();
             return null;
         }
     }
@@ -220,9 +227,7 @@ public class JavalinTest {
         public int statusCode;
         public String message;
 
-        public HttpResult() {
-
-        }
+        public HttpResult() { }
 
         public HttpResult(int statusCode, String message) {
             this.statusCode = statusCode;
