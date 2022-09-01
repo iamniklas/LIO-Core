@@ -12,7 +12,6 @@
     <list default="true" id="e78498bb-5fd8-4fc1-8653-b011d9d466e4" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/network/javalin/controllers/LEDController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/network/javalin/controllers/LEDController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/procedures/ProcContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/procedures/ProcContainer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/JavalinTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/JavalinTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -286,31 +285,6 @@
           <url>file://$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/network/javalin/controllers/DeviceController.java</url>
           <line>17</line>
           <option name="timeStamp" value="4" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/network/javalin/controllers/LEDController.java</url>
-          <line>37</line>
-          <option name="timeStamp" value="13" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/network/javalin/controllers/LEDController.java</url>
-          <line>34</line>
-          <option name="timeStamp" value="14" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/procedures/ProcContainer.java</url>
-          <line>24</line>
-          <option name="timeStamp" value="15" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/procedures/ProcContainer.java</url>
-          <line>22</line>
-          <option name="timeStamp" value="16" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/procedures/ProcContainer.java</url>
-          <line>33</line>
-          <option name="timeStamp" value="17" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

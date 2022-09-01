@@ -10,13 +10,11 @@ import com.github.iamniklas.liocore.network.javalin.models.JavalinScanResult;
 import com.github.iamniklas.liocore.procedures.ProcedureFactory;
 import com.github.iamniklas.liocore.procedures.ProcedureType;
 import com.github.iamniklas.liocore.procedures.models.Direction;
-import com.google.common.xml.XmlEscapers;
 import com.google.gson.Gson;
 import org.junit.jupiter.api.AfterEach;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.io.*;
 import java.net.*;
@@ -148,7 +146,7 @@ public class JavalinTests {
         ledDataBundle.direction = Direction.Left;
         ledDataBundle.repetitions = 3.2f;
 
-        HttpResult result = executePutRequest("http://localhost:5700/led/variables/all/", new Gson().toJson(ledDataBundle));
+        HttpResult result = executePutRequest("http://localhost:5700/led/variables/", new Gson().toJson(ledDataBundle));
         assertNotNull(result);
         assertEquals(ledDataBundle.speed, ledStripManager.procContainer.getActiveProcedure().ledUpdateModel.bundle.speed);
         assertEquals(ledDataBundle.puModulo, ledStripManager.procContainer.getActiveProcedure().ledUpdateModel.bundle.puModulo);

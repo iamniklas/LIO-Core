@@ -57,19 +57,7 @@ public class LEDController extends ControllerBase {
             }
         });
 
-        _app.get("/led/variables/{variable}", ctx -> {
-            try {
-                Field field = ledStripManager.procContainer.getActiveProcedure().ledUpdateModel.bundle.getClass().getDeclaredField(ctx.pathParam("variable"));
-                field.setAccessible(true);
-                Object value = field.get(ledStripManager.procContainer.getActiveProcedure().ledUpdateModel.bundle);
-                ctx.result(value.toString());
-            }
-            catch (Exception e) {
-                ctx.result("null");
-            }
-        });
-
-        _app.put("/led/variables/all", ctx -> {
+        _app.put("/led/variables/", ctx -> {
             try {
                 String body = ctx.body();
                 LEDDataBundle ledDataBundle = new Gson().fromJson(body, LEDDataBundle.class);
