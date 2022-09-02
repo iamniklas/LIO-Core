@@ -32,7 +32,9 @@ public class LEDStripManager implements ProcedureCalls {
         try {
             Thread.sleep(ProgramConfiguration.configuration.frametime);
         }
-        catch (InterruptedException ignored) {}
+        catch (InterruptedException ie) {
+            ie.printStackTrace();
+        }
     }
 
     public void setPixel(int _index, LIOColor _color) {

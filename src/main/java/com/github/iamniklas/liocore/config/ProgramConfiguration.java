@@ -1,5 +1,8 @@
 package com.github.iamniklas.liocore.config;
 
+import com.github.iamniklas.liocore.network.LEDUpdateModel;
+import com.google.gson.Gson;
+
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -27,6 +30,7 @@ public class ProgramConfiguration {
     public final boolean invert;
     public final boolean clearOnExit;
     public final int frametime;
+    public final LEDUpdateModel startingProcedure;
 
     //Android Specific Configuration
     public final boolean useSpotifyIntegration;
@@ -51,6 +55,7 @@ public class ProgramConfiguration {
         invert = false;
         clearOnExit = false;
         frametime = 0;
+        startingProcedure = null;
 
         useSpotifyIntegration = false;
     }
@@ -77,6 +82,7 @@ public class ProgramConfiguration {
         invert = false;
         clearOnExit = false;
         frametime = 0;
+        startingProcedure = null;
 
         useSpotifyIntegration = _useSpotifyIntegration;
     }
@@ -96,7 +102,8 @@ public class ProgramConfiguration {
                                 int _pwmChannel,
                                 boolean _invert,
                                 boolean _clearOnExit,
-                                int _frametime) {
+                                int _frametime,
+                                LEDUpdateModel _startingProcedure) {
         mqttUser = _user;
         mqttPassword = _psw;
         mqttBrokerAddress = _brokerAddress;
@@ -114,6 +121,7 @@ public class ProgramConfiguration {
         invert = _invert;
         clearOnExit = _clearOnExit;
         frametime = _frametime;
+        startingProcedure = _startingProcedure;
 
         useSpotifyIntegration = false;
     }
@@ -147,10 +155,11 @@ public class ProgramConfiguration {
                 Integer.parseInt(getConfigurationField(prop, "led.frequency")),
                 Integer.parseInt(getConfigurationField(prop, "led.dma")),
                 Integer.parseInt(getConfigurationField(prop, "led.brightness")),
-                Integer.parseInt(getConfigurationField(prop, "led.pwmChannel")),
+                Integer.parseInt(getConfigurationField(prop, "led.pwmchannel")),
                 Boolean.parseBoolean(getConfigurationField(prop, "led.invert")),
                 Boolean.parseBoolean(getConfigurationField(prop, "led.clearonexit")),
-                Integer.parseInt(getConfigurationField(prop, "led.frametime"))
+                Integer.parseInt(getConfigurationField(prop, "led.frametime")),
+                new Gson().fromJson(getConfigurationField(prop, "led.startingprocedure"), LEDUpdateModel.class)
         );
     }
 
