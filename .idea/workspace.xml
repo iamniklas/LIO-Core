@@ -10,12 +10,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e78498bb-5fd8-4fc1-8653-b011d9d466e4" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/runner/LIOCompatibilityRunner.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/runner/LIODefaultRunner.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/runner/Runner.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/config/ProgramConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/config/ProgramConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/led/LEDStripManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/led/LEDStripManager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

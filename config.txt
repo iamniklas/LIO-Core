@@ -1,5 +1,3 @@
-device.devicename=devicename
-
 mqtt.user=lio
 mqtt.password=8kNhtmUG6kmUm3djdEE7MXmvAg4662
 mqtt.brokeraddress=tcp://192.168.178.10:1883
@@ -7,12 +5,15 @@ mqtt.connectiontimeout=15
 mqtt.automaticreconnect=true
 mqtt.cleansession=true
 
+device.devicename=devicename
+
 led.ledcount=300
 led.gpiopin=18
 led.frequency=800000
 led.dma=10
 led.brightness=255
-led.pwmChannel=18
+led.pwmchannel=18
 led.invert=false
 led.clearonexit=true
 led.frametime=16
+led.startingprocedure={"procedure": "BootComplete", "bundle":{}}
