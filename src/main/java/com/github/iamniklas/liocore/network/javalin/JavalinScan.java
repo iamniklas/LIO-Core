@@ -2,8 +2,8 @@ package com.github.iamniklas.liocore.network.javalin;
 
 import com.github.iamniklas.liocore.network.javalin.models.JavalinScanResult;
 
-import java.io.EOFException;
-import java.io.IOException;
+import javax.xml.crypto.Data;
+import java.io.*;
 import java.math.BigInteger;
 import java.net.*;
 import java.util.ArrayList;
@@ -20,6 +20,7 @@ public class JavalinScan {
         long measureFinish;
 
         ArrayList<String> deviceIps = new ArrayList<String>();
+        ArrayList<String> deviceNames = new ArrayList<String>();
 
         try(final DatagramSocket socket = new DatagramSocket()){
             socket.connect(InetAddress.getByName("8.8.8.8"), 10002);
@@ -31,14 +32,16 @@ public class JavalinScan {
             measureStart = System.currentTimeMillis();
             for (int i = 1; i < 256; i++) {
                 String ipToTest = networkScanRange + i;
-                if(deviceWithIp(ipToTest)) {
+                String deviceWithIp = deviceWithIp(ipToTest);
+                if(deviceWithIp != null) {
+                    deviceNames.add(deviceWithIp);
                     deviceIps.add(ipToTest);
                     foundDevices++;
                 }
             }
             measureFinish = System.currentTimeMillis();
 
-            return new JavalinScanResult(scanClientIp, deviceIps.toArray(new String[0]), networkScanRange, measureStart, measureFinish, measureFinish - measureStart);
+            return new JavalinScanResult(scanClientIp, deviceNames.toArray(new String[0]), deviceIps.toArray(new String[0]), networkScanRange, measureStart, measureFinish, measureFinish - measureStart);
         } catch (SocketException | UnknownHostException e) {
             e.printStackTrace();
         }
@@ -46,23 +49,24 @@ public class JavalinScan {
         return null;
     }
 
-    private boolean deviceWithIp(String ip) {
+    private String deviceWithIp(String ip) {
         URL url = null;
         try {
-            url = new URL("http://" + ip + ":5700/device/echo");
+            url = new URL("http://" + ip + ":5700/device/name");
             HttpURLConnection con = null;
             con = (HttpURLConnection) url.openConnection();
             con.setRequestMethod("GET");
             con.setConnectTimeout(150);
-            return con.getResponseCode() == 418;
+            return new BufferedReader(new InputStreamReader(con.getInputStream())).readLine();
         }
         catch (EOFException eof) {
             System.err.println("Device with ip " + ip +" found, but error reading stream");
-            return false;
+            eof.printStackTrace();
+            return null;
         }
         catch (IOException e) {
             //System.err.println("No Device found with ip " + ip);
-            return false;
+            return null;
         }
     }
 }

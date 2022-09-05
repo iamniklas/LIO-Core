@@ -35,7 +35,7 @@ public class JavalinTests {
 
             }
         }, 300);
-        ProgramConfiguration.configuration = new ProgramConfiguration(null, null, null, "Test Device", 0, false, false, 300, 18, 80000, 1, 255, 0, false, true, 25);
+        ProgramConfiguration.configuration = new ProgramConfiguration(null, null, null, "test_config", 0, false, false, 300, 18, 80000, 1, 255, 0, false, true, 25, null);
         javalinHandler = new JavalinHandler(ledStripManager, ProgramConfiguration.configuration);
         resetLEDStatus();
     }

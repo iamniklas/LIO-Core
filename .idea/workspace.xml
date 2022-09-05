@@ -11,7 +11,9 @@
   <component name="ChangeListManager">
     <list default="true" id="e78498bb-5fd8-4fc1-8653-b011d9d466e4" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/led/LEDStripManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/led/LEDStripManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/network/javalin/JavalinScan.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/network/javalin/JavalinScan.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/network/javalin/models/JavalinScanResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/network/javalin/models/JavalinScanResult.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/JavalinTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/JavalinTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -123,7 +125,7 @@
       <recent name="com.github.iamniklas.liocore.tests" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Default">
+  <component name="RunManager" selected="Gradle.JavalinTests.testDeviceScanner">
     <configuration name="Default" type="Application" factoryName="Application">
       <option name="ALTERNATIVE_JRE_PATH" value="1.8" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
@@ -152,12 +154,12 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="JavalinTests.testGetActiveProcedure" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="JavalinTests.testDeviceScanner" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;JavalinTests.testGetActiveProcedure&quot;" />
+        <option name="scriptParameters" value="--tests &quot;JavalinTests.testDeviceScanner&quot;" />
         <option name="taskDescriptions">
           <list />
         </option>
@@ -239,18 +241,18 @@
     <list>
       <item itemvalue="Application.Default" />
       <item itemvalue="Gradle.JavalinTest" />
-      <item itemvalue="Gradle.JavalinTests.testGetActiveProcedure" />
       <item itemvalue="Gradle.JavalinTests.testGetActiveProcedureComplete" />
       <item itemvalue="Gradle.JavalinTests.testUpdateVariablesOfActiveProcedure" />
       <item itemvalue="Gradle.JavalinTests.testPostNewProcedure" />
+      <item itemvalue="Gradle.JavalinTests.testDeviceScanner" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.JavalinTests.testDeviceScanner" />
         <item itemvalue="Gradle.JavalinTest" />
         <item itemvalue="Gradle.JavalinTests.testPostNewProcedure" />
         <item itemvalue="Gradle.JavalinTests.testUpdateVariablesOfActiveProcedure" />
         <item itemvalue="Gradle.JavalinTests.testGetActiveProcedureComplete" />
-        <item itemvalue="Gradle.JavalinTests.testGetActiveProcedure" />
       </list>
     </recent_temporary>
   </component>
@@ -281,9 +283,9 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/network/javalin/controllers/DeviceController.java</url>
-          <line>17</line>
-          <option name="timeStamp" value="4" />
+          <url>file://$PROJECT_DIR$/src/test/java/JavalinTests.java</url>
+          <line>64</line>
+          <option name="timeStamp" value="5" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
