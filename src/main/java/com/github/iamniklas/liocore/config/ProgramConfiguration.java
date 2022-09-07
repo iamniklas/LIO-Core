@@ -10,15 +10,7 @@ import java.util.Properties;
 
 public class ProgramConfiguration {
     //Device Configuration
-    public final String deviceName; //former mqttDeviceName
-
-    //MQTT Configuration
-    public final String mqttUser;
-    public final String mqttPassword;
-    public final String mqttBrokerAddress;
-    public final int mqttConnectionTimeout;
-    public final boolean mqttAutomaticReconnect;
-    public final boolean mqttCleanSession;
+    public final String deviceName;
 
     //LED Configuration
     public final int ledCount;
@@ -35,43 +27,8 @@ public class ProgramConfiguration {
     //Android Specific Configuration
     public final boolean useSpotifyIntegration;
 
-    public ProgramConfiguration(String _user,
-                                String _psw,
-                                String _brokerAddress) {
-        mqttUser = _user;
-        mqttPassword = _psw;
-        mqttBrokerAddress = _brokerAddress;
+    public ProgramConfiguration(boolean _useSpotifyIntegration) {
         deviceName = null;
-        mqttConnectionTimeout = 5;
-        mqttAutomaticReconnect = true;
-        mqttCleanSession = true;
-
-        ledCount = 0;
-        gpioPin = 0;
-        frequency = 0;
-        dma = 0;
-        brightness = 0;
-        pwmChannel = 0;
-        invert = false;
-        clearOnExit = false;
-        frametime = 0;
-        startingProcedure = null;
-
-        useSpotifyIntegration = false;
-    }
-
-    public ProgramConfiguration(String _user,
-                                String _psw,
-                                String _brokerAddress,
-                                int _connectionTimeout,
-                                boolean _useSpotifyIntegration) {
-        mqttUser = _user;
-        mqttPassword = _psw;
-        mqttBrokerAddress = _brokerAddress;
-        deviceName = null;
-        mqttConnectionTimeout = _connectionTimeout;
-        mqttAutomaticReconnect = true;
-        mqttCleanSession = true;
 
         ledCount = 0;
         gpioPin = 0;
@@ -87,13 +44,7 @@ public class ProgramConfiguration {
         useSpotifyIntegration = _useSpotifyIntegration;
     }
 
-    public ProgramConfiguration(String _user,
-                                String _psw,
-                                String _brokerAddress,
-                                String _deviceName,
-                                int _connectionTimeout,
-                                boolean _automaticReconnect,
-                                boolean _cleanSession,
+    public ProgramConfiguration(String _deviceName,
                                 int _ledCount,
                                 int _gpioPin,
                                 int _frequency,
@@ -104,13 +55,7 @@ public class ProgramConfiguration {
                                 boolean _clearOnExit,
                                 int _frametime,
                                 LEDUpdateModel _startingProcedure) {
-        mqttUser = _user;
-        mqttPassword = _psw;
-        mqttBrokerAddress = _brokerAddress;
         deviceName = _deviceName;
-        mqttConnectionTimeout = _connectionTimeout;
-        mqttAutomaticReconnect = _automaticReconnect;
-        mqttCleanSession = _cleanSession;
 
         ledCount = _ledCount;
         gpioPin = _gpioPin;
@@ -140,15 +85,7 @@ public class ProgramConfiguration {
         }
 
         return new ProgramConfiguration(
-                getConfigurationField(prop, "mqtt.user"),
-                getConfigurationField(prop, "mqtt.password"),
-                getConfigurationField(prop, "mqtt.brokeraddress"),
-
                 getConfigurationField(prop, "device.devicename"),
-
-                Integer.parseInt(getConfigurationField(prop, "mqtt.connectiontimeout")),
-                Boolean.parseBoolean(getConfigurationField(prop, "mqtt.automaticreconnect")),
-                Boolean.parseBoolean(getConfigurationField(prop, "mqtt.cleansession")),
 
                 Integer.parseInt(getConfigurationField(prop, "led.ledcount")),
                 Integer.parseInt(getConfigurationField(prop, "led.gpiopin")),

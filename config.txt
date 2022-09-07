@@ -1,10 +1,3 @@
-mqtt.user=lio
-mqtt.password=8kNhtmUG6kmUm3djdEE7MXmvAg4662
-mqtt.brokeraddress=tcp://192.168.178.10:1883
-mqtt.connectiontimeout=15
-mqtt.automaticreconnect=true
-mqtt.cleansession=true
-
 device.devicename=devicename
 
 led.ledcount=300

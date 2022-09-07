@@ -1,5 +1,4 @@
 import com.github.iamniklas.liocore.config.ProgramConfiguration;
-import com.github.iamniklas.liocore.network.mqtt.Topics;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -10,22 +9,7 @@ public class ConfigurationTest {
     public void testConfig() {
         ProgramConfiguration.configuration = ProgramConfiguration.readConfigFromFile();
 
-        assertEquals("lio", ProgramConfiguration.configuration.mqttUser);
-        assertEquals("8kNhtmUG6kmUm3djdEE7MXmvAg4662", ProgramConfiguration.configuration.mqttPassword);
-        assertEquals("tcp://192.168.178.10:1883", ProgramConfiguration.configuration.mqttBrokerAddress);
         assertEquals("devicename", ProgramConfiguration.configuration.deviceName);
-
-        assertEquals("/led/update/devicename", Topics.UPDATE_LISTEN);
-        assertEquals("/led/update", Topics.UPDATE_PUBLISH);
-        assertEquals("/led/update/all", Topics.UPDATE_ALL_LISTEN_PUBLISH);
-
-        assertEquals("/led/update/variable/devicename", Topics.VARIABLE_UPDATE_LISTEN);
-        assertEquals("/led/update/variable", Topics.VARIABLE_UPDATE_PUBLISH);
-        assertEquals("/led/update/variable/all", Topics.VARIABLE_UPDATE_ALL_LISTEN_PUBLISH);
-
-        assertEquals(15, ProgramConfiguration.configuration.mqttConnectionTimeout);
-        assertTrue(ProgramConfiguration.configuration.mqttAutomaticReconnect);
-        assertTrue(ProgramConfiguration.configuration.mqttCleanSession);
 
         assertEquals(300, ProgramConfiguration.configuration.ledCount);
         assertEquals(18, ProgramConfiguration.configuration.gpioPin);

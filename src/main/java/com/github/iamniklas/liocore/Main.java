@@ -7,7 +7,6 @@ import com.github.iamniklas.liocore.led.LEDStripManager;
 import com.github.iamniklas.liocore.led.colorspace.LIOColor;
 import com.github.iamniklas.liocore.network.LEDUpdateModel;
 import com.github.iamniklas.liocore.network.javalin.JavalinHandler;
-import com.github.iamniklas.liocore.network.mqtt.MQTTPublisher;
 import com.github.iamniklas.liocore.procedures.ProcedureType;
 import com.github.iamniklas.liocore.procedures.models.Direction;
 import com.github.iamniklas.liocore.procedures.variants.RainbowMonoProcedure;
