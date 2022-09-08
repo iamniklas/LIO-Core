@@ -1,4 +1,4 @@
-package com.github.iamniklas.liocore.network.javalin;
+package com.github.iamniklas.liocore.network.javalin.scanner;
 
 import com.github.iamniklas.liocore.network.javalin.models.JavalinScanResult;
 
@@ -9,7 +9,7 @@ import java.net.*;
 import java.util.ArrayList;
 import java.util.Enumeration;
 
-public class JavalinScan {
+public class JavalinScanner {
     public JavalinScanResult scanForDevices() {
         String scanNetworkName;
         String scanClientIp;

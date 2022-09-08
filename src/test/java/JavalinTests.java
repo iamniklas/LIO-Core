@@ -5,7 +5,7 @@ import com.github.iamniklas.liocore.led.LEDStripManager;
 import com.github.iamniklas.liocore.led.colorspace.LIOColor;
 import com.github.iamniklas.liocore.network.LEDUpdateModel;
 import com.github.iamniklas.liocore.network.javalin.JavalinHandler;
-import com.github.iamniklas.liocore.network.javalin.JavalinScan;
+import com.github.iamniklas.liocore.network.javalin.scanner.JavalinScanner;
 import com.github.iamniklas.liocore.network.javalin.models.JavalinScanResult;
 import com.github.iamniklas.liocore.procedures.ProcedureFactory;
 import com.github.iamniklas.liocore.procedures.ProcedureType;
@@ -48,7 +48,7 @@ public class JavalinTests {
     @Test
     public void testDeviceScanner() {
         System.out.println("Starting scan...");
-        JavalinScanResult result = new JavalinScan().scanForDevices();
+        JavalinScanResult result = new JavalinScanner().scanForDevices();
         System.out.println("Completed scan");
         System.out.println("Scan Time: " + (result.scanDuration / 1000) + "s" + (result.scanDuration % 1000) + "ms");
         System.out.println("Found " + result.detectedIps.length + " device(s)");
