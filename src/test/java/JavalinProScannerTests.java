@@ -3,9 +3,10 @@ import com.github.iamniklas.liocore.led.LEDRenderer;
 import com.github.iamniklas.liocore.led.LEDStripManager;
 import com.github.iamniklas.liocore.led.colorspace.LIOColor;
 import com.github.iamniklas.liocore.network.javalin.JavalinHandler;
-import com.github.iamniklas.liocore.network.javalin.models.JavalinScanResult;
 import com.github.iamniklas.liocore.network.javalin.scanner.JavalinProScanner;
-import com.google.gson.Gson;
+import com.github.iamniklas.nettools.models.DeviceResult;
+import com.github.iamniklas.nettools.models.TestResult;
+import com.github.iamniklas.nettools.scanner.ScanResultCallback;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -37,11 +38,21 @@ public class JavalinProScannerTests {
     @Test
     public void testJavalinProScanner() {
         JavalinProScanner javalinProScanner = new JavalinProScanner();
-        JavalinScanResult result = javalinProScanner.scanForDevices();
+        TestResult result = javalinProScanner.scanForDevices(new ScanResultCallback() {
+            @Override
+            public void onSuccessResult(DeviceResult result) {
+                System.out.println("Found Device With IP " + result.ip);
+            }
+
+            @Override
+            public void onErrorResult(Exception exception) {
+
+            }
+        });
 
         System.out.println("Scanning complete");
-        System.out.println("Scan Time: " + (result.scanDuration / 1000) + "s" + (result.scanDuration % 1000) + "ms");
-        System.out.println("Found " + result.detectedIps.length + " devices");
-        System.out.println(new Gson().toJson(result.detectedIps));
+        //System.out.println("Scan Time: " + (result.scanDuration / 1000) + "s" + (result.scanDuration % 1000) + "ms");
+        //System.out.println("Found " + result.detectedIps.length + " devices");
+        //System.out.println(new Gson().toJson(result.detectedIps));
     }
 }

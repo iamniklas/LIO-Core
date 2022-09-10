@@ -16,8 +16,11 @@ repositories {
 dependencies {
     implementation 'com.google.guava:guava:31.0.1-jre'
     implementation 'com.google.code.gson:gson:2.9.0'
+
     implementation 'com.github.iamniklas:interpolation:1.0.0-2'
     implementation 'com.github.iamniklas:colorspaces:0.0.1-4'
+    implementation 'com.github.iamniklas:net-tools:1.1.0'
+
     implementation 'org.eclipse.paho:org.eclipse.paho.client.mqttv3:1.2.5'
     implementation 'junit:junit:4.13.2'
     implementation 'org.junit.jupiter:junit-jupiter:5.8.2'
