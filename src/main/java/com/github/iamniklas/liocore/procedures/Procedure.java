@@ -42,6 +42,10 @@ public abstract class Procedure {
         }
     }
 
+    public void onActionReceived(ProcedureAction procedureAction) {
+
+    }
+
     public void postUpdate() {
         if (modulo < 2) return;
         //TODO Get LED Strip size from LEDManager

@@ -10,11 +10,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e78498bb-5fd8-4fc1-8653-b011d9d466e4" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/procedures/ProcedureAction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/procedures/variants/LightToggleProcedure.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config.txt" beforeDir="false" afterPath="$PROJECT_DIR$/config.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/network/javalin/scanner/JavalinProScanner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/network/javalin/scanner/JavalinProScanner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/network/javalin/scanner/JavalinScanner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/network/javalin/scanner/JavalinScanner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/network/javalin/controllers/LEDController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/network/javalin/controllers/LEDController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/procedures/Procedure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/procedures/Procedure.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/procedures/ProcedureFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/procedures/ProcedureFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/procedures/ProcedureType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/procedures/ProcedureType.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/JavalinProScannerTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/JavalinProScannerTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/JavalinTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/JavalinTests.java" afterDir="false" />
     </list>
@@ -46,13 +49,13 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Enum" />
         <option value="Kotlin Object" />
         <option value="JUnit5 Test Class" />
         <option value="Kotlin Class" />
         <option value="Kotlin Interface" />
         <option value="Interface" />
         <option value="Class" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -122,7 +125,7 @@
       <recent name="com.github.iamniklas.liocore.tests" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.JavalinProScannerTests.testJavalinProScanner">
+  <component name="RunManager" selected="Gradle.JavalinTests.testSendActionToProcedure">
     <configuration name="Default" type="Application" factoryName="Application">
       <option name="ALTERNATIVE_JRE_PATH" value="1.8" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
@@ -214,12 +217,12 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="JavalinTests.testUpdateVariablesOfActiveProcedure" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="JavalinTests.testSendActionToProcedure" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;JavalinTests.testUpdateVariablesOfActiveProcedure&quot; --stacktrace" />
+        <option name="scriptParameters" value="--tests &quot;JavalinTests.testSendActionToProcedure&quot;" />
         <option name="taskDescriptions">
           <list />
         </option>
@@ -238,18 +241,18 @@
     <list>
       <item itemvalue="Application.Default" />
       <item itemvalue="Gradle.JavalinTest" />
-      <item itemvalue="Gradle.JavalinTests.testUpdateVariablesOfActiveProcedure" />
       <item itemvalue="Gradle.JavalinTests.testPostNewProcedure" />
       <item itemvalue="Gradle.JavalinTests.testDeviceScanner" />
       <item itemvalue="Gradle.JavalinProScannerTests.testJavalinProScanner" />
+      <item itemvalue="Gradle.JavalinTests.testSendActionToProcedure" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.JavalinTests.testSendActionToProcedure" />
         <item itemvalue="Gradle.JavalinProScannerTests.testJavalinProScanner" />
         <item itemvalue="Gradle.JavalinTests.testDeviceScanner" />
         <item itemvalue="Gradle.JavalinTest" />
         <item itemvalue="Gradle.JavalinTests.testPostNewProcedure" />
-        <item itemvalue="Gradle.JavalinTests.testUpdateVariablesOfActiveProcedure" />
       </list>
     </recent_temporary>
   </component>
@@ -281,7 +284,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/JavalinTests.java</url>
-          <line>77</line>
+          <line>88</line>
           <option name="timeStamp" value="5" />
         </line-breakpoint>
       </breakpoints>

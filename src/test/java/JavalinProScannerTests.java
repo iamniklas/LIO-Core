@@ -45,6 +45,13 @@ public class JavalinProScannerTests {
             }
 
             @Override
+            public void onScanComplete(int progress, int maxValue) {
+                if (progress == maxValue) {
+                    System.out.println("Scan completed");
+                }
+            }
+
+            @Override
             public void onErrorResult(Exception exception) {
 
             }

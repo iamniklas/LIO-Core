@@ -21,6 +21,7 @@ public class ProcedureFactory {
             case Progress: return new ProgressProcedure(_updateModel);
             case Lightning: return new LightningProcedure(_updateModel);
             case Javascript: return new JavascriptProcedure(_updateModel);
+            case LightToggle: return new LightToggleProcedure(_updateModel);
             case NoLongerReady: return new NoLongerReadyProcedure(_updateModel);
             default: return null;
         }

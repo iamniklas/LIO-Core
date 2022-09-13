@@ -1,3 +1,4 @@
+import com.github.iamniklas.colorspaces.ColorRGB;
 import com.github.iamniklas.liocore.config.ProgramConfiguration;
 import com.github.iamniklas.liocore.led.LEDDataBundle;
 import com.github.iamniklas.liocore.led.LEDRenderer;
@@ -7,6 +8,7 @@ import com.github.iamniklas.liocore.network.LEDUpdateModel;
 import com.github.iamniklas.liocore.network.javalin.JavalinHandler;
 import com.github.iamniklas.liocore.network.javalin.scanner.JavalinScanner;
 import com.github.iamniklas.liocore.network.javalin.models.JavalinScanResult;
+import com.github.iamniklas.liocore.procedures.ProcedureAction;
 import com.github.iamniklas.liocore.procedures.ProcedureFactory;
 import com.github.iamniklas.liocore.procedures.ProcedureType;
 import com.github.iamniklas.liocore.procedures.models.Direction;
@@ -16,6 +18,8 @@ import com.github.iamniklas.nettools.scanner.ScanResultCallback;
 import com.google.gson.Gson;
 import org.junit.jupiter.api.AfterEach;
 import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -56,6 +60,13 @@ public class JavalinTests {
             @Override
             public void onSuccessResult(DeviceResult result) {
                 System.out.println("Found Device With IP " + result.ip);
+            }
+
+            @Override
+            public void onScanComplete(int progress, int maxValue) {
+                if (progress == maxValue) {
+                    System.out.println("Scan completed");
+                }
             }
 
             @Override
@@ -153,20 +164,49 @@ public class JavalinTests {
     @Test
     public void testUpdateVariablesOfActiveProcedure() {
         resetLEDStatus();
-        LEDDataBundle ledDataBundle = new LEDDataBundle();
-        ledDataBundle.speed = 2f;
-        ledDataBundle.puModulo = 30;
-        ledDataBundle.puModuloInvert = true;
-        ledDataBundle.direction = Direction.Left;
-        ledDataBundle.repetitions = 3.2f;
+        LEDUpdateModel ledUpdateModel = new LEDUpdateModel();
 
-        HttpResult result = executePutRequest("http://localhost:5700/led/variables/", new Gson().toJson(ledDataBundle));
+        LEDDataBundle ledDataBundle = new LEDDataBundle();
+        ledDataBundle.speed = 3.0f;
+        ledDataBundle.puModulo = 2;
+        ledDataBundle.puModuloInvert = true;
+
+        ProcedureType procedureType = ProcedureType.RainbowMono;
+
+        ledUpdateModel.bundle = ledDataBundle;
+        ledUpdateModel.procedure = procedureType;
+
+        HttpResult result = executePutRequest("http://localhost:5700/led/variables/", new Gson().toJson(ledUpdateModel));
         assertNotNull(result);
         assertEquals(ledDataBundle.speed, ledStripManager.procContainer.getActiveProcedure().ledUpdateModel.bundle.speed);
         assertEquals(ledDataBundle.puModulo, ledStripManager.procContainer.getActiveProcedure().ledUpdateModel.bundle.puModulo);
         assertEquals(ledDataBundle.repetitions, ledStripManager.procContainer.getActiveProcedure().ledUpdateModel.bundle.repetitions);
     }
 
+    // PUT /led/action/{action_name}
+    @Test
+    public void testSendActionToProcedure() {
+        resetLEDStatus();
+        LEDUpdateModel ledUpdateModel = new LEDUpdateModel();
+
+        LEDDataBundle ledDataBundle = new LEDDataBundle();
+        ledDataBundle.colorPrimary = ColorRGB.CYAN;
+        ledDataBundle.puModulo = 23;
+        ledDataBundle.puModuloInvert = true;
+
+        ProcedureType procedureType = ProcedureType.LightToggle;
+
+        ledUpdateModel.bundle = ledDataBundle;
+        ledUpdateModel.procedure = procedureType;
+
+        HttpResult result = executePutRequest("http://localhost:5700/led/action/"+ProcedureAction.Toggle, new Gson().toJson(ledUpdateModel));
+        Assertions.assertEquals(ProcedureType.LightToggle.name(), result.message);
+        System.out.println(result.message);
+
+        result = executePutRequest("http://localhost:5700/led/action/"+ProcedureAction.Toggle, new Gson().toJson(ledUpdateModel));
+        Assertions.assertEquals(ProcedureAction.Toggle.name(), result.message);
+        System.out.println(result.message);
+    }
 
     /******************************************************************************************************************
      ****************************************TEST CASES FOR DEVICE CONTROLLER******************************************
