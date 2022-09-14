@@ -37,6 +37,12 @@ public class LightToggleProcedure extends Procedure {
             case Toggle:
                 lightIsOn = !lightIsOn;
                 break;
+            case Enable:
+                lightIsOn = true;
+                break;
+            case Disable:
+                lightIsOn = false;
+                break;
         }
     }
 }

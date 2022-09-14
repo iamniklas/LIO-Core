@@ -76,13 +76,15 @@ public class LEDController extends ControllerBase {
                 ledUpdateModel.bundle.ledStrip = ledStripManager;
                 ledUpdateModel.bundle.procedureCalls = ledStripManager;
 
-                if(ledUpdateModel.procedure == ledStripManager.procContainer.getActiveProcedure().ledUpdateModel.procedure) {
-                    ledStripManager.procContainer.getActiveProcedure().onActionReceived(action);
-                    ctx.result(action.name());
-                } else {
+                if(ledStripManager.procContainer.getActiveProcedure() == null ||
+                        ledUpdateModel.procedure != ledStripManager.procContainer.getActiveProcedure().ledUpdateModel.procedure) {
                     Procedure p = ProcedureFactory.getProcedure(ledUpdateModel);
                     ledStripManager.procContainer.replaceActiveProcedure(p);
                     ctx.result(ledUpdateModel.procedure.name());
+                } else {
+                    ledStripManager.procContainer.getActiveProcedure().updateLEDDataBundle(ledUpdateModel.bundle);
+                    ledStripManager.procContainer.getActiveProcedure().onActionReceived(action);
+                    ctx.result(action.name());
                 }
             }
             catch (Exception e) {
