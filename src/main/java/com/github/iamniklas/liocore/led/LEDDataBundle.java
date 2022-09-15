@@ -4,9 +4,7 @@ import com.github.iamniklas.colorspaces.ColorRGB;
 import com.github.iamniklas.interpolation.InterpolationType;
 import com.github.iamniklas.liocore.musicsync.AnimationData;
 import com.github.iamniklas.liocore.procedures.ProcedureCalls;
-import com.github.iamniklas.liocore.procedures.ProcedureType;
 import com.github.iamniklas.liocore.procedures.models.Direction;
-import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class LEDDataBundle {

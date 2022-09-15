@@ -1,6 +1,7 @@
 package com.github.iamniklas.liocore.procedures.variants;
 
 import com.github.iamniklas.colorspaces.ColorRGB;
+import com.github.iamniklas.interpolation.Interpolation;
 import com.github.iamniklas.liocore.led.LEDDataBundle;
 import com.github.iamniklas.liocore.led.LEDStripManager;
 import com.github.iamniklas.liocore.led.colorspace.LIOColor;
@@ -23,23 +24,29 @@ public class LightToggleProcedure extends Procedure {
     @Override
     public void update() {
         if(lightIsOn) {
-            strip.setArea(lowerBound, Math.min(counter, upperBound + 1), LIOColor.fromRGB(ledUpdateModel.bundle.colorPrimary));
-            if(counter < upperBound) {
-                counter += 5;
-            }
-            if(counter > upperBound) {
-                counter = LEDStripManager.ledCount - 1;
-            }
-            //strip.setAllPixels(LIOColor.fromRGB(ledUpdateModel.bundle.colorPrimary));
+            strip.setArea(
+                    lowerBound,
+                    Math.min(
+                            Math.round(Interpolation.getInterpolationValue(counter/300f, ledUpdateModel.bundle.interpolation) * LEDStripManager.ledCount),
+                            upperBound + 1),
+                    LIOColor.fromRGB(ledUpdateModel.bundle.colorPrimary)
+            );
         } else {
-            strip.setArea(lowerBound, Math.min(counter, upperBound + 1), LIOColor.fromRGB(ColorRGB.BLACK));
-            if(counter < upperBound) {
-                counter += 5;
-            }
-            if(counter > upperBound) {
-                counter = LEDStripManager.ledCount - 1;
-            }
-            //strip.setAllPixels(LIOColor.fromRGB(ColorRGB.BLACK));
+            strip.setArea(
+                    lowerBound,
+                    Math.min(
+                            Math.round(Interpolation.getInterpolationValue(counter/300f, ledUpdateModel.bundle.interpolation) * LEDStripManager.ledCount),
+                            upperBound + 1),
+                    LIOColor.fromRGB(ColorRGB.BLACK)
+            );
+        }
+
+        if(counter < upperBound) {
+            float duration = (ledUpdateModel.bundle.duration == null) ? 1.0f : (float)ledUpdateModel.bundle.duration;
+            counter += 5 * ( 1 / duration);
+        }
+        if(counter > upperBound) {
+            counter = LEDStripManager.ledCount;
         }
     }
 
