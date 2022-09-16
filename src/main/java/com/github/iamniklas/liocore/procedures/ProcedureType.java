@@ -16,8 +16,9 @@ public enum ProcedureType {
     Progress,
     Lightning,
     MusicSync,
-    LightToggle,
     RandomColorBlocks,
     Javascript,
-    NoLongerReady
+    NoLongerReady,
+    LightToggle,
+    LightToggleCineAdjusted,
 }

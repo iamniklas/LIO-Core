@@ -23,6 +23,7 @@ public class LEDDataBundle {
     public Float value3;
     public Integer modulo;
     public InterpolationType interpolation;
+    public InterpolationType interpolationOverDistance;
     public Direction direction;
     public Integer bpm;
     public Float repetitions;
