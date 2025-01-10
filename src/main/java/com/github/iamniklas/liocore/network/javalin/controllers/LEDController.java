@@ -8,12 +8,17 @@ import com.github.iamniklas.liocore.procedures.ProcedureAction;
 import com.github.iamniklas.liocore.procedures.ProcedureFactory;
 import com.google.gson.Gson;
 import io.javalin.Javalin;
+import org.apache.log4j.Logger;
 
 import java.io.*;
 import java.lang.reflect.Field;
 
 public class LEDController extends ControllerBase {
     LEDStripManager ledStripManager;
+
+    private static final Logger logger = Logger.getLogger(LEDController.class);
+
+    private Procedure lastProcedure;
 
     public LEDController(Javalin _app, LEDStripManager _ledStripManager) {
         ledStripManager = _ledStripManager;
@@ -27,16 +32,31 @@ public class LEDController extends ControllerBase {
             }
         });
 
+        //Endpoint to get the last procedure that was sent to the LED strip
+        _app.get("/led/procedure/last", ctx -> {
+            if(lastProcedure != null) {
+                ctx.result(new Gson().toJson(lastProcedure.ledUpdateModel));
+            }
+            else {
+                ctx.result("null");
+            }
+        });
+
         _app.post("/led/procedure", ctx -> {
             try {
                 LEDUpdateModel updateModel = new Gson().fromJson(ctx.body(), LEDUpdateModel.class);
                 updateModel.bundle.ledStrip = ledStripManager;
                 updateModel.bundle.procedureCalls = ledStripManager;
                 Procedure p = ProcedureFactory.getProcedure(updateModel);
-                ledStripManager.procContainer.replaceActiveProcedure(p);
+                lastProcedure = p;
+                if(p != null) {
+                    logger.info("Received new procedure: " + p.ledUpdateModel.procedure.name());
+                    ledStripManager.procContainer.replaceActiveProcedure(p);
+                }
             }
             catch (Exception e) {
-                e.printStackTrace();
+                ctx.status(500);
+                logger.error(e.getMessage());
             }
         });
 
@@ -65,7 +85,8 @@ public class LEDController extends ControllerBase {
                 ledStripManager.procContainer.getActiveProcedure().updateLEDDataBundle(ledDataBundle);
             }
             catch(Exception e) {
-                e.printStackTrace();
+                ctx.status(500);
+                logger.error(e.getMessage());
             }
         });
 
@@ -88,7 +109,8 @@ public class LEDController extends ControllerBase {
                 }
             }
             catch (Exception e) {
-                e.printStackTrace();
+                ctx.status(500);
+                logger.error(e.getMessage());
             }
         });
     }
