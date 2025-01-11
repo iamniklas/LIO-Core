@@ -39,7 +39,7 @@ public class LEDDataBundle {
     public Integer modulo;
     public Boolean moduloInvert;
 
-    
+
     public transient LEDStripManager ledStrip;
     public transient ProcedureCalls procedureCalls;
 

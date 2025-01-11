@@ -19,7 +19,6 @@ public class MonoColorProcedure extends Procedure implements Runnable {
     @Override
     public void update() {
         strip.setAllPixels(LIOColor.fromRGB(ledUpdateModel.bundle.color));
-        postUpdate();
     }
 
     @Override

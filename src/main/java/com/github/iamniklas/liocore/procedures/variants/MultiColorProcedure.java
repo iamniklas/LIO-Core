@@ -1,6 +1,7 @@
 package com.github.iamniklas.liocore.procedures.variants;
 
 import com.github.iamniklas.liocore.led.LEDDataBundle;
+import com.github.iamniklas.liocore.led.LEDStripManager;
 import com.github.iamniklas.liocore.led.colorspace.LIOColor;
 import com.github.iamniklas.liocore.led.json.LEDJsonProcedure;
 import com.github.iamniklas.liocore.led.json.interpreter.FileVersions;
@@ -26,10 +27,9 @@ public class MultiColorProcedure extends Procedure {
 
     @Override
     public void update() {
-        for (int i = 0; i < ledUpdateModel.bundle.colors.size(); i++) {
+        for (int i = 0; i < Math.min(ledUpdateModel.bundle.colors.size(), LEDStripManager.ledCount); i++) {
             strip.setPixel(i, LIOColor.fromRGB(ledUpdateModel.bundle.colors.get(step)));
         }
-        postUpdate();
     }
 
     @Override
