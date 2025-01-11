@@ -1,10 +1,12 @@
 package com.github.iamniklas.liocore.procedures;
 
 import com.github.iamniklas.liocore.led.LEDStripManager;
+import org.apache.log4j.Logger;
 
 import java.util.ArrayList;
 
 public class ProcContainer {
+    private static final Logger log = Logger.getLogger(ProcContainer.class);
     private LEDStripManager ledStripManager;
     private ArrayList<Procedure> procedures = new ArrayList<>();
 
@@ -20,9 +22,15 @@ public class ProcContainer {
     }
 
     public void replaceActiveProcedure(Procedure _procedure) {
+        if(!_procedure.validateBundleData()) {
+            log.error("Procedure data validation failed. Some required fields for this procedure has not been set. Procedure will not be queued.");
+            return;
+        }
+
         removeAllCurrentProcedures();
         procedures.add(_procedure);
         _procedure.procCalls.onProcedureQueued();
+        _procedure.start();
     }
 
     public void queueProcedure(Procedure _procedure) {

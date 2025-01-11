@@ -6,22 +6,14 @@ import com.github.iamniklas.liocore.led.colorspace.LIOColor;
 import com.github.iamniklas.liocore.network.LEDUpdateModel;
 import com.github.iamniklas.liocore.procedures.Procedure;
 
-public class BlinkProcedure extends Procedure {
+public class ErrorProcedure extends Procedure {
 
-    private LEDDataBundle bundle;
+    private boolean redLightActive = false;
 
-    private LIOColor blinkColor;
-    private int frames = 10;
-    private int modulo = 2;
-
-    public BlinkProcedure(LEDUpdateModel _ledUpdateModel) {
+    public ErrorProcedure(LEDUpdateModel _ledUpdateModel) {
         super(_ledUpdateModel);
-        bundle = _ledUpdateModel.bundle;
 
-        blinkColor = LIOColor.fromRGB(bundle.colorPrimary);
-        frames = bundle.duration;
-        modulo = bundle.modulo;
-        steps = frames;
+        steps = 60;
     }
 
     @Override
@@ -31,22 +23,28 @@ public class BlinkProcedure extends Procedure {
 
     @Override
     public void update() {
+        if(step % 5 == 0) {
+            if(redLightActive) {
+                strip.setAllPixels(LIOColor.fromRGB(ColorRGB.BLACK));
+            }
+            else {
+                strip.setAllPixels(LIOColor.fromRGB(ColorRGB.RED));
+            }
+            redLightActive = !redLightActive;
+        }
         step++;
-        if(step % modulo == 0) {
-            strip.setAllPixels(blinkColor);
-        }
-        else {
+        if(step > steps) {
             strip.setAllPixels(LIOColor.fromRGB(ColorRGB.BLACK));
-        }
-
-        if(step == steps) {
-            strip.setAllPixels(LIOColor.fromRGB(ColorRGB.BLACK));
-            finishProcedure();
         }
     }
 
     @Override
     public void updateLEDDataBundle(LEDDataBundle ledDataBundle) {
 
+    }
+
+    @Override
+    public boolean validateBundleData() {
+        return true;
     }
 }

@@ -18,7 +18,11 @@ public class RainbowProcedure extends Procedure {
         super(_ledUpdateModel);
 
         for (int i = 0; i < hueArrayCounter.length; i++) {
-            hueArrayCounter[i] = Math.abs(i - 150);
+            if (i < LEDStripManager.ledCount / 2) {
+                hueArrayCounter[i] = (i * (360.0f / (LEDStripManager.ledCount / 2))) % 360;
+            } else {
+                hueArrayCounter[i] = ((LEDStripManager.ledCount - i - 1) * (360.0f / (LEDStripManager.ledCount / 2))) % 360;
+            }
         }
     }
 
@@ -31,31 +35,28 @@ public class RainbowProcedure extends Procedure {
     public void update() {
         switch (ledUpdateModel.bundle.direction) {
             case Center:
-                int i = 0;
-                while (i < hueArrayCounter.length) {
+                for (int i = 0; i < LEDStripManager.ledCount / 2; i++) {
                     hueArrayCounter[i] = hueArrayCounter[i] < 0 ? 360.0f : hueArrayCounter[i] - ledUpdateModel.bundle.speed;
-                    i++;
+                    hueArrayCounter[LEDStripManager.ledCount - 1 - i] = hueArrayCounter[LEDStripManager.ledCount - 1 - i] < 0 ? 360.0f : hueArrayCounter[LEDStripManager.ledCount - 1 - i] - ledUpdateModel.bundle.speed;
                 }
-                break;
+            break;
             case CenterInvert:
-                int j = 0;
-                while (j < hueArrayCounter.length) {
-                    hueArrayCounter[j] = hueArrayCounter[j] > 360 ? 0.0f : hueArrayCounter[j] + ledUpdateModel.bundle.speed;
-                    j++;
+                for (int i = 0; i < LEDStripManager.ledCount / 2; i++) {
+                    hueArrayCounter[i] = hueArrayCounter[i] > 360 ? 0.0f : hueArrayCounter[i] + ledUpdateModel.bundle.speed;
+                    hueArrayCounter[LEDStripManager.ledCount - 1 - i] = hueArrayCounter[LEDStripManager.ledCount - 1 - i] > 360 ? 0.0f : hueArrayCounter[LEDStripManager.ledCount - 1 - i] + ledUpdateModel.bundle.speed;
                 }
-                break;
+            break;
 
             case Left: hueCounter = hueCounter > 360 ? 0.0f : hueCounter + ledUpdateModel.bundle.speed; break;
             case Right: hueCounter = hueCounter < 0 ? 360.0f : hueCounter - ledUpdateModel.bundle.speed; break;
         }
 
         for (int i = 0; i < LEDStripManager.ledCount; i++) {
-            if(ledUpdateModel.bundle.direction == Direction.Center || ledUpdateModel.bundle.direction == Direction.CenterInvert) {
+            if (ledUpdateModel.bundle.direction == Direction.Center || ledUpdateModel.bundle.direction == Direction.CenterInvert) {
                 colorHSV.h = (int) (((i * (ledUpdateModel.bundle.repetitions * (360.0f / LEDStripManager.ledCount))) + hueArrayCounter[i]) % 360);
-                strip.setPixel(i, LIOColor.fromHSV(colorHSV));
-                continue;
+            } else {
+                colorHSV.h = (int) (((i * (ledUpdateModel.bundle.repetitions * (360.0f / LEDStripManager.ledCount))) + hueCounter) % 360);
             }
-            colorHSV.h = (int) (((i * (ledUpdateModel.bundle.repetitions * (360.0f / LEDStripManager.ledCount))) + hueCounter) % 360);
             strip.setPixel(i, LIOColor.fromHSV(colorHSV));
         }
     }
@@ -63,5 +64,10 @@ public class RainbowProcedure extends Procedure {
     @Override
     public void updateLEDDataBundle(LEDDataBundle ledDataBundle) {
         super.updateLEDDataBundle(ledDataBundle);
+    }
+
+    @Override
+    public boolean validateBundleData() {
+        return ledUpdateModel.bundle.repetitions != null && ledUpdateModel.bundle.speed != null && ledUpdateModel.bundle.direction != null;
     }
 }

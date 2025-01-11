@@ -1,6 +1,8 @@
 package com.github.iamniklas.liocore.procedures.variants;
 
+import com.github.iamniklas.colorspaces.ColorRGB;
 import com.github.iamniklas.liocore.led.LEDDataBundle;
+import com.github.iamniklas.liocore.led.colorspace.LIOColor;
 import com.github.iamniklas.liocore.network.LEDUpdateModel;
 import com.github.iamniklas.liocore.procedures.Procedure;
 
@@ -28,6 +30,12 @@ public class JavascriptProcedure extends Procedure {
         invocable = null;
         eval = null;
         runtime = new ScriptEngineManager().getEngineByName("javascript");
+    }
+
+    @Override
+    public void start() {
+        super.start();
+
         jsUpdate = bundle.data;
         try {
             eval = runtime.eval(jsUpdate);
@@ -36,11 +44,6 @@ public class JavascriptProcedure extends Procedure {
         catch (ScriptException se) {
             se.printStackTrace();
         }
-    }
-
-    @Override
-    public void start() {
-        super.start();
     }
 
     @Override
@@ -59,7 +62,12 @@ public class JavascriptProcedure extends Procedure {
 
     }
 
+    @Override
+    public boolean validateBundleData() {
+        return bundle.data != null;
+    }
+
     public void finish() {
-        finishProcedure();
+        strip.setAllPixels(LIOColor.fromRGB(ColorRGB.BLACK));
     }
 }

@@ -6,3 +6,5 @@ build/
 *.aar
 *.war
 !gradle-wrapper.jar
+
+.codegpt

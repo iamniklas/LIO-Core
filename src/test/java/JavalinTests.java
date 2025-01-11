@@ -104,8 +104,8 @@ public class JavalinTests {
 
         LEDDataBundle ledDataBundle = new LEDDataBundle();
         ledDataBundle.speed = 3.0f;
-        ledDataBundle.puModulo = 2;
-        ledDataBundle.puModuloInvert = true;
+        ledDataBundle.modulo = 2;
+        ledDataBundle.moduloInvert = true;
 
         ProcedureType procedureType = ProcedureType.RainbowMono;
 
@@ -117,8 +117,8 @@ public class JavalinTests {
         assertNotNull(request);
         assertEquals(ledUpdateModel.procedure, ledStripManager.procContainer.getActiveProcedure().ledUpdateModel.procedure);
         assertEquals(ledUpdateModel.bundle.speed, ledStripManager.procContainer.getActiveProcedure().ledUpdateModel.bundle.speed);
-        assertEquals(ledUpdateModel.bundle.puModulo, ledStripManager.procContainer.getActiveProcedure().ledUpdateModel.bundle.puModulo);
-        assertEquals(ledUpdateModel.bundle.puModuloInvert, ledStripManager.procContainer.getActiveProcedure().ledUpdateModel.bundle.puModuloInvert);
+        assertEquals(ledUpdateModel.bundle.modulo, ledStripManager.procContainer.getActiveProcedure().ledUpdateModel.bundle.modulo);
+        assertEquals(ledUpdateModel.bundle.moduloInvert, ledStripManager.procContainer.getActiveProcedure().ledUpdateModel.bundle.moduloInvert);
     }
 
     // GET /led/procedure/
@@ -168,8 +168,8 @@ public class JavalinTests {
 
         LEDDataBundle ledDataBundle = new LEDDataBundle();
         ledDataBundle.speed = 3.0f;
-        ledDataBundle.puModulo = 2;
-        ledDataBundle.puModuloInvert = true;
+        ledDataBundle.modulo = 2;
+        ledDataBundle.moduloInvert = true;
 
         ProcedureType procedureType = ProcedureType.RainbowMono;
 
@@ -179,7 +179,7 @@ public class JavalinTests {
         HttpResult result = executePutRequest("http://localhost:5700/led/variables/", new Gson().toJson(ledUpdateModel));
         assertNotNull(result);
         assertEquals(ledDataBundle.speed, ledStripManager.procContainer.getActiveProcedure().ledUpdateModel.bundle.speed);
-        assertEquals(ledDataBundle.puModulo, ledStripManager.procContainer.getActiveProcedure().ledUpdateModel.bundle.puModulo);
+        assertEquals(ledDataBundle.modulo, ledStripManager.procContainer.getActiveProcedure().ledUpdateModel.bundle.modulo);
         assertEquals(ledDataBundle.repetitions, ledStripManager.procContainer.getActiveProcedure().ledUpdateModel.bundle.repetitions);
     }
 
@@ -190,9 +190,9 @@ public class JavalinTests {
         LEDUpdateModel ledUpdateModel = new LEDUpdateModel();
 
         LEDDataBundle ledDataBundle = new LEDDataBundle();
-        ledDataBundle.colorPrimary = ColorRGB.CYAN;
-        ledDataBundle.puModulo = 23;
-        ledDataBundle.puModuloInvert = true;
+        ledDataBundle.color = ColorRGB.CYAN;
+        ledDataBundle.modulo = 23;
+        ledDataBundle.moduloInvert = true;
 
         ProcedureType procedureType = ProcedureType.LightToggle;
 
@@ -350,8 +350,8 @@ public class JavalinTests {
     private void resetLEDStatus() {
         LEDDataBundle ledDataBundle = new LEDDataBundle();
         ledDataBundle.speed = 1.0f;
-        ledDataBundle.puModulo = 5;
-        ledDataBundle.puModuloInvert = true;
+        ledDataBundle.modulo = 5;
+        ledDataBundle.moduloInvert = true;
         ledDataBundle.direction = Direction.Left;
         ledDataBundle.repetitions = 1.6f;
         ledDataBundle.ledStrip = ledStripManager;

@@ -29,28 +29,14 @@ public class LightToggleCineAdjustedProcedure extends Procedure {
             for (int i = 0; i < Math.min(
                     Math.round(Interpolation.getInterpolationValue(counter/300f, ledUpdateModel.bundle.interpolation) * LEDStripManager.ledCount),
                     upperBound + 1); i++) {
-                strip.setPixel(i, LIOColor.fromRGB(ledUpdateModel.bundle.colorPrimary.dim((LEDStripManager.ledCount - i) / (float)LEDStripManager.ledCount)));
+                strip.setPixel(i, LIOColor.fromRGB(ledUpdateModel.bundle.color.dim((LEDStripManager.ledCount - i) / (float)LEDStripManager.ledCount)));
             }
-            /*strip.setArea(
-                    lowerBound,
-                    Math.min(
-                            Math.round(Interpolation.getInterpolationValue(counter/300f, ledUpdateModel.bundle.interpolation) * LEDStripManager.ledCount),
-                            upperBound + 1),
-                    LIOColor.fromRGB(ledUpdateModel.bundle.colorPrimary.dim())
-            );*/
         } else {
             for (int i = 0; i < Math.min(
                     Math.round(Interpolation.getInterpolationValue(counter/300f, ledUpdateModel.bundle.interpolation) * LEDStripManager.ledCount),
                     upperBound + 1); i++) {
                 strip.setPixel(i, LIOColor.fromRGB(ColorRGB.BLACK));
             }
-            /*strip.setArea(
-                    lowerBound,
-                    Math.min(
-                            Math.round(Interpolation.getInterpolationValue(counter/300f, ledUpdateModel.bundle.interpolation) * LEDStripManager.ledCount),
-                            upperBound + 1),
-                    LIOColor.fromRGB(ColorRGB.BLACK)
-            );*/
         }
 
         if(counter < upperBound) {
@@ -65,6 +51,11 @@ public class LightToggleCineAdjustedProcedure extends Procedure {
     @Override
     public void updateLEDDataBundle(LEDDataBundle ledDataBundle) {
         super.updateLEDDataBundle(ledDataBundle);
+    }
+
+    @Override
+    public boolean validateBundleData() {
+        return ledUpdateModel.bundle.interpolation != null && ledUpdateModel.bundle.color != null && ledUpdateModel.bundle.duration != null;
     }
 
     @Override

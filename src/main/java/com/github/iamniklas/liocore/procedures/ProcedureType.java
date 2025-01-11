@@ -1,24 +1,19 @@
 package com.github.iamniklas.liocore.procedures;
 
 public enum ProcedureType {
-    BootComplete,
-    ColorInstantSet,
-    FadeInFadeOut,
-    FadeToMultiColor,
-    FadeToUniformColor,
-    Blink,
-    Glitter,
-    Fill,
-    FillInterpolated,
+    Ready,
+    Error,
+
+    MonoColor,
+    MultiColor,
+
     Rainbow,
     RainbowMono,
-    JsonProcedure,
-    Progress,
+
+    Glitter,
     Lightning,
-    MusicSync,
-    RandomColorBlocks,
     Javascript,
-    NoLongerReady,
+
     LightToggle,
     LightToggleCineAdjusted,
 }

@@ -8,31 +8,31 @@ import com.github.iamniklas.liocore.procedures.Procedure;
 
 public class RainbowMonoProcedure extends Procedure {
 
-    private LEDDataBundle bundle;
-
     private ColorHSV colorHsv = new ColorHSV(0, 1.0f, 1.0f);
-    private float speed = 1.0f;
 
     public RainbowMonoProcedure(LEDUpdateModel _ledUpdateModel) {
         super(_ledUpdateModel);
-        bundle = _ledUpdateModel.bundle;
-
-        speed = Math.max(1.0f, bundle.speed);
     }
 
     @Override
     public void start() {
         super.start();
+        ledUpdateModel.bundle.speed = Math.max(1.0f, ledUpdateModel.bundle.speed);
     }
 
     @Override
     public void update() {
-        colorHsv.h = colorHsv.h > 360.0f ? 0 : (int) (colorHsv.h + speed);
+        colorHsv.h = colorHsv.h > 360.0f ? 0 : (int) (colorHsv.h + ledUpdateModel.bundle.speed);
         strip.setAllPixels(LIOColor.fromHSV(colorHsv));
     }
 
     @Override
     public void updateLEDDataBundle(LEDDataBundle ledDataBundle) {
 
+    }
+
+    @Override
+    public boolean validateBundleData() {
+        return ledUpdateModel.bundle.speed != null;
     }
 }

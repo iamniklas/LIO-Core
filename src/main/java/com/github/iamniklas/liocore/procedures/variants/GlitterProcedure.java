@@ -14,21 +14,16 @@ public class GlitterProcedure extends Procedure {
 
     private LEDDataBundle bundle;
 
-    private ColorRGB baseColor;
     private ArrayList<Float> ledX = new ArrayList<>();
-    private float speed = 0.1f;
     private float tcount = 0.0f;
 
     public GlitterProcedure(LEDUpdateModel _ledUpdateModel) {
         super(_ledUpdateModel);
         bundle = _ledUpdateModel.bundle;
 
-        baseColor = bundle.colorPrimary;
-        speed = bundle.speed;
         for (int i = 0; i < LEDStripManager.ledCount; i++) {
             ledX.add(0.0f);
         }
-        start();
     }
 
     @Override
@@ -41,18 +36,23 @@ public class GlitterProcedure extends Procedure {
 
     @Override
     public void update() {
-        tcount += speed;
+        tcount += bundle.speed;
 
         if(tcount > Math.PI * 2)
             tcount = 0.0f;
 
         for (int i = 0; i < LEDStripManager.ledCount; i++) {
-            strip.setPixel(i, LIOColor.fromRGB(baseColor.dim((float) Math.abs(Math.sin(tcount + ledX.get(i))))));
+            strip.setPixel(i, LIOColor.fromRGB(bundle.color.dim((float) Math.abs(Math.sin(tcount + ledX.get(i))))));
         }
     }
 
     @Override
     public void updateLEDDataBundle(LEDDataBundle ledDataBundle) {
 
+    }
+
+    @Override
+    public boolean validateBundleData() {
+        return bundle.color != null && bundle.speed != null;
     }
 }

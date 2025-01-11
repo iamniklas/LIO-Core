@@ -7,43 +7,40 @@ import com.github.iamniklas.liocore.procedures.ProcedureCalls;
 import com.github.iamniklas.liocore.procedures.models.Direction;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.ArrayList;
+
 public class LEDDataBundle {
-    @SerializedName("color_primary")
-    public ColorRGB colorPrimary;
-    @SerializedName("color_secondary")
-    public ColorRGB colorSecondary;
-    @SerializedName("color_tertiary")
-    public ColorRGB colorTertiary;
+    //used for monocolor, glitter, lighttoggle, lighttogglecineadjusted,
+    public ColorRGB color;
+
+    //used for multicolor
+    public ArrayList<ColorRGB> colors;
+
+    //used for javascript
     public String data;
-    @SerializedName("value_1")
-    public Float value1;
-    @SerializedName("value_2")
-    public Float value2;
-    @SerializedName("value_3")
-    public Float value3;
-    public Integer modulo;
+
+    //used for lightning
+    public Float attenuation;
+
+    //used for lighttoggle, lighttogglecineadjusted
     public InterpolationType interpolation;
-    public InterpolationType interpolationOverDistance;
+
+    //used for rainbow
     public Direction direction;
-    public Integer bpm;
     public Float repetitions;
+
+    //used for rainbow, rainbowmono, glitter
     public Float speed;
+
+    //used for lightning, lighttoggle, lighttogglecineadjusted
     public Integer duration;
-    public Boolean pulsating;
-    public String path;
-    public AnimationData animationData;
 
-    //subBundle
-    @SerializedName("is_sub_procedure")
-    public Boolean isSubProcedure;
-    public Boolean indeterminate;
-    @SerializedName("pu_modulo")
-    public Integer puModulo;
-    @SerializedName("pu_modulo_invert")
-    public Boolean puModuloInvert;
+    //used in postupdate method
+    public Integer modulo;
+    public Boolean moduloInvert;
 
-
+    
     public transient LEDStripManager ledStrip;
-
     public transient ProcedureCalls procedureCalls;
+
 }

@@ -7,13 +7,10 @@ import com.github.iamniklas.liocore.led.colorspace.LIOColor;
 import com.github.iamniklas.liocore.network.LEDUpdateModel;
 import com.github.iamniklas.liocore.procedures.Procedure;
 
-public class BootCompleteProcedure extends Procedure {
+public class ReadyProcedure extends Procedure {
 
-    private LEDDataBundle bundle;
-
-    public BootCompleteProcedure(LEDUpdateModel _ledUpdateModel) {
+    public ReadyProcedure(LEDUpdateModel _ledUpdateModel) {
         super(_ledUpdateModel);
-        bundle = _ledUpdateModel.bundle;
 
         steps = 720;
     }
@@ -38,12 +35,16 @@ public class BootCompleteProcedure extends Procedure {
         step += 5;
         if(step == steps) {
             strip.setAllPixels(new LIOColor(0, 0, 0));
-            finishProcedure();
         }
     }
 
     @Override
     public void updateLEDDataBundle(LEDDataBundle ledDataBundle) {
 
+    }
+
+    @Override
+    public boolean validateBundleData() {
+        return true;
     }
 }

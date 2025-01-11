@@ -29,7 +29,7 @@ public class LightToggleProcedure extends Procedure {
                     Math.min(
                             Math.round(Interpolation.getInterpolationValue(counter/300f, ledUpdateModel.bundle.interpolation) * LEDStripManager.ledCount),
                             upperBound + 1),
-                    LIOColor.fromRGB(ledUpdateModel.bundle.colorPrimary)
+                    LIOColor.fromRGB(ledUpdateModel.bundle.color)
             );
         } else {
             strip.setArea(
@@ -53,6 +53,11 @@ public class LightToggleProcedure extends Procedure {
     @Override
     public void updateLEDDataBundle(LEDDataBundle ledDataBundle) {
         super.updateLEDDataBundle(ledDataBundle);
+    }
+
+    @Override
+    public boolean validateBundleData() {
+        return ledUpdateModel.bundle.interpolation != null && ledUpdateModel.bundle.color != null;
     }
 
     @Override
