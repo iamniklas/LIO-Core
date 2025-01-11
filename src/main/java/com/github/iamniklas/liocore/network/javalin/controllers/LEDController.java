@@ -32,6 +32,11 @@ public class LEDController extends ControllerBase {
             }
         });
 
+        //Endpoint to get all led status data
+        _app.get("/led/status", ctx -> {
+            ctx.result(new Gson().toJson(ledStripManager.ledStrip.getStripData()));
+        });
+
         //Endpoint to get the last procedure that was sent to the LED strip
         _app.get("/led/procedure/last", ctx -> {
             if(lastProcedure != null) {
