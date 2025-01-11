@@ -50,7 +50,7 @@ public class LEDController extends ControllerBase {
                 Procedure p = ProcedureFactory.getProcedure(updateModel);
                 lastProcedure = p;
                 if(p != null) {
-                    logger.info("Received new procedure: " + p.ledUpdateModel.procedure.name());
+                    logger.info("Received new procedure: " + new Gson().toJson(p.ledUpdateModel));
                     ledStripManager.procContainer.replaceActiveProcedure(p);
                 }
             }
