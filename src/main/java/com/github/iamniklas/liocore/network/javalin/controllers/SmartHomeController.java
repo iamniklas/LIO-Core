@@ -3,6 +3,7 @@ package com.github.iamniklas.liocore.network.javalin.controllers;
 import com.github.iamniklas.colorspaces.ColorHSV;
 import com.github.iamniklas.colorspaces.ColorRGB;
 import com.github.iamniklas.liocore.led.LEDStripManager;
+import com.github.iamniklas.liocore.led.colorspace.KelvinColor;
 import com.github.iamniklas.liocore.led.colorspace.LIOColor;
 import com.github.iamniklas.liocore.network.javalin.models.SmartHomeModel;
 import com.google.gson.Gson;
@@ -16,15 +17,15 @@ public class SmartHomeController extends ControllerBase {
 
     public SmartHomeController(Javalin _app, LEDStripManager _ledStripManager, Gson gson) {
         ledStripManager = _ledStripManager;
-        smartHomeModel = new SmartHomeModel(new ColorRGB(255, 255, 255), 255, true);
+        smartHomeModel = new SmartHomeModel(new ColorRGB(255, 255, 255), 100, true);
 
         _app.get("/smart", ctx -> ctx.result(gson.toJson(smartHomeModel)));
 
         _app.get("/smart/brightness", ctx -> ctx.result(gson.toJson(smartHomeModel.getBrightness())));
         _app.post("/smart/brightness", ctx -> smartHomeModel.setBrightness(Float.parseFloat(ctx.body())));
 
-        _app.get("/smart/temperature_k", ctx -> { });
-        _app.post("/smart/temperature_k", ctx -> { });
+        _app.get("/smart/temperature_k", ctx -> { ctx.result(gson.toJson(getTemperatureKFromColorRGB(smartHomeModel.getColor()))); });
+        _app.post("/smart/temperature_k", ctx -> smartHomeModel.setColor(KelvinColor.getRGBForKelvin(Integer.parseInt(ctx.body()))));
 
         _app.get("/smart/color/rgb", ctx -> ctx.result(gson.toJson(smartHomeModel.getColor())));
         _app.post("/smart/color/rgb", ctx -> smartHomeModel.setColor(gson.fromJson(ctx.body(), ColorRGB.class)));
@@ -39,6 +40,13 @@ public class SmartHomeController extends ControllerBase {
     }
 
     void updateLEDStrip() {
+        smartHomeModel.setBrightness(Math.max(0, Math.min(100, smartHomeModel.getBrightness())));
+        smartHomeModel.setColor(new ColorRGB(
+                Math.max(0, Math.min(255, smartHomeModel.getColor().r)),
+                Math.max(0, Math.min(255, smartHomeModel.getColor().g)),
+                Math.max(0, Math.min(255, smartHomeModel.getColor().b))
+        ));
+
         if (smartHomeModel.getPowerSwitch()) {
             LIOColor adjustedColor = new LIOColor(
                     (int) (smartHomeModel.getColor().r * (smartHomeModel.getBrightness() / 100.0f)),
@@ -49,5 +57,56 @@ public class SmartHomeController extends ControllerBase {
         } else {
             ledStripManager.setAllPixels(new LIOColor(0, 0, 0));
         }
+    }
+
+    ColorRGB getRGBFromTemperatureK(float temperatureK) {
+        float temp = temperatureK / 100.0f;
+
+        float red = 0;
+        float green = 0;
+        float blue = 0;
+
+        if(temp <= 66) {
+            red = 255;
+        } else {
+            red = temp - 60;
+            red = (float) (329.698727446 * Math.pow(red, -0.1332047592));
+        }
+
+        if(temp <= 66) {
+            green = temp;
+            green = (float) (99.4708025861 * Math.log(green) - 161.1195681661);
+        } else {
+            green = temp - 60;
+            green = (float) (288.1221695283 * Math.pow(green, -0.0755148492));
+        }
+
+        if(temp >= 66) {
+            blue = 255;
+        } else if(temp <= 19) {
+            blue = 0;
+        } else {
+            blue = temp - 10;
+            blue = (float) (138.5177312231 * Math.log(blue) - 305.0447927307);
+        }
+
+        return new ColorRGB((int) red, (int) green, (int) blue);
+    }
+    float getTemperatureKFromColorRGB(ColorRGB colorRGB) {
+        float red = colorRGB.r;
+        float green = colorRGB.g;
+        float blue = colorRGB.b;
+
+        float X = red * 0.4124564f + green * 0.3575761f + blue * 0.1804375f;
+        float Y = red * 0.2126729f + green * 0.7151522f + blue * 0.0721750f;
+        float Z = red * 0.0193339f + green * 0.1191920f + blue * 0.9503041f;
+
+        float x = X / (X + Y + Z);
+        float y = Y / (X + Y + Z);
+
+        float n = (x - 0.3320f) / (0.1858f - y);
+        float cct = (float) ((449.0f * Math.pow(n, 3)) + (3525.0f * Math.pow(n, 2)) + (6823.3f * n) + 5520.33f);
+
+        return cct;
     }
 }
