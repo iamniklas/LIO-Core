@@ -24,7 +24,7 @@ public class ProcContainer {
     public void replaceActiveProcedure(Procedure _procedure) {
         if(!_procedure.validateBundleData()) {
             log.error("Procedure data validation failed. Some required fields for this procedure has not been set. Procedure will not be queued.");
-            return;
+            throw new IllegalArgumentException("Procedure data validation failed. Some required fields for this procedure has not been set. Procedure will not be queued.");
         }
 
         removeAllCurrentProcedures();

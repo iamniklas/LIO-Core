@@ -18,7 +18,7 @@ public class ErrorProcedure extends Procedure {
 
     @Override
     public void start() {
-        super.start();
+
     }
 
     @Override

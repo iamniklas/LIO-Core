@@ -13,7 +13,7 @@ public class MonoColorProcedure extends Procedure implements Runnable {
 
     @Override
     public void start() {
-        super.start();
+
     }
 
     @Override

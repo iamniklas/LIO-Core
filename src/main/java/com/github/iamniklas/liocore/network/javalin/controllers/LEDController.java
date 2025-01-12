@@ -60,7 +60,7 @@ public class LEDController extends ControllerBase {
                 }
             }
             catch (Exception e) {
-                ctx.status(500);
+                ctx.status(500).result(e.getMessage());
                 logger.error(e.getMessage());
             }
         });

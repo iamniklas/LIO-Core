@@ -1,0 +1,362 @@
+{
+	"info": {
+		"_postman_id": "cca340bf-3f19-4f17-ac66-9f35ea0d5fe5",
+		"name": "LIO",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17223944"
+	},
+	"item": [
+		{
+			"name": "Smart Endpoints",
+			"item": [
+				{
+					"name": "Get Smart Home Model",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/smart",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"smart"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Brightness",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/smart/brightness",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"smart",
+								"brightness"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Set Brightness",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "75"
+						},
+						"url": {
+							"raw": "{{base_url}}/smart/brightness",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"smart",
+								"brightness"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get RGB Color",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/smart/color/rgb",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"smart",
+								"color",
+								"rgb"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Set RGB Color",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"r\": 255,\n  \"g\": 0,\n  \"b\": 0\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/smart/color/rgb",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"smart",
+								"color",
+								"rgb"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get HSV Color",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/smart/color/hsv",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"smart",
+								"color",
+								"hsv"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Set HSV Color",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"h\": 120,\n  \"s\": 1,\n  \"v\": 1\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/smart/color/hsv",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"smart",
+								"color",
+								"hsv"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Power State",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/smart/state",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"smart",
+								"state"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Set Power State",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "true"
+						},
+						"url": {
+							"raw": "{{base_url}}/smart/state",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"smart",
+								"state"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "LED Test Set",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"procedure\": \"Rainbow\",\r\n    \"bundle\": {\"color\": {\"r\": 128, \"g\": 0, \"b\": 255}, \"repetitions\": 1, \"speed\": 2, \"direction\": \"CenterInvert\"}\r\n} ",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/led/procedure/",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"led",
+						"procedure",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "LED Test Set Mono",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"procedure\": \"Ready\",\r\n    \"bundle\": {\"color\": {\"r\": 0, \"g\": 0, \"b\": 255}, \"modulo\": 20, \"moduloInvert\": true}\r\n} ",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/led/procedure/",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"led",
+						"procedure",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "LED Get all Leds",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"procedure\": \"ColorInstantSet\",\r\n    \"bundle\": {\"color_primary\": {\"r\": 255, \"g\": 0, \"b\": 255}, \"pu_modulo\": 1, \"pu_modulo_invert\": true}\r\n} ",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/led/status/",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"led",
+						"status",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "LED Get Smart State",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"procedure\": \"ColorInstantSet\",\r\n    \"bundle\": {\"color_primary\": {\"r\": 255, \"g\": 0, \"b\": 255}, \"pu_modulo\": 1, \"pu_modulo_invert\": true}\r\n} ",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/smart/state",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"smart",
+						"state"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "192.168.178.71:5700",
+			"type": "string"
+		}
+	]
+}

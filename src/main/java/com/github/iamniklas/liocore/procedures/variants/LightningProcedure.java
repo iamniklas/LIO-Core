@@ -14,8 +14,6 @@ public class LightningProcedure extends Procedure {
 
     @Override
     public void start() {
-        super.start();
-
         steps = ledUpdateModel.bundle.duration * 50;
     }
 

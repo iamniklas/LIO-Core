@@ -33,7 +33,7 @@ public class ReadyProcedure extends Procedure {
             }
         }
         step += 5;
-        if(step == steps) {
+        if(step >= steps) {
             strip.setAllPixels(new LIOColor(0, 0, 0));
         }
     }

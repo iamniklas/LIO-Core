@@ -3,6 +3,7 @@ package com.github.iamniklas.liocore.network.javalin;
 import com.github.iamniklas.liocore.config.ProgramConfiguration;
 import com.github.iamniklas.liocore.led.LEDStripManager;
 import com.github.iamniklas.liocore.network.javalin.controllers.*;
+import com.google.gson.Gson;
 import io.javalin.Javalin;
 
 import java.util.ArrayList;
@@ -21,6 +22,7 @@ public class JavalinHandler {
 
         controllers.add(new DeviceController(app, _programConfiguration));
         controllers.add(new LEDController(app, _ledStripManager));
+        controllers.add(new SmartHomeController(app, _ledStripManager, new Gson()));
     }
 
     public JavalinHandler(int port, LEDStripManager _ledStripManager, ProgramConfiguration _programConfiguration) {

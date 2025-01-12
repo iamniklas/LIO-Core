@@ -32,7 +32,7 @@ public abstract class Procedure {
         }
     }
 
-    public void start() { procCalls.onProcedureStart(this); }
+    public void start() { }
     public abstract void update();
     public void updateLEDDataBundle(LEDDataBundle ledDataBundle) {
         ledUpdateModel.bundle = ledDataBundle;

@@ -28,7 +28,7 @@ public class RainbowProcedure extends Procedure {
 
     @Override
     public void start() {
-        super.start();
+
     }
 
     @Override

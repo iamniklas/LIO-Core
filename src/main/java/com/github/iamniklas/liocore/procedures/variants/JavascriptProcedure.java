@@ -27,19 +27,16 @@ public class JavascriptProcedure extends Procedure {
         bundle = _ledUpdateModel.bundle;
 
         runtime = null;
-        invocable = null;
         eval = null;
         runtime = new ScriptEngineManager().getEngineByName("javascript");
+        invocable = (Invocable) runtime;
     }
 
     @Override
     public void start() {
-        super.start();
-
-        jsUpdate = bundle.data;
+        System.out.println("Starting Javascript Procedure");
         try {
-            eval = runtime.eval(jsUpdate);
-            invocable = (Invocable) runtime;
+            eval = runtime.eval(bundle.data);
         }
         catch (ScriptException se) {
             se.printStackTrace();

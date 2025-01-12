@@ -16,7 +16,6 @@ public class RainbowMonoProcedure extends Procedure {
 
     @Override
     public void start() {
-        super.start();
         ledUpdateModel.bundle.speed = Math.max(1.0f, ledUpdateModel.bundle.speed);
     }
 

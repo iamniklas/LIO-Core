@@ -22,7 +22,7 @@ public class MultiColorProcedure extends Procedure {
 
     @Override
     public void start() {
-        super.start();
+
     }
 
     @Override

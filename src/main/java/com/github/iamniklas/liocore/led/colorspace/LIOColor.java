@@ -25,6 +25,10 @@ public class LIOColor {
         return LIOColor.fromRGB(hsv.toRGB());
     }
 
+    public static ColorHSV toHSV(LIOColor color) {
+        return new ColorRGB(color.r, color.g, color.b).toHSV();
+    }
+
     public ColorRGB toRGB() {
         return new ColorRGB(r, g, b);
     }
