@@ -14,7 +14,7 @@ public class LIOColor {
     }
 
     public static LIOColor fromRGB(ColorRGB rgb) {
-        return new LIOColor(rgb.r, rgb.g, rgb.b);
+        return new LIOColor(rgb.getR(), rgb.getG(), rgb.getB());
     }
 
     public static LIOColor fromRGBA(ColorRGBA rgba) {

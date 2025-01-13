@@ -18,7 +18,7 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.9.0'
 
     implementation 'com.github.iamniklas:interpolation:1.0.0-2'
-    implementation 'com.github.iamniklas:colorspaces:0.0.1-4'
+    implementation 'com.github.iamniklas:colorspaces:0.0.1-5'
     implementation 'com.github.iamniklas:net-tools:1.2.0'
 
     implementation 'org.eclipse.paho:org.eclipse.paho.client.mqttv3:1.2.5'

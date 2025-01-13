@@ -42,16 +42,16 @@ public class SmartHomeController extends ControllerBase {
     void updateLEDStrip() {
         smartHomeModel.setBrightness(Math.max(0, Math.min(100, smartHomeModel.getBrightness())));
         smartHomeModel.setColor(new ColorRGB(
-                Math.max(0, Math.min(255, smartHomeModel.getColor().r)),
-                Math.max(0, Math.min(255, smartHomeModel.getColor().g)),
-                Math.max(0, Math.min(255, smartHomeModel.getColor().b))
+                Math.max(0, Math.min(255, smartHomeModel.getColor().getR())),
+                Math.max(0, Math.min(255, smartHomeModel.getColor().getG())),
+                Math.max(0, Math.min(255, smartHomeModel.getColor().getB()))
         ));
 
         if (smartHomeModel.getPowerSwitch()) {
             LIOColor adjustedColor = new LIOColor(
-                    (int) (smartHomeModel.getColor().r * (smartHomeModel.getBrightness() / 100.0f)),
-                    (int) (smartHomeModel.getColor().g * (smartHomeModel.getBrightness() / 100.0f)),
-                    (int) (smartHomeModel.getColor().b * (smartHomeModel.getBrightness() / 100.0f))
+                    (int) (smartHomeModel.getColor().getR() * (smartHomeModel.getBrightness() / 100.0f)),
+                    (int) (smartHomeModel.getColor().getG() * (smartHomeModel.getBrightness() / 100.0f)),
+                    (int) (smartHomeModel.getColor().getB() * (smartHomeModel.getBrightness() / 100.0f))
             );
             ledStripManager.setAllPixels(adjustedColor);
         } else {
@@ -93,9 +93,9 @@ public class SmartHomeController extends ControllerBase {
         return new ColorRGB((int) red, (int) green, (int) blue);
     }
     float getTemperatureKFromColorRGB(ColorRGB colorRGB) {
-        float red = colorRGB.r;
-        float green = colorRGB.g;
-        float blue = colorRGB.b;
+        float red = colorRGB.getR();
+        float green = colorRGB.getG();
+        float blue = colorRGB.getB();
 
         float X = red * 0.4124564f + green * 0.3575761f + blue * 0.1804375f;
         float Y = red * 0.2126729f + green * 0.7151522f + blue * 0.0721750f;

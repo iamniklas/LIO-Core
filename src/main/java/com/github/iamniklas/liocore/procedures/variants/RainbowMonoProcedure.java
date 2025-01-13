@@ -21,7 +21,7 @@ public class RainbowMonoProcedure extends Procedure {
 
     @Override
     public void update() {
-        colorHsv.h = colorHsv.h > 360.0f ? 0 : (int) (colorHsv.h + ledUpdateModel.bundle.speed);
+        colorHsv.setH(colorHsv.getH() > 360.0f ? 0 : (int) (colorHsv.getH() + ledUpdateModel.bundle.speed));
         strip.setAllPixels(LIOColor.fromHSV(colorHsv));
     }
 

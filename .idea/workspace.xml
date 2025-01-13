@@ -10,9 +10,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e78498bb-5fd8-4fc1-8653-b011d9d466e4" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/led/colorspace/KelvinColor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/led/colorspace/LIOColor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/led/colorspace/LIOColor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/network/javalin/controllers/SmartHomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/network/javalin/controllers/SmartHomeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/procedures/variants/RainbowMonoProcedure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/procedures/variants/RainbowMonoProcedure.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/procedures/variants/RainbowProcedure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/iamniklas/liocore/procedures/variants/RainbowProcedure.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/ColorSpaceConversionTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ColorSpaceConversionTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -132,7 +136,7 @@
       <recent name="com.github.iamniklas.liocore.tests" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Default">
+  <component name="RunManager" selected="Gradle.Tests in 'LIO-Core.test'">
     <configuration name="Default" type="Application" factoryName="Application">
       <option name="ALTERNATIVE_JRE_PATH" value="1.8" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
@@ -206,12 +210,12 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="JavalinTests.testPostNewProcedure" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="JavalinTests.testSendActionToProcedure" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;JavalinTests.testPostNewProcedure&quot; --stacktrace" />
+        <option name="scriptParameters" value="--tests &quot;JavalinTests.testSendActionToProcedure&quot;" />
         <option name="taskDescriptions">
           <list />
         </option>
@@ -228,12 +232,12 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="JavalinTests.testSendActionToProcedure" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="Tests in 'LIO-Core.test'" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;JavalinTests.testSendActionToProcedure&quot;" />
+        <option name="scriptParameters" value="" />
         <option name="taskDescriptions">
           <list />
         </option>
@@ -259,19 +263,19 @@
     </configuration>
     <list>
       <item itemvalue="Application.Default" />
+      <item itemvalue="Gradle.Tests in 'LIO-Core.test'" />
       <item itemvalue="Gradle.JavalinTest" />
-      <item itemvalue="Gradle.JavalinTests.testPostNewProcedure" />
       <item itemvalue="Gradle.JavalinTests.testDeviceScanner" />
       <item itemvalue="Gradle.JavalinProScannerTests.testJavalinProScanner" />
       <item itemvalue="Gradle.JavalinTests.testSendActionToProcedure" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.Tests in 'LIO-Core.test'" />
         <item itemvalue="Gradle.JavalinTests.testSendActionToProcedure" />
         <item itemvalue="Gradle.JavalinProScannerTests.testJavalinProScanner" />
         <item itemvalue="Gradle.JavalinTests.testDeviceScanner" />
         <item itemvalue="Gradle.JavalinTest" />
-        <item itemvalue="Gradle.JavalinTests.testPostNewProcedure" />
       </list>
     </recent_temporary>
   </component>

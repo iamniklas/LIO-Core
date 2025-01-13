@@ -9,89 +9,89 @@ public class ColorSpaceConversionTests {
     @Test
     public void testHSVToRGBConversion() {
         ColorHSV hsv = new ColorHSV(0, 1.0f, 1.0f);
-        assertEquals(255, hsv.toRGB().r);
-        assertEquals(0, hsv.toRGB().g);
-        assertEquals(0, hsv.toRGB().b);
+        assertEquals(255, hsv.toRGB().getR());
+        assertEquals(0, hsv.toRGB().getG());
+        assertEquals(0, hsv.toRGB().getB());
 
-        hsv.h = 60;
-        assertEquals(255, hsv.toRGB().r);
-        assertEquals(255, hsv.toRGB().g);
-        assertEquals(0, hsv.toRGB().b);
+        hsv.setH(60);
+        assertEquals(255, hsv.toRGB().getR());
+        assertEquals(255, hsv.toRGB().getG());
+        assertEquals(0, hsv.toRGB().getB());
 
-        hsv.h = 120;
-        assertEquals(0, hsv.toRGB().r);
-        assertEquals(255, hsv.toRGB().g);
-        assertEquals(0, hsv.toRGB().b);
+        hsv.setH(120);
+        assertEquals(0, hsv.toRGB().getR());
+        assertEquals(255, hsv.toRGB().getG());
+        assertEquals(0, hsv.toRGB().getB());
 
-        hsv.h = 180;
-        assertEquals(0, hsv.toRGB().r);
-        assertEquals(255, hsv.toRGB().g);
-        assertEquals(255, hsv.toRGB().b);
+        hsv.setH(180);
+        assertEquals(0, hsv.toRGB().getR());
+        assertEquals(255, hsv.toRGB().getG());
+        assertEquals(255, hsv.toRGB().getB());
 
-        hsv.h = 240;
-        assertEquals(0, hsv.toRGB().r);
-        assertEquals(0, hsv.toRGB().g);
-        assertEquals(255, hsv.toRGB().b);
+        hsv.setH(240);
+        assertEquals(0, hsv.toRGB().getR());
+        assertEquals(0, hsv.toRGB().getG());
+        assertEquals(255, hsv.toRGB().getB());
 
-        hsv.h = 300;
-        assertEquals(255, hsv.toRGB().r);
-        assertEquals(0, hsv.toRGB().g);
-        assertEquals(255, hsv.toRGB().b);
+        hsv.setH(300);
+        assertEquals(255, hsv.toRGB().getR());
+        assertEquals(0, hsv.toRGB().getG());
+        assertEquals(255, hsv.toRGB().getB());
 
-        hsv.h = 360;
-        assertEquals(255, hsv.toRGB().r);
-        assertEquals(0, hsv.toRGB().g);
-        assertEquals(0, hsv.toRGB().b);
+        hsv.setH(360);
+        assertEquals(255, hsv.toRGB().getR());
+        assertEquals(0, hsv.toRGB().getG());
+        assertEquals(0, hsv.toRGB().getB());
     }
 
     @Test
     public void testRGBToHSVConversion() {
         ColorRGB rgb = new ColorRGB(255, 0, 0);
-        assertEquals(0, rgb.toHSV().h);
-        assertEquals(1.0f, rgb.toHSV().s, 0.1f);
-        assertEquals(1.0f, rgb.toHSV().v, 0.1f);
+        assertEquals(0, rgb.toHSV().getH());
+        assertEquals(1.0f, rgb.toHSV().getS(), 0.1f);
+        assertEquals(1.0f, rgb.toHSV().getV(), 0.1f);
 
-        rgb.r = 255;
-        rgb.g = 255;
-        rgb.b = 0;
-        assertEquals(60, rgb.toHSV().h);
-        assertEquals(1.0f, rgb.toHSV().s, 0.1f);
-        assertEquals(1.0f, rgb.toHSV().v, 0.1f);
+        rgb.setR(255);
+        rgb.setG(255);
+        rgb.setB(0);
+        assertEquals(60, rgb.toHSV().getH());
+        assertEquals(1.0f, rgb.toHSV().getS(), 0.1f);
+        assertEquals(1.0f, rgb.toHSV().getV(), 0.1f);
 
-        rgb.r = 0;
-        rgb.g = 255;
-        rgb.b = 0;
-        assertEquals(120, rgb.toHSV().h);
-        assertEquals(1.0f, rgb.toHSV().s, 0.1f);
-        assertEquals(1.0f, rgb.toHSV().v, 0.1f);
+        rgb.setR(0);
+        rgb.setG(255);
+        rgb.setB(0);
+        assertEquals(120, rgb.toHSV().getH());
+        assertEquals(1.0f, rgb.toHSV().getS(), 0.1f);
+        assertEquals(1.0f, rgb.toHSV().getV(), 0.1f);
 
-        rgb.r = 0;
-        rgb.g = 255;
-        rgb.b = 255;
-        assertEquals(180, rgb.toHSV().h);
-        assertEquals(1.0f, rgb.toHSV().s, 0.1f);
-        assertEquals(1.0f, rgb.toHSV().v, 0.1f);
+        rgb.setR(0);
+        rgb.setG(255);
+        rgb.setB(255);
+        assertEquals(180, rgb.toHSV().getH());
+        assertEquals(1.0f, rgb.toHSV().getS(), 0.1f);
+        assertEquals(1.0f, rgb.toHSV().getV(), 0.1f);
 
-        rgb.r = 0;
-        rgb.g = 0;
-        rgb.b = 255;
-        assertEquals(240, rgb.toHSV().h);
-        assertEquals(1.0f, rgb.toHSV().s, 0.1f);
-        assertEquals(1.0f, rgb.toHSV().v, 0.1f);
+        rgb.setR(0);
+        rgb.setG(0);
+        rgb.setB(255);
+        assertEquals(240, rgb.toHSV().getH());
+        assertEquals(1.0f, rgb.toHSV().getS(), 0.1f);
+        assertEquals(1.0f, rgb.toHSV().getV(), 0.1f);
 
-        rgb.r = 255;
-        rgb.g = 0;
-        rgb.b = 255;
-        assertEquals(300, rgb.toHSV().h);
-        assertEquals(1.0f, rgb.toHSV().s, 0.1f);
-        assertEquals(1.0f, rgb.toHSV().v, 0.1f);
+        rgb.setR(255);
+        rgb.setG(0);
+        rgb.setB(255);
+        assertEquals(300, rgb.toHSV().getH());
+        assertEquals(1.0f, rgb.toHSV().getS(), 0.1f);
+        assertEquals(1.0f, rgb.toHSV().getV(), 0.1f);
 
-        rgb.r = 255;
-        rgb.g = 0;
-        rgb.b = 0;
-        assertEquals(0, rgb.toHSV().h);
-        assertEquals(1.0f, rgb.toHSV().s, 0.1f);
-        assertEquals(1.0f, rgb.toHSV().v, 0.1f);
+        rgb.setR(255);
+        rgb.setG(0);
+        rgb.setB(0);
+        assertEquals(0, rgb.toHSV().getH());
+        assertEquals(1.0f, rgb.toHSV().getS(), 0.1f);
+        assertEquals(1.0f, rgb.toHSV().getV(), 0.1f);
     }
 
     @Test

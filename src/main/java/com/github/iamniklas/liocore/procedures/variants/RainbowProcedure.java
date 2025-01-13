@@ -53,9 +53,9 @@ public class RainbowProcedure extends Procedure {
 
         for (int i = 0; i < LEDStripManager.ledCount; i++) {
             if (ledUpdateModel.bundle.direction == Direction.Center || ledUpdateModel.bundle.direction == Direction.CenterInvert) {
-                colorHSV.h = (int) (((i * (ledUpdateModel.bundle.repetitions * (360.0f / LEDStripManager.ledCount))) + hueArrayCounter[i]) % 360);
+                colorHSV.setH((int) (((i * (ledUpdateModel.bundle.repetitions * (360.0f / LEDStripManager.ledCount))) + hueArrayCounter[i]) % 360));
             } else {
-                colorHSV.h = (int) (((i * (ledUpdateModel.bundle.repetitions * (360.0f / LEDStripManager.ledCount))) + hueCounter) % 360);
+                colorHSV.setH((int) (((i * (ledUpdateModel.bundle.repetitions * (360.0f / LEDStripManager.ledCount))) + hueCounter) % 360));
             }
             strip.setPixel(i, LIOColor.fromHSV(colorHSV));
         }
