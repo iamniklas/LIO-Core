@@ -40,7 +40,10 @@ public class SmartHomeController extends ControllerBase {
     }
 
     void updateLEDStrip() {
+        ledStripManager.procContainer.removeAllCurrentProcedures();
+
         smartHomeModel.setBrightness(Math.max(0, Math.min(100, smartHomeModel.getBrightness())));
+
         smartHomeModel.setColor(new ColorRGB(
                 Math.max(0, Math.min(255, smartHomeModel.getColor().getR())),
                 Math.max(0, Math.min(255, smartHomeModel.getColor().getG())),
