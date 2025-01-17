@@ -8,9 +8,11 @@ import com.github.iamniklas.liocore.led.colorspace.LIOColor;
 import com.github.iamniklas.liocore.network.javalin.models.SmartHomeModel;
 import com.google.gson.Gson;
 import io.javalin.Javalin;
+import org.apache.log4j.Logger;
 
 public class SmartHomeController extends ControllerBase {
 
+    private static final Logger log = Logger.getLogger(SmartHomeController.class);
     SmartHomeModel smartHomeModel;
 
     LEDStripManager ledStripManager;
@@ -22,7 +24,10 @@ public class SmartHomeController extends ControllerBase {
         _app.get("/smart", ctx -> ctx.result(gson.toJson(smartHomeModel)));
 
         _app.get("/smart/brightness", ctx -> ctx.result(gson.toJson(smartHomeModel.getBrightness())));
-        _app.post("/smart/brightness", ctx -> smartHomeModel.setBrightness(Float.parseFloat(ctx.body())));
+        _app.post("/smart/brightness", ctx -> {
+            float brightness = Float.parseFloat(ctx.body());
+            smartHomeModel.setBrightness(brightness);
+        });
 
         _app.get("/smart/temperature_k", ctx -> { ctx.result(gson.toJson(getTemperatureKFromColorRGB(smartHomeModel.getColor()))); });
         _app.post("/smart/temperature_k", ctx -> smartHomeModel.setColor(KelvinColor.getRGBForKelvin(Integer.parseInt(ctx.body()))));
@@ -42,7 +47,7 @@ public class SmartHomeController extends ControllerBase {
     void updateLEDStrip() {
         ledStripManager.procContainer.removeAllCurrentProcedures();
 
-        smartHomeModel.setBrightness(Math.max(0, Math.min(100, smartHomeModel.getBrightness())));
+        smartHomeModel.setBrightness(Math.max(0, Math.min(255, smartHomeModel.getBrightness())));
 
         smartHomeModel.setColor(new ColorRGB(
                 Math.max(0, Math.min(255, smartHomeModel.getColor().getR())),
@@ -52,9 +57,9 @@ public class SmartHomeController extends ControllerBase {
 
         if (smartHomeModel.getPowerSwitch()) {
             LIOColor adjustedColor = new LIOColor(
-                    (int) (smartHomeModel.getColor().getR() * (smartHomeModel.getBrightness() / 100.0f)),
-                    (int) (smartHomeModel.getColor().getG() * (smartHomeModel.getBrightness() / 100.0f)),
-                    (int) (smartHomeModel.getColor().getB() * (smartHomeModel.getBrightness() / 100.0f))
+                    (int) (smartHomeModel.getColor().getR() * (smartHomeModel.getBrightness() / 255.0f)),
+                    (int) (smartHomeModel.getColor().getG() * (smartHomeModel.getBrightness() / 255.0f)),
+                    (int) (smartHomeModel.getColor().getB() * (smartHomeModel.getBrightness() / 255.0f))
             );
             ledStripManager.setAllPixels(adjustedColor);
         } else {
